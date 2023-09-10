@@ -1,0 +1,1503 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Home Text Slider | Fulwe</title>
+      <!-- Favicon -->
+      <link rel="icon" type="image/x-icon" th:href="@{/img/favicon.ico}">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" th:href="@{/plugins/bootstrap/css/bootstrap.min.css}">
+      <!-- Linearicon Font -->
+      <link rel="stylesheet" th:href="@{/plugins/linearicon/css/lnr-icon.css}">
+      <!-- FontAwesome Free Font -->
+      <link rel="stylesheet" th:href="@{/plugins/fontawesome/css/font-awesome.min.css}">
+      <!-- Slick slider CSS -->
+      <link rel="stylesheet" th:href="@{/plugins/slick/css/slick.css}">
+      <link rel="stylesheet" th:href="@{/plugins/slick/css/slick-theme.min.css}">
+      <!-- Color Switcher CSS -->
+      <link rel="stylesheet" th:href="@{/plugins/color-switcher/css/jquery.colorpanel.css}">
+      <!-- Custom CSS -->
+      <link rel="stylesheet" th:href="@{/css/style.css}" id="cpswitch">
+      <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!--[if lt IE 9]>
+      <script th:src="@{/js/html5shiv.min.js}"></script>
+      <script th:src="@{/js/respond.min.js}"></script>
+      <![endif]-->
+   </head>
+   <body>
+      <!-- Home Wrapper -->
+     <div id="colorPanel" class="colorPanel">
+           <a id="cpToggle" href="#"></a>
+           <ul></ul>
+       </div>               
+      <div class="home-wrapper">
+         <!-- Header -->
+         <header>
+            <!-- Top Header Section -->
+            <div class="top-header-section py-3 px-0 py-md-3 px-md-3">
+               <div class="container">
+                  <div class="row align-items-center">
+                     <div class="col-4 col-md-8 col-lg-8">
+                        <div class="media align-items-center d-inline-block mr-2 mr-md-4 mr-lg-5">
+                           <a href="tel:8503867896" class="">
+                              <span class="lnr lnr-phone-handset text-theme display-6"></span>
+                              <span class="media-body d-none d-md-inline-block ml-2 text-white">
+                                 Phone: (850) 386-7896
+                              </span>
+                           </a>
+                        </div>
+                        <div class="media align-items-center d-inline-block">
+                           <span class="lnr lnr-envelope text-theme display-6"></span>
+                           <span class="media-body d-none d-md-inline-block ml-2">
+                              <a class="text-white" href="mailto:support@example.com"> support@example.com</a>
+                           </span>
+                        </div>
+                     </div>
+                     <div class="col-8 col-md-4 col-lg-4">
+                        <div class="row align-items-center">
+                           <div class="col-6 col-sm-7 text-right">
+                              <div class="dropdown">
+                                 <a class="inr-toggle-arrow dropdown-toggle text-white" href="javascript:;" data-toggle="dropdown">
+                                 <img class="img img-fluid" src="/img/en.png" alt="Flag Image" /><span class="pl-2">En</span>
+                                 </a>
+                                 <div class="dropdown-menu l-auto r-0">
+                                    <a class="dropdown-item" href="#"><img class="img img-fluid" th:src="@{/img/in.png}" alt="Flag Image" /><span class="pl-2">In</span></a>
+                                    <a class="dropdown-item" href="#"><img class="img img-fluid" th:src="@{/img/io.png}" alt="Flag Image" /><span class="pl-2">Id</span></a>
+                                    <a class="dropdown-item" href="#"><img class="img img-fluid" th:src="@{/img/ca.png}" alt="Flag Image" /><span class="pl-2">Ca</span></a>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-6 col-sm-5 text-right">
+                              <div class="dropdown">
+                                 <a class="inr-toggle-arrow dropdown-toggle text-white" href="javascript:;" data-toggle="dropdown">
+                                 <i class="fa fa-usd" aria-hidden="true"></i><span class="pl-2">Usd</span>
+                                 </a>
+                                 <div class="dropdown-menu l-auto r-0">
+                                    <a class="dropdown-item" href="#"><i class="fa fa-eur" aria-hidden="true"></i><span class="pl-2">Eur</span></a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-gbp" aria-hidden="true"></i><span class="pl-2">Gbp</span></a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-inr" aria-hidden="true"></i><span class="pl-2">Inr</span></a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-jpy" aria-hidden="true"></i><span class="pl-2">Jpy</span></a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- /Top Header Section -->
+
+            <!-- Main header Section -->
+            <div class="main-header-section shadow-sm">
+               <div class="container">
+                  <div class="row align-items-center">
+                     <div class="col-12">
+                        <!-- Main Menu -->
+                        <div class="main-menu menu-section w-100 d-inline-block d-md-block">
+                                 <!-- offcanvas menu -->
+                                 <div id="offcanvas_menu">
+                                    <span class="lnr lnr-cross float-left display-6 position-absolute t-1 l-1 text-white" id="close_navSidebar"></span>
+                                    <div class="user-info align-center bg-theme text-center">
+                                       <a href="javascript:;" class="d-block menu-style text-white">
+                                          <div class="user-avatar d-inline-block mr-3">
+                                             <img th:src="@{/img/owner-avatar-img.jpg}" alt="user avatar" class="rounded-circle">
+                                          </div>
+                                          <div class="user-info d-inline-block align-middle">
+                                             <ul>
+                                                <li>Steve Bell</li>
+                                             </ul>
+                                          </div>
+                                       </a>
+                                    </div>
+                                    <div class="user-menu-items p-3 m-0 text-left">
+                                       <a class="d-block pb-3" href="user-profile.html">
+                                       <span class="lnr lnr-user mr-3"></span>
+                                       <span class="text-truncate">Profile</span>
+                                       </a>
+                                       <a class="d-block pb-3" href="user-dashboard.html">
+                                       <span class="lnr lnr-pie-chart mr-3"></span>
+                                       <span class="text-truncate">Dashboard</span>
+                                       </a>
+                                       <a class="d-block pb-3" href="user-settings.html">
+                                       <span class="lnr lnr-cog mr-3"></span>
+                                       <span class="text-truncate">Settings</span>
+                                       </a>
+                                       <a class="d-block pb-3" href="user-notifications.html">
+                                       <span class="lnr lnr-alarm mr-3"></span>
+                                       <span class="text-truncate">Notifications</span>
+                                       <span class="bg-theme d-inline-block text-white float-right px-3 py-0 radius-5 ">5</span>
+                                       </a>
+                                       <a class="d-block pb-3" href="cart-page.html">
+                                       <span class="lnr lnr-cart mr-3"></span>
+                                       <span class="text-truncate">Cart</span>
+                                       <span class="bg-theme d-inline-block text-white float-right px-3 py-0 radius-5 ">3</span>
+                                       </a>                    
+                                       <a class="d-block p-0" href="index.html">
+                                       <span class="lnr lnr-power-switch mr-3"></span>
+                                       <span class="text-truncate">Logout</span>
+                                       </a>
+                                    </div>
+                                 </div>
+                                 <!-- /offcanvas menu -->
+
+                                 <!-- Navbar menu-->
+                                 <nav class="navbar navbar-expand-lg p-0">                        
+                                    <div class="logo my-3 my-md-0">
+                                       <a class="navbar-brand" href="index.html">
+                                       <img th:src="@{/img/logo.png}" alt="logo image" class="img-fluid">
+                                       </a>
+                                    </div>
+ 
+                                    <button class="navbar-toggler d-block d-md-none pr-0 ml-auto mr-3 collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                       <span class="icon-bar bg-theme top-bar"></span>
+                                       <span class="icon-bar bg-theme middle-bar"></span>
+                                       <span class="icon-bar bg-theme bottom-bar"></span>          
+                                    </button>
+
+                                    <div class="collapse navbar-collapse menu-items-position d-md-block" id="navbarSupportedContent">
+                                       <ul class="navbar-nav ml-auto text-uppercase">
+                                          <li class="nav-item active">
+                                             <a class="nav-link pl-md-0" href="index.html">Home <span class="sr-only">(current)</span></a>
+                                          </li>
+                                          <li class="nav-item">
+                                             <a class="nav-link" href="product-grid-view.html">Explore</a>
+                                          </li>
+                                          <li class="nav-item">
+                                             <a class="nav-link" href="blog.html">blog</a>
+                                          </li>
+                                          <li class="nav-item dropdown position-">
+                                             <a class="nav-link dropdown-toggle" href="javascript:;" data-toggle="dropdown">Pages</a>
+                                             <div class="dropdown-menu w-100 megamenu scrollable-menu scrollbar mt-0 border-0 r-0 radius-0 p-4 p-md-5" id="custom-scroll">
+                                                <div class="row">
+                                                   <div class="col-lg-3 col-md-4">
+                                                      <p class="mb-3"><strong>Landing Page</strong></p>
+                                                      <div class="dropdown-item p-0">
+                                                         <ul>
+                                                            <li class="pb-3"><a href="index.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Home - Text Slider</a></li>
+                                                            <li class="pb-3"><a href="index-v2.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Home - Video</a></li>                                                                                <li class="pb-3"><a href="index-v3.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Home - Image Slider</a></li>                                        
+                                                            <li class="pb-3"><a href="loggedin.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Home - Loggedin</a></li>
+                                                         </ul>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-lg-3 col-md-4">
+                                                         <p class="mb-3"><strong>Shop</strong></p>
+                                                      <div class="dropdown-item p-0">
+                                                         <ul>
+                                                            <li class="pb-3"><a href="product-grid-3col.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Shop - 3 Grid Column</a></li>             
+                                                            <li class="pb-3"><a href="product-grid-4col.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Shop - 4 Grid Column</a></li>             
+                                                            <li class="pb-3"><a href="product-grid-view.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Shop - Left Sidebar</a></li>             
+                                                            <li class="pb-3"><a href="product-grid-right-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Shop - Right Sidebar</a></li>             
+                                                            <li class="pb-3"><a href="product-list-view.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Shop List - Left Sidebar</a></li>             
+                                                            <li class="pb-3"><a href="product-list-right-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Shop List - Right Sidebar</a></li>     
+                                                         </ul>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-lg-3 col-md-4">
+                                                         <p class="mb-3"><strong>Single Product</strong></p>
+                                                      <div class="dropdown-item p-0">
+                                                         <ul>
+                                                            <li class="pb-3"><a href="single-product.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Horizontal Bottom Slider</a></li>
+                                                            <li class="pb-3"><a href="single-product-v2.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Horizontal Top Slider</a></li>
+                                                            <li class="pb-3"><a href="single-product-v3.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Vertical Left Slider</a></li>
+                                                            <li class="pb-3"><a href="single-product-v4.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Vertical right Slider</a></li>
+                                                         </ul>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-lg-3 col-md-4">
+                                                         <p class="mb-3"><strong>Blog</strong></p>
+                                                      <div class="dropdown-item p-0">
+                                                         <ul>
+                                                            <li class="pb-3"><a href="blog.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Blog - 3 Grid Column</a></li>
+                                                            <li class="pb-3"><a href="blog-4col.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Blog - 4 Grid Column</a></li>
+                                                            <li class="pb-3"><a href="blog-left-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Blog - Left Sidebar</a></li>
+                                                            <li class="pb-3"><a href="blog-right-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Blog - Right Sidebar</a></li>
+                                                            <li class="pb-3"><a href="blog-single-post-left-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Single - Left Sidebar</a></li>
+                                                            <li class="pb-3"><a href="blog-single-post.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Single - Right Sidebar</a></li>             
+                                                         </ul>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-lg-3 col-md-4">
+                                                         <p class="mb-3"><strong>My Account</strong></p>
+                                                      <div class="dropdown-item p-0">
+                                                         <ul>
+                                                            <li class="pb-3"><a href="user-dashboard.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Dashboard</a></li>
+                                                            <li class="pb-3"><a href="user-add-item.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Add Service</a></li>
+                                                            <li class="pb-3"><a href="user-profile.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Profile</a></li>
+                                                            <li class="pb-3"><a href="user-wallet.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Wallet</a></li>
+                                                            <li class="pb-3"><a href="user-settings.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Settings</a></li>
+                                                            <li class="pb-3"><a href="user-notifications.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Notifications</a></li>
+                                                            <li class="pb-0 pb-md-3 pb-lg-0"><a href="purchase-history.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Purchase History</a></li>             
+                                                         </ul>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-lg-3 col-md-4">
+                                                         <p class="mb-3"><strong>Ecommerce</strong></p>
+                                                      <div class="dropdown-item p-0">
+                                                         <ul>
+                                                            <li class="pb-3"><a href="cart-page.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Cart</a></li>
+                                                            <li class="pb-3"><a href="checkout.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Checkout</a></li>
+                                                            <li class="pb-3"><a href="wishlist-grid-view.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Wishlist - Grid View</a></li>
+                                                            <li><a href="wishlist-list-view.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Wishlist - List View</a></li>             
+                                                         </ul>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-lg-3 col-md-4">
+                                                         <p class="mb-3"><strong>Other Pages</strong></p>
+                                                      <div class="dropdown-item p-0">
+                                                         <ul>
+                                                            <li class="pb-3"><a href="404.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>404</a></li>
+                                                            <li class="pb-3"><a href="500.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>500</a></li>
+                                                            <li class="pb-3"><a href="comingsoon.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Comingsoon</a></li>
+                                                            <li class="pb-3"><a href="terms-conditions.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Terms-Conditions</a></li>
+                                                            <li class="pb-3"><a href="faq.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>FAQ</a></li>
+                                                            <li><a href="contact.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Contact us</a></li>             
+                                                         </ul>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-lg-3 col-md-4">
+                                                         <p class="mb-3"><strong>Layout</strong></p>
+                                                      <div class="dropdown-item p-0">
+                                                         <ul>
+                                                            <li class="pb-3"><a href="sample.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Sample Page</a></li>
+                                                            <li class="pb-3"><a href="sample-full-width.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Full Width</a></li>
+                                                            <li class="pb-3"><a href="sample-left-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Left Sidebar</a></li>
+                                                            <li class="pb-3"><a href="sample-right-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Right Sidebar</a></li>
+                                                            
+                                                            <li><a href="sample-sticky-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Sticky Sidebar</a></li>             
+                                                         </ul>
+                                                      </div>
+                                                   </div>                                                   
+                                                </div>
+                                             </div>
+                                          </li>
+                                       </ul>       
+                                       <!--  User info-->
+                                       <div class="cta-btn text-right d-none d-md-inline-block">
+                                          <a href="javascript:;" data-toggle="modal" data-target="#myRegister" class="btn-outline-theme px-4 radius-5 py-3"><span class="lnr lnr-user pr-2"></span>Login</a>
+                                       </div>
+                                       <!-- /User info-->
+                                    </div>
+                        <div class="d-inline-block align-middle d-md-none">
+                           <a href="javascript:;">
+                           <span class="lnr lnr-user d-block display-5" id="open_navSidebar"></span>
+                           </a>
+                        </div>
+                                 </nav>
+                                 <!-- /Navbar menu-->
+                              </div>
+                        <!-- /Main Menu -->
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- /Main Header Section -->
+         </header>
+         <!-- /Header -->
+
+         <!-- Slider-wrapper -->
+         <section class="slider-wrapper">
+            <div id="carouselExampleIndicators" class="home-carousel carousel slide py-8" data-ride="carousel" data-interval="false">
+               <div class="carousel-inner">
+                  <div class="carousel-item active py-10">
+                     <div class="carousel-caption custom-caption positiony-0">
+                        <h1 class="px-2 px-sm-0 d-inline-block">Fulwe<span class="d-block text-white bg-theme px-4 mt-2">Multi Vendor HTML Template</span></h1>
+                        <h4 class="my-4 my-md-5 px-4 px-md-5 px-sm-0">Marketplace template for buyers & sellers</h4>
+                        <div class="row">
+                           <div class="col-12">
+                              <div class="btn-blk">
+                                 <a class="d-inline-block btn btn-outline-theme radius-5 px-4 py-3" href="product-grid-view.html">Register Now</a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="carousel-item py-10">
+                     <div class="carousel-caption custom-caption positiony-0">
+                        <h1 class="px-2 px-sm-0 d-inline-block">Fulwe<span class="d-block text-white bg-theme px-4 mt-2">Multi Vendor HTML Template</span></h1>
+                        <h4 class="my-4 my-md-5 px-4 px-md-5 px-sm-0">Marketplace template for buyers & sellers</h4>
+                        <div class="row">
+                           <div class="col-12">
+                              <div class="btn-blk">
+                                 <a class="d-inline-block btn btn-outline-theme radius-5 px-4 py-3" href="product-grid-view.html">Register Now</a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+  <!-- Left and right controls -->
+   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="no-bg carousel-control-prev-icon lnr lnr-chevron-left before-valign l-0" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+   </a>
+   <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="no-bg carousel-control-next-icon lnr lnr-chevron-right before-valign r-0" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+   </a>
+
+            </div>
+            <div class="section-bottom-wrapper pb-5 text-center d-none d-md-block">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-3">
+                        <div class="box-blk text-white">
+                           <span class="lnr lnr-users font-lg d-inline-block mb-3"></span>                 
+                           <h5 class="font-bold">250+ Seller</h5>
+                           <p>Lorem ipsum dolor sit.</p>
+                        </div>
+                     </div>
+                     <div class="col-md-3">
+                        <div class="box-blk text-white">
+                           <span class="lnr lnr-star font-lg d-inline-block mb-3"></span>                 
+                           <h5 class="font-bold">10+ Awards</h5>
+                           <p>Lorem ipsum dolor sit.</p>
+                        </div>
+                     </div>
+                     <div class="col-md-3">
+                        <div class="box-blk text-white">
+                           <span class="lnr lnr-briefcase font-lg d-inline-block mb-3"></span>
+                           <h5 class="font-bold">500+ Services</h5>
+                           <p>Lorem ipsum dolor sit.</p>
+                        </div>
+                     </div>
+                     <div class="col-md-3">
+                        <div class="box-blk text-white">
+                           <span class="lnr lnr-smile font-lg d-inline-block mb-3"></span>
+                           <h5 class="font-bold">230+ Customers</h5>
+                           <p>Lorem ipsum dolor sit.</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- Slider-wrapper -->
+         <section class="pdt-cat-wrapper py-6">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-12">
+                     <div class="pdt-cat-blk text-center">
+                        <div class="row">
+                           <div class="col-lg-8 col-md-10 m-auto">
+                              <div class="mb-6">
+                                 <h2 class="text-capitalize">explore from categories</h2>
+                                 <h5 class="mt-4">Laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats. Lid est laborum dolo rumes fugats untras.</h5>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-12">
+                              <div class="pdt-cat-grid">
+                                 <div class="row">
+                                    <div class="col-sm-6 col-md-6 col-lg-4">
+                                       <div class="border-theme radius-1 p-4 mb-6">
+                                          <div class="icon-blk p-4 border-theme rounded-circle d-flex m-auto">
+                                             <span class="lnr lnr-gift text-theme m-auto display-4"></span>
+                                          </div>
+                                          <div class="content-blk">
+                                             <h3 class="pt-4 pb-2">Fashion</h3>
+                                             <h5>10 Ads Posted</h5>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-4">
+                                       <div class="border-theme radius-1 p-4 mb-6">
+                                          <div class="icon-blk p-4 border-theme rounded-circle d-flex m-auto">
+                                             <span class="lnr lnr-printer text-theme m-auto display-4"></span>
+                                          </div>
+                                          <div class="content-blk">
+                                             <h3 class="pt-4 pb-2">Electrical</h3>
+                                             <h5>5 Ads Posted</h5>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-4">
+                                       <div class="border-theme radius-1 p-4 mb-6">
+                                          <div class="icon-blk p-4 border-theme rounded-circle d-flex m-auto">
+                                             <span class="lnr lnr-construction text-theme m-auto display-4"></span>
+                                          </div>
+                                          <div class="content-blk">
+                                             <h3 class="pt-4 pb-2">Construction</h3>
+                                             <h5>14 Ads Posted</h5>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-4">
+                                       <div class="border-theme radius-1 p-4 mb-6">
+                                          <div class="icon-blk p-4 border-theme rounded-circle d-flex m-auto">
+                                             <span class="lnr lnr-paw text-theme m-auto display-4"></span>
+                                          </div>
+                                          <div class="content-blk">
+                                             <h3 class="pt-4 pb-2">Pet Care</h3>
+                                             <h5>23 Ads Posted</h5>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-4">
+                                       <div class="border-theme radius-1 p-4 mb-6">
+                                          <div class="icon-blk p-4 border-theme rounded-circle d-flex m-auto">
+                                             <span class="lnr lnr-leaf text-theme m-auto display-4"></span>
+                                          </div>
+                                          <div class="content-blk">
+                                             <h3 class="pt-4 pb-2">Ayurvedic</h3>
+                                             <h5>67 Ads Posted</h5>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-4">
+                                       <div class="border-theme radius-1 p-4 mb-6">
+                                          <div class="icon-blk p-4 border-theme rounded-circle d-flex m-auto">
+                                             <span class="lnr lnr-camera text-theme m-auto display-4"></span>
+                                          </div>
+                                          <div class="content-blk">
+                                             <h3 class="pt-4 pb-2">Studio</h3>
+                                             <h5>10 Ads Posted</h5>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-12">
+                                    <div class="view-pdt-btn">
+                                       <a href="product-grid-view.html" class="btn btn-md btn-theme radius-5 text-white py-3 px-4  text-capitalize shadow-theme-lg">view all products</a>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <section class="pdt-filter-wrapper border-top py-6">
+            <div class="container">
+               <div class="row text-center">
+                  <div class="col-lg-8 col-md-10 m-auto">
+                     <div class="mb-6">
+                        <h2 class="text-capitalize">explore our products</h2>
+                        <h5 class="mt-4">Laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats. Lid est laborum dolo rumes fugats untras.</h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-xl-4 col-md-6 pdt card-deck mx-0">
+                     <div class="card mx-0 shadow border">
+                        <div class="wishlist-blk">
+                           <a href="wishlist-grid-view.html"><i class="fa fa-heart-o text-white"></i></a>
+                        </div>
+                        <div class="card-image">
+                           <img class="card-img-top" src="/img/service-img-1.jpg" alt="Card image">
+                           <div class="image-overlay">
+                              <a href="single-product.html" class="btn btn-outline-white radius-5 py-3 px-4  text-capitalize">More Info</a>
+                           </div>
+                        </div>
+                        <div class="card-body p-3">
+                           <h4 class="card-title mb-0"><a href="single-product.html" class="text-link">Interior Decoration</a></h4>
+                           <div class="card-text">
+                              <div class="card-section-1 py-3">
+                                 <div class="row align-items-center">
+                                    <div class="col-6">
+                                       <div class="media align-items-center">
+                                          <a href="user-profile.html" class="text-link d-inline-block">
+                                             <img src="/img/user-avatar-1.png" alt="John Doe" class="mr-3 rounded-circle d-inline-block">
+                                             <div class="media-body d-inline-block">
+                                                <p><strong>Aana</strong></p>
+                                             </div>
+                                          </a>
+                                       </div>
+                                    </div>
+                                    <div class="col-6">
+                                       <div class="pdt-cat-tag text-right">
+                                          <span class="bg-theme text-white px-3 py-1 radius-5">Construct</span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="card-section-2">
+                                 <div class="row align-items-center">
+                                    <div class="col-6">
+                                       <div class="rating-blk d-inline-block">
+                                          <i class="fa fa-star text-rating font-sm"></i>
+                                          <i class="fa fa-star text-rating font-sm"></i>
+                                          <i class="fa fa-star text-rating font-sm"></i>
+                                          <i class="fa fa-star text-rating font-sm"></i>
+                                          <i class="fa fa-star-o text-rating font-sm"></i>
+                                       </div>
+                                       <div class="pdt-rating-btn ml-1 d-inline-block">
+                                          <span class="text-theme"><strong>(4)</strong></span>
+                                       </div>
+                                    </div>
+                                    <div class="col-6">
+                                       <div class="pdt-contact-btn text-right">
+                                          <span class="p-2 display-5">
+                                          <a href="tel:1234567890">
+                                          <span class="lnr lnr-phone-handset"></span>
+                                          </a>
+                                          </span>
+                                          <span class="p-2 display-5">
+                                          <a href="mailto:Fulwe@example.com">
+                                          <span class="lnr lnr-inbox"></span>
+                                          </a>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="card-section-3 py-3">
+                                 <div class="row">
+                                    <div class="col-12">
+                                       <div class="pdt-description">
+                                          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <hr class="mt-0">
+                              <div class="card-section-4">
+                                 <div class="row">
+                                    <div class="col-12">
+                                       <div class="pdt-add-to-cart text-center">
+                                          <a class="btn-outline-theme d-block radius-5 px-3 py-2" href="cart-page.html">
+                                          <span class="lnr lnr-cart"></span>&nbsp;Add to Cart - 
+                                          <span class=""><i class="fa fa-usd"></i>&nbsp;41</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-4 col-md-6 pdt card-deck mx-0">
+                     <div class="card mx-0 shadow border">
+                        <div class="wishlist-blk">
+                           <a href="wishlist-grid-view.html"><i class="fa fa-heart"></i></a>
+                        </div>
+                        <div class="card-image">
+                           <img class="card-img-top" src="/img/service-img-2.jpg" alt="Card image">
+                           <div class="image-overlay">
+                              <a href="single-product.html" class="btn btn-outline-white radius-5 py-3 px-4  text-capitalize">More Info</a>
+                           </div>
+                        </div>
+                        <div class="card-body p-3">
+                           <h4 class="card-title mb-0"><a href="single-product.html" class="text-link">Skin Care</a></h4>
+                           <div class="card-text">
+                              <div class="card-section-1 py-3">
+                                 <div class="row align-items-center">
+                                    <div class="col-6">
+                                       <div class="media align-items-center">
+                                          <a href="user-profile.html" class="text-link d-inline-block">
+                                             <img src="/img/user-avatar-2.png" alt="John Doe" class="mr-3 rounded-circle d-inline-block">
+                                             <div class="media-body d-inline-block">
+                                                <p><strong>Shiny</strong></p>
+                                             </div>
+                                          </a>
+                                       </div>
+                                    </div>
+                                    <div class="col-6">
+                                       <div class="pdt-cat-tag text-right">
+                                          <span class="bg-theme text-white px-3 py-1 radius-5">Fashion</span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="card-section-2">
+                                 <div class="row align-items-center">
+                                    <div class="col-6">
+                                       <div class="rating-blk d-inline-block">
+                                          <i class="fa fa-star text-rating font-sm"></i>
+                                          <i class="fa fa-star text-rating font-sm"></i>
+                                          <i class="fa fa-star text-rating font-sm"></i>
+                                          <i class="fa fa-star text-rating font-sm"></i>
+                                          <i class="fa fa-star text-rating font-sm"></i>
+                                       </div>
+                                       <div class="pdt-rating-btn ml-1 d-inline-block">
+                                          <span class="text-theme"><strong>(5)</strong></span>
+                                       </div>
+                                    </div>
+                                    <div class="col-6">
+                                       <div class="pdt-contact-btn text-right">
+                                          <span class="p-2 display-5">
+                                          <a href="tel:1234567890">
+                                          <span class="lnr lnr-phone-handset"></span>
+                                          </a>
+                                          </span>
+                                          <span class="p-2 display-5">
+                                          <a href="mailto:Fulwe@example.com">
+                                          <span class="lnr lnr-inbox"></span>
+                                          </a>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="card-section-3 py-3">
+                                 <div class="row">
+                                    <div class="col-12">
+                                       <div class="pdt-description">
+                                          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <hr class="mt-0">
+                              <div class="card-section-4">
+                                 <div class="row">
+                                    <div class="col-12">
+                                       <div class="pdt-add-to-cart text-center">
+                                          <a class="btn-outline-theme d-block radius-5 px-3 py-2" href="cart-page.html">
+                                          <span class="lnr lnr-cart"></span>&nbsp;Add to Cart - 
+                                          <span class=""><i class="fa fa-usd"></i>&nbsp;68</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-4 col-md-6 pdt card-deck mx-0">
+                     <div class="card mx-0 shadow border">
+                        <div class="wishlist-blk">
+                           <a href="wishlist-grid-view.html"><i class="fa fa-heart-o text-white"></i></a>
+                        </div>
+                        <div class="card-image">
+                           <img class="card-img-top" src="/img/service-img-3.jpg" alt="Card image">
+                           <div class="image-overlay">
+                              <a href="single-product.html" class="btn btn-outline-white radius-5 py-3 px-4  text-capitalize">More Info</a>
+                           </div>
+                        </div>
+                        <div class="card-body p-3">
+                           <h4 class="card-title mb-0"><a href="single-product.html" class="text-link">Car Wash</a></h4>
+                           <div class="card-text">
+                              <div class="card-section-1 py-3">
+                                 <div class="row align-items-center">
+                                    <div class="col-6">
+                                       <div class="media align-items-center">
+                                          <a href="user-profile.html" class="text-link d-inline-block">
+                                             <img src="/img/user-avatar-3.png" alt="John Doe" class="mr-3 rounded-circle d-inline-block">
+                                             <div class="media-body d-inline-block">
+                                                <p><strong>Miller</strong></p>
+                                             </div>
+                                          </a>
+                                       </div>
+                                    </div>
+                                    <div class="col-6">
+                                       <div class="pdt-cat-tag text-right">
+                                          <span class="bg-theme text-white px-3 py-1 radius-5">Repair</span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="card-section-2">
+                                 <div class="row align-items-center">
+                                    <div class="col-6">
+                                       <div class="rating-blk d-inline-block">
+                                          <i class="fa fa-star text-rating font-sm"></i>
+                                          <i class="fa fa-star text-rating font-sm"></i>
+                                          <i class="fa fa-star text-rating font-sm"></i>
+                                          <i class="fa fa-star-o text-rating font-sm"></i>
+                                          <i class="fa fa-star-o text-rating font-sm"></i>
+                                       </div>
+                                       <div class="pdt-rating-btn ml-1 d-inline-block">
+                                          <span class="text-theme"><strong>(3)</strong></span>
+                                       </div>
+                                    </div>
+                                    <div class="col-6">
+                                       <div class="pdt-contact-btn text-right">
+                                          <span class="p-2 display-5">
+                                          <a href="tel:1234567890">
+                                          <span class="lnr lnr-phone-handset"></span>
+                                          </a>
+                                          </span>
+                                          <span class="p-2 display-5">
+                                          <a href="mailto:Fulwe@example.com">
+                                          <span class="lnr lnr-inbox"></span>
+                                          </a>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="card-section-3 py-3">
+                                 <div class="row">
+                                    <div class="col-12">
+                                       <div class="pdt-description">
+                                          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <hr class="mt-0">
+                              <div class="card-section-4">
+                                 <div class="row">
+                                    <div class="col-12">
+                                       <div class="pdt-add-to-cart text-center">
+                                          <a class="btn-outline-theme d-block radius-5 px-3 py-2" href="cart-page.html">
+                                          <span class="lnr lnr-cart"></span>&nbsp;Add to Cart - 
+                                          <span class=""><i class="fa fa-usd"></i>&nbsp;77</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-4 col-md-6 pdt card-deck mx-0">
+                     <div class="card mx-0 mb-xl-0 shadow border">
+                        <div class="wishlist-blk">
+                           <a href="wishlist-grid-view.html"><i class="fa fa-heart-o text-white"></i></a>
+                        </div>
+                        <div class="card-image">
+                           <img class="card-img-top" src="/img/service-img-4.jpg" alt="Card image">
+                           <div class="image-overlay">
+                              <a href="single-product.html" class="btn btn-outline-white radius-5 py-3 px-4  text-capitalize">More Info</a>
+                           </div>
+                        </div>
+                        <div class="card-body p-3">
+                           <h4 class="card-title mb-0"><a href="single-product.html" class="text-link">Pet Boarding</a></h4>
+                           <div class="card-text">
+                              <div class="card-section-1 py-3">
+                                 <div class="row align-items-center">
+                                    <div class="col-6">
+                                       <div class="media align-items-center">
+                                          <a href="user-profile.html" class="text-link d-inline-block">
+                                             <img src="/img/user-avatar-4.png" alt="John Doe" class="mr-3 rounded-circle d-inline-block">
+                                             <div class="media-body d-inline-block">
+                                                <p><strong>Smily</strong></p>
+                                             </div>
+                                          </a>
+                                       </div>
+                                    </div>
+                                    <div class="col-6">
+                                       <div class="pdt-cat-tag text-right">
+                                          <span class="bg-theme text-white px-3 py-1 radius-5">Pet Care</span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="card-section-2">
+                                 <div class="row align-items-center">
+                                    <div class="col-6">
+                                       <div class="rating-blk d-inline-block">
+                                          <i class="fa fa-star text-rating font-sm"></i>
+                                          <i class="fa fa-star text-rating font-sm"></i>
+                                          <i class="fa fa-star text-rating font-sm"></i>
+                                          <i class="fa fa-star text-rating font-sm"></i>
+                                          <i class="fa fa-star-o text-rating font-sm"></i>
+                                       </div>
+                                       <div class="pdt-rating-btn ml-1 d-inline-block">
+                                          <span class="text-theme"><strong>(4)</strong></span>
+                                       </div>
+                                    </div>
+                                    <div class="col-6">
+                                       <div class="pdt-contact-btn text-right">
+                                          <span class="p-2 display-5">
+                                          <a href="tel:1234567890">
+                                          <span class="lnr lnr-phone-handset"></span>
+                                          </a>
+                                          </span>
+                                          <span class="p-2 display-5">
+                                          <a href="mailto:Fulwe@example.com">
+                                          <span class="lnr lnr-inbox"></span>
+                                          </a>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="card-section-3 py-3">
+                                 <div class="row">
+                                    <div class="col-12">
+                                       <div class="pdt-description">
+                                          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <hr class="mt-0">
+                              <div class="card-section-4">
+                                 <div class="row">
+                                    <div class="col-12">
+                                       <div class="pdt-add-to-cart text-center">
+                                          <a class="btn-outline-theme d-block radius-5 px-3 py-2" href="cart-page.html">
+                                          <span class="lnr lnr-cart"></span>&nbsp;Add to Cart - 
+                                          <span class=""><i class="fa fa-usd"></i>&nbsp;86</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-4 col-md-6 pdt card-deck mx-0">
+                     <div class="card mx-0 mb-md-0 shadow border">
+                        <div class="wishlist-blk">
+                           <a href="wishlist-grid-view.html"><i class="fa fa-heart-o text-white"></i></a>
+                        </div>
+                        <div class="card-image">
+                           <img class="card-img-top" src="/img/service-img-5.jpg" alt="Card image">
+                           <div class="image-overlay">
+                              <a href="single-product.html" class="btn btn-outline-white radius-5 py-3 px-4  text-capitalize">More Info</a>
+                           </div>
+                        </div>
+                        <div class="card-body p-3">
+                           <h4 class="card-title mb-0"><a href="single-product.html" class="text-link">Stone Healing</a></h4>
+                           <div class="card-text">
+                              <div class="card-section-1 py-3">
+                                 <div class="row align-items-center">
+                                    <div class="col-6">
+                                       <div class="media align-items-center">
+                                          <a href="user-profile.html" class="text-link d-inline-block">
+                                             <img src="/img/user-avatar-5.png" alt="John Doe" class="mr-3 rounded-circle d-inline-block">
+                                             <div class="media-body d-inline-block">
+                                                <p><strong>Linda</strong></p>
+                                             </div>
+                                          </a>
+                                       </div>
+                                    </div>
+                                    <div class="col-6">
+                                       <div class="pdt-cat-tag text-right">
+                                          <span class="bg-theme text-white px-3 py-1 radius-5">Ayurvedic</span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="card-section-2">
+                                 <div class="row align-items-center">
+                                    <div class="col-6">
+                                       <div class="rating-blk d-inline-block">
+                                          <i class="fa fa-star text-rating font-sm"></i>
+                                          <i class="fa fa-star text-rating font-sm"></i>
+                                          <i class="fa fa-star text-rating font-sm"></i>
+                                          <i class="fa fa-star-o text-rating font-sm"></i>
+                                          <i class="fa fa-star-o text-rating font-sm"></i>
+                                       </div>
+                                       <div class="pdt-rating-btn ml-1 d-inline-block">
+                                          <span class="text-theme"><strong>(3)</strong></span>
+                                       </div>
+                                    </div>
+                                    <div class="col-6">
+                                       <div class="pdt-contact-btn text-right">
+                                          <span class="p-2 display-5">
+                                          <a href="tel:1234567890">
+                                          <span class="lnr lnr-phone-handset"></span>
+                                          </a>
+                                          </span>
+                                          <span class="p-2 display-5">
+                                          <a href="mailto:Fulwe@example.com">
+                                          <span class="lnr lnr-inbox"></span>
+                                          </a>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="card-section-3 py-3">
+                                 <div class="row">
+                                    <div class="col-12">
+                                       <div class="pdt-description">
+                                          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <hr class="mt-0">
+                              <div class="card-section-4">
+                                 <div class="row">
+                                    <div class="col-12">
+                                       <div class="pdt-add-to-cart text-center">
+                                          <a class="btn-outline-theme d-block radius-5 px-3 py-2" href="cart-page.html">
+                                          <span class="lnr lnr-cart"></span>&nbsp;Add to Cart - 
+                                          <span class=""><i class="fa fa-usd"></i>&nbsp;23</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-4 col-md-6 pdt card-deck mx-0">
+                     <div class="card mx-0 mb-0 mb-md-0 shadow border ">
+                        <div class="wishlist-blk">
+                           <a href="wishlist-grid-view.html"><i class="fa fa-heart-o text-white"></i></a>
+                        </div>
+                        <div class="card-image">
+                           <img class="card-img-top" src="/img/service-img-6.jpg" alt="Card image">
+                           <div class="image-overlay">
+                              <a href="single-product.html" class="btn btn-outline-white radius-5 py-3 px-4  text-capitalize">More Info</a>
+                           </div>
+                        </div>
+                        <div class="card-body p-3">
+                           <h4 class="card-title mb-0"><a href="single-product.html" class="text-link">Wedding Shot</a></h4>
+                           <div class="card-text">
+                              <div class="card-section-1 py-3">
+                                 <div class="row align-items-center">
+                                    <div class="col-6">
+                                       <div class="media align-items-center">
+                                          <a href="user-profile.html" class="text-link d-inline-block">
+                                             <img src="/img/user-avatar-6.png" alt="John Doe" class="mr-3 rounded-circle d-inline-block">
+                                             <div class="media-body d-inline-block">
+                                                <p><strong>David</strong></p>
+                                             </div>
+                                          </a>
+                                       </div>
+                                    </div>
+                                    <div class="col-6">
+                                       <div class="pdt-cat-tag text-right">
+                                          <span class="bg-theme text-white px-3 py-1 radius-5">Studio</span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="card-section-2">
+                                 <div class="row align-items-center">
+                                    <div class="col-6">
+                                       <div class="rating-blk d-inline-block">
+                                          <i class="fa fa-star text-rating font-sm"></i>
+                                          <i class="fa fa-star text-rating font-sm"></i>
+                                          <i class="fa fa-star text-rating font-sm"></i>
+                                          <i class="fa fa-star text-rating font-sm"></i>
+                                          <i class="fa fa-star-o text-rating font-sm"></i>
+                                       </div>
+                                       <div class="pdt-rating-btn ml-1 d-inline-block">
+                                          <span class="text-theme"><strong>(4)</strong></span>
+                                       </div>
+                                    </div>
+                                    <div class="col-6">
+                                       <div class="pdt-contact-btn text-right">
+                                          <span class="p-2 display-5">
+                                          <a href="tel:1234567890">
+                                          <span class="lnr lnr-phone-handset"></span>
+                                          </a>
+                                          </span>
+                                          <span class="p-2 display-5">
+                                          <a href="mailto:Fulwe@example.com">
+                                          <span class="lnr lnr-inbox"></span>
+                                          </a>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="card-section-3 py-3">
+                                 <div class="row">
+                                    <div class="col-12">
+                                       <div class="pdt-description">
+                                          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <hr class="mt-0">
+                              <div class="card-section-4">
+                                 <div class="row">
+                                    <div class="col-12">
+                                       <div class="pdt-add-to-cart text-center">
+                                          <a class="btn-outline-theme d-block radius-5 px-3 py-2" href="cart-page.html">
+                                          <span class="lnr lnr-cart"></span>&nbsp;Add to Cart - 
+                                          <span class=""><i class="fa fa-usd"></i>&nbsp;95</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-12">
+                     <div class="view-pdt-btn text-center mt-5">
+                        <a href="product-grid-view.html" class="btn btn-md btn-theme radius-5 text-white py-3 px-4  text-capitalize shadow-theme-lg">view all products</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <section class="bg-theme-secondary py-6">
+            <div class="container-fluid">
+               <div class="row">
+                  <div class="col-lg-6 col-md-10 text-center mx-auto">
+                     <div class="mb-6 text-white text-center">
+                        <h2>Our Clients Feedback</h2>
+                        <h5 class="mt-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-12">
+                     <div class="testimonial-reel">
+                        <div>
+                           <div class="box shadow border-theme radius-1 p-4 text-center">
+                              <span class="ml-n5 mt-n3 display-1 text-theme position-absolute">“</span>
+                              <img class="img-fluid rounded-circle" src="/img/pdt-owner-img.jpg" alt="Testimonial Author avatar">
+                              <div class="testi-contents">
+                                 <h4 class="text-theme my-4">Richard</h4>
+                                 <p class="text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                              </div>
+                           </div>
+                        </div>
+                        <div>
+                           <div class="box shadow border-theme radius-1 p-4 text-center">
+                              <span class="ml-n5 mt-n3 display-1 text-theme position-absolute">“</span>
+                              <img class="img-fluid rounded-circle" src="/img/replier-img.jpg" alt="Testimonial Author avatar">
+                              <div class="testi-contents">
+                                 <h4 class="text-theme my-4">Shiny</h4>
+                                 <p class="text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                              </div>
+                           </div>
+                        </div>
+                        <div>
+                           <div class="box shadow border-theme radius-1 p-4 text-center">
+                              <span class="ml-n5 mt-n3 display-1 text-theme position-absolute">“</span>
+                              <img class="img-fluid rounded-circle" src="/img/pdt-owner-img.jpg" alt="Testimonial Author avatar">
+                              <div class="testi-contents">
+                                 <h4 class="text-theme my-4">Richard</h4>
+                                 <p class="text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                              </div>
+                           </div>
+                        </div>
+                        <div>
+                           <div class="box shadow border-theme radius-1 p-4 text-center">
+                              <span class="ml-n5 mt-n3 display-1 text-theme position-absolute">“</span>
+                              <img class="img-fluid rounded-circle" src="/img/replier-img.jpg" alt="Testimonial Author avatar">
+                              <div class="testi-contents">
+                                 <h4 class="text-theme my-4">Shiny</h4>
+                                 <p class="text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <section class="insights-wrapper py-6">
+            <div class="container">
+               <div class="row">
+                  <div class="col-lg-8 col-md-10 text-center mx-auto">
+                     <div class="mb-6 text-center">
+                        <h2 class="text-capitalize">Trending blog news</h2>
+                        <h5 class="mt-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-xl-4 col-lg-4 col-md-6 insights mx-0 mb-4 mb-md-0">
+                     <div class="card mx-0">
+                        <div class="card-image">
+                           <img class="card-img-top" src="/img/blog-post-1.jpg" alt="Card image">
+                        </div>
+                        <div class="card-body p-3">
+                           <h4 class="card-title mb-0"><a href="blog-single-post.html" class="text-grey">Simple & Easy way to hire a Service</a></h4>
+                           <div class="card-text">
+                              <div class="card-section-1 py-3">
+                                 <div class="row">
+                                    <div class="col-12">
+                                       <div class="pdt-description">
+                                          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <hr class="mt-0">
+                              <div class="card-section-2">
+                                 <div class="row">
+                                    <div class="col-6">
+                                       <div class="insight-posted-date">
+                                          <span class="lnr lnr-clock text-theme"></span>
+                                          <span>&nbsp;14 Aug 2019</span>
+                                       </div>
+                                    </div>
+                                    <div class="col-6">
+                                       <div class="insight-share text-right">
+                                          <a href="javascript:;" class="collasped" data-toggle="collapse" data-target="#share-post-1" aria-expanded="true">
+                                          <i class="fa fa-share-alt" aria-hidden="true"></i>
+                                          <span>&nbsp;Share post</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div id="share-post-1" class="collapse py-3 px-0">
+                                    <div class="">
+                                       <ul class="lh-0">
+                                          <li class="list-inline-item text-white"><a class="d-inline-block p-3 btn-outline-theme" href="javascript:;"><i class="fa fa-facebook"></i></a></li>
+                                          <li class="list-inline-item"><a class="d-inline-block btn-outline-theme p-3" href="javascript:;"><i class="fa fa-twitter"></i></a></li>
+                                          <li class="list-inline-item"><a class="d-inline-block btn-outline-theme p-3" href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-4 col-lg-4 col-md-6 insights mx-0 mb-4 mb-md-0">
+                     <div class="card mx-0">
+                        <div class="card-image">
+                           <img class="card-img-top" src="/img/blog-post-2.jpg" alt="Card image">
+                        </div>
+                        <div class="card-body p-3">
+                           <h4 class="card-title mb-0">
+                              <a href="blog-single-post.html" class="text-grey">Learn more about the verified Seller</a>
+                           </h4>
+                           <div class="card-text">
+                              <div class="card-section-1 py-3">
+                                 <div class="row">
+                                    <div class="col-12">
+                                       <div class="pdt-description">
+                                          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <hr class="mt-0">
+                              <div class="card-section-2">
+                                 <div class="row">
+                                    <div class="col-6">
+                                       <div class="insight-posted-date">
+                                          <span class="lnr lnr-clock text-theme"></span>
+                                          <span>&nbsp;05 Sep 2019</span>
+                                       </div>
+                                    </div>
+                                    <div class="col-6">
+                                       <div class="insight-share text-right">
+                                          <a href="javascript:;" class="collasped" data-toggle="collapse" data-target="#share-post-2" aria-expanded="true">
+                                          <i class="fa fa-share-alt" aria-hidden="true"></i>
+                                          <span>&nbsp;Share post</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div id="share-post-2" class="collapse py-3 px-0">
+                                    <div class="">
+                                       <ul class="lh-0">
+                                          <li class="list-inline-item text-white"><a class="d-inline-block p-3 btn-outline-theme" href="javascript:;"><i class="fa fa-facebook"></i></a></li>
+                                          <li class="list-inline-item"><a class="d-inline-block btn-outline-theme p-3" href="javascript:;"><i class="fa fa-twitter"></i></a></li>
+                                          <li class="list-inline-item"><a class="d-inline-block btn-outline-theme p-3" href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-4 col-lg-4 col-md-6 insights mx-0 mt-md-4 mt-lg-0">
+                     <div class="card mx-0">
+                        <div class="card-image">
+                           <img class="card-img-top" src="/img/blog-post-3.jpg" alt="Card image">
+                        </div>
+                        <div class="card-body p-3">
+                           <h4 class="card-title mb-0"><a href="blog-single-post.html" class="text-grey">Tips to Know your buyers expectations</a></h4>
+                           <div class="card-text">
+                              <div class="card-section-1 py-3">
+                                 <div class="row">
+                                    <div class="col-12">
+                                       <div class="pdt-description">
+                                          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <hr class="mt-0">
+                              <div class="card-section-2">
+                                 <div class="row">
+                                    <div class="col-6">
+                                       <div class="insight-posted-date">
+                                          <span class="lnr lnr-clock text-theme"></span>
+                                          <span>&nbsp;01 Jan 2019</span>
+                                       </div>
+                                    </div>
+                                    <div class="col-6">
+                                       <div class="insight-share text-right">
+                                          <a href="javascript:;" class="collasped" data-toggle="collapse" data-target="#share-post-3" aria-expanded="true">
+                                          <i class="fa fa-share-alt" aria-hidden="true"></i>
+                                          <span>&nbsp;Share post</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div id="share-post-3" class="collapse py-3 px-0">
+                                    <div class="">
+                                       <ul class="lh-0">
+                                          <li class="list-inline-item text-white"><a class="d-inline-block p-3 btn-outline-theme" href="javascript:;"><i class="fa fa-facebook"></i></a></li>
+                                          <li class="list-inline-item"><a class="d-inline-block btn-outline-theme p-3" href="javascript:;"><i class="fa fa-twitter"></i></a></li>
+                                          <li class="list-inline-item"><a class="d-inline-block btn-outline-theme p-3" href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-12">
+                     <div class="text-center mt-6">
+                        <a href="blog.html" class="btn btn-md btn-theme radius-5 text-white py-3 px-4  text-capitalize shadow-theme-lg">view all blogs</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <section class="newsletter-wrapper border-top py-6">
+            <div class="container">
+               <div class="row">
+                  <div class="col-lg-8 col-md-10 text-center mx-auto">
+                     <div class="mb-6 text-center">
+                        <h2>Subscribe for Latest Services</h2>
+                        <h5 class="mt-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-12 col-lg-8 mx-auto">
+                     <div class="d-none d-md-flex input-group border-theme radius-5 shadow">
+                        <input type="email" class="form-control custom-input-height radius-5 border-0 no-bg-color" placeholder="Please enter your email to subscribe">
+                        <span class="input-group-btn ml-n5">
+                        <button class="btn btn-style px-5 py-3 text-white radius-5" type="submit">Subscribe</button>
+                        </span>
+                     </div>
+                     <div class="d-inline-block d-md-none mb-3 input-group border-theme radius-5 shadow">
+                        <input type="email" class="form-control custom-input-height radius-5 border-0 no-bg-color" placeholder="Please enter your email to subscribe">
+                     </div>
+                     <div class="text-center d-block d-md-none">
+                        <button class="btn btn-style px-5 py-3 mx-auto text-white radius-5" type="submit">Subscribe                     
+                        </button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- Footer -->
+         <footer>
+            <div class="top-footer py-5">
+               <div class="container">
+                  <div class="row align-items-center">
+                     <div class="col-md-3 text-left xs-text-center">
+                        <img class="img img-fluid" src="/img/logo-footer.png" alt="Footer Logo" />
+                     </div>
+                     <div class="col-md-6 text-center">
+                        <ul class="my-4 my-md-0">
+                           <li class="list-inline-item"><img class="img img-fluid" src="/img/pay1.png" alt="Payment Method" /></li>
+                           <li class="list-inline-item"><img class="img img-fluid" src="/img/pay2.png" alt="Payment Method" /></li>
+                           <li class="list-inline-item"><img class="img img-fluid" src="/img/pay3.png" alt="Payment Method" /></li>
+                           <li class="list-inline-item"><img class="img img-fluid" src="/img/pay4.png" alt="Payment Method" /></li>
+                           <li class="list-inline-item"><img class="img img-fluid mt-2 mt-sm-0" src="/img/pay5.png" alt="Payment Method" /></li>
+                        </ul>
+                     </div>
+                     <div class="col-md-3 text-right">
+                        <div class="social-widget">
+                           <ul class="lh-0 xs-text-center">
+                              <li class="list-inline-item"><a class="d-inline-block" href="javascript:;"><i class="fa fa-facebook"></i></a></li>
+                              <li class="list-inline-item"><a class="d-inline-block" href="javascript:;"><i class="fa fa-twitter"></i></a></li>
+                              <li class="list-inline-item"><a class="d-inline-block" href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="middle-footer py-6">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-6 col-lg-4 mb-md-5 mb-lg-0">
+                        <div class="company-info-widget mb-4 mb-md-0">
+                           <h5 class="text-theme">About</h5>
+                           <p class="pt-4">Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
+                           <p class="pt-3 pb-0">Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
+                        </div>
+                     </div>
+                     <div class="col-md-6 col-lg-3 mb-md-5 mb-lg-0">
+                        <div class="mb-4 mb-md-0">
+                           <h5 class="text-theme">My Account</h5>
+                           <ul class="pt-4 footer-list-style">
+                              <li><a class="text-footer" href="user-profile.html"><i class="lnr lnr-chevron-right mr-2"></i>Profile</a></li>
+                              <li><a class="text-footer" href="user-wallet.html"><i class="lnr lnr-chevron-right mr-2"></i>Wallet</a></li>
+                              <li><a class="text-footer" href="user-dashboard.html"><i class="lnr lnr-chevron-right mr-2"></i>Dashboard</a></li>
+                              <li><a class="text-footer" href="user-add-item.html"><i class="lnr lnr-chevron-right mr-2"></i>Add Service</a></li>
+                              <li class=" mb-0"><a class="text-footer mb-0" href="user-settings.html"><i class="lnr lnr-chevron-right mr-2"></i>Settings</a></li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="col-md-6 col-lg-2 mb-lg-0">
+                        <div class="mb-4 mb-md-0">
+                           <h5 class="text-theme">Links</h5>
+                           <ul class="pt-4 footer-list-style">
+                              <li><a class="text-footer" href="contact.html"><i class="lnr lnr-chevron-right mr-2"></i>Contact</a></li>
+                              <li><a class="text-footer" href="blog.html"><i class="lnr lnr-chevron-right mr-2"></i>Blog</a></li>
+                              <li><a class="text-footer" href="blog.html"><i class="lnr lnr-chevron-right mr-2"></i>FAQ</a></li>
+                              <li class="mb-0"><a class="text-footer" href="terms-conditions.html"><i class="lnr lnr-chevron-right mr-2"></i>Terms of Use</a></li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="col-md-6 col-lg-3 mb-lg-0">
+                        <div class="app-widget mb-0">
+                           <h5 class="text-theme">Download Apps</h5>
+                           <div class="pt-4 mb-0">
+                              <div class="media align-items-center mb-2">
+                                 <a href="javascript:;" class="d-block w-100 radius-1 p-3">
+                                    <span class="fa fa-android display-5" aria-hidden="true"></span>
+                                    <span class="media-body d-inline-block ml-2">
+                                       Get on GooglePlay
+                                    </span>
+                                 </a>
+                              </div>
+                              <div class="media align-items-center mb-0">
+                                 <a href="javascript:;" class="d-block w-100 radius-1 p-3">
+                                    <span class="fa fa-apple display-5" aria-hidden="true"></span>
+                                    <span class="media-body d-inline-block ml-2">
+                                       Get on AppStore
+                                    </span>
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="bottom-footer text-center py-4">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-12">
+                        <p>© Copyrights 2020. All Rights By <a href="http://www.bootstrapmb.com/">bootstrapmb</a></p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </footer>
+         <!-- /Footer -->
+      </div>
+      <!-- /Home Wrapper -->
+      <!-- The Login Modal -->
+      <div class="modal login-modal-blk" id="myLogin">
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <!-- Modal Header -->
+               <div class="modal-header d-block text-center p-2 p-sm-5">
+                  <h3 class="modal-title">Welcome Back</h3>
+                  <h5 class="mt-2 mr-0">You can sign in with your User Name</h5>
+                  <button type="button" class="close position-absolute t-1 r-1" data-dismiss="modal">&times;</button>
+               </div>
+               <!-- Modal body -->
+               <div class="modal-body p-4 p-sm-5">
+                  <form>
+                     <div class="form-group mb-4">
+                        <label for="usr">User Name</label>
+                        <input type="text" class="form-control bg-input" id="usr" placeholder="Enter your User Name...">
+                     </div>
+                     <div class="form-group mb-4">
+                        <label for="pwd">Password</label>
+                        <input type="password" class="form-control bg-input" id="pwd" placeholder="Enter your Password...">
+                     </div>
+                     <div class="form-group mb-4">
+                        <div class="custom-control custom-checkbox">
+                           <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
+                           <label class="pl-2 custom-control-label" for="customCheck">Remember me</label>
+                        </div>
+                     </div>
+                     <div class="form-group mb-0">
+                        <a href="loggedin.html" class="btn btn-md btn-theme text-white py-2 px-4 py-sm-3 px-sm-5  text-capitalize shadow-theme-lg">Login Now</a>
+                     </div>
+                  </form>
+               </div>
+               <div class="custom-legend-blk position-relative text-center"><span class="text-theme">OR</span></div>
+               <!-- Modal footer -->
+               <div class="modal-footer d-block position-relative border-0 p-4 p-sm-5 text-center">
+                  <h5>Sign in with a simple click</h5>
+                  <ul class="list-unstyled list-inline social-login-blk ml-0 mt-3 mt-sm-4">
+                     <li class="list-inline-item">
+                        <div class="card bg-fb text-white py-2 px-4 text-center"><a href="javascript:;"><i class="fa fa-facebook"></i><span class="pl-2 d-none d-sm-inline-block">Facebook</span></a></div>
+                     </li>
+                     <li class="list-inline-item">
+                        <div class="card bg-gplus text-white py-2 px-4 text-center"><a href="javascript:;"><i class="fa fa-google-plus"></i><span class="pl-2 d-none d-sm-inline-block">Google+</span></a></div>
+                     </li>
+                     <li class="list-inline-item">
+                        <div class="card bg-twitter text-white py-2 px-4 text-center"><a href="javascript:;"><i class="fa fa-twitter"></i><span class="pl-2 d-none d-sm-inline-block">Twitter</span></a></div>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- The Register Modal -->
+      <div class="modal login-modal-blk" id="myRegister">
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <!-- Modal Header -->
+               <div class="modal-header d-block text-center p-2 p-sm-5">
+                  <h3 class="modal-title text-capitalize">create your account</h3>
+                  <h5 class="mt-2">Please fill the following fields with appropriate information to register a new account.</h5>
+                  <button type="button" class="close position-absolute t-1 r-1" data-dismiss="modal">&times;</button>
+               </div>
+               <!-- Modal body -->
+               <div class="modal-body p-2 p-sm-5">
+                  <form>
+                     <div class="form-group mb-4">
+                        <label for="name">Your Name</label>
+                        <input type="text" class="form-control bg-input" id="name" placeholder="Enter your name...">
+                     </div>
+                     <div class="form-group mb-4">
+                        <label for="email">Email Address</label>
+                        <input type="email" class="form-control bg-input" id="email" placeholder="Enter your email address...">
+                     </div>
+                     <div class="form-group mb-4">
+                        <label for="usr1">User Name</label>
+                        <input type="text" class="form-control bg-input" id="usr1" placeholder="Enter your User Name...">
+                     </div>
+                     <div class="form-group mb-4">
+                        <label for="pwdd">Password</label>
+                        <input type="password" class="form-control bg-input" id="pwdd" placeholder="Enter your password...">
+                     </div>
+                     <div class="form-group mb-4">
+                        <label for="pwd-confirm">Confirm Password</label>
+                        <input type="password" class="form-control bg-input" id="pwd-confirm" placeholder="Enter your password...">
+                     </div>
+                     <div class="form-group mb-4">
+                        <a href="javascript:;" data-toggle="modal" data-dismiss="modal" data-target="#myLogin" class="btn btn-md btn-theme text-white py-2 px-4 py-sm-3 px-sm-5  text-capitalize shadow-theme-lg">Register Now</a>
+                     </div>
+                     <ul class="list-unstyled list-inline ml-0 mt-4">
+                        <li class="list-inline-item">
+                           <div class="text-left text">
+                              <p>Already have an account? <a href="javascript;" data-dismiss="modal" data-toggle="modal" data-target="#myLogin" class="">Login</a></p>
+                           </div>
+                        </li>
+                     </ul>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Optional JavaScript -->
+      <!-- jQuery -->
+      <script th:src="@{/js/jquery.min.js}"></script>
+      <!-- Bootstrap Core JS -->
+      <script th:src="@{/js/popper.min.js}"></script>
+      <script th:src="@{/plugins/bootstrap/js/bootstrap.min.js}"></script>
+      <!-- Slick Js-->
+      <script th:src="@{/plugins/slick/js/slick.min.js}"></script>
+      <!-- Color Switcher Js-->
+      <script th:src="@{/plugins/color-switcher/js/jquery.colorpanel.js}"></script>
+      <!-- Custom JS -->
+      <script th:src="@{/js/script.js}"></script>
+   </body>
+</html>
