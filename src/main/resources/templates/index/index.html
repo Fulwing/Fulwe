@@ -877,7 +877,7 @@
                   <div class="col-lg-8 col-md-10 text-center mx-auto">
                      <div class="mb-6 text-center">
                         <h2>Stay Ahead with our Exclusive Service Updates!</h2>
-                        <h5 class="mt-4">Are you tired of missing out on the latest and greatest services? Don't worry, we've got you covered! Subscribe to our newsletter and be the first to know about our cutting-edge offerings.</h5>
+                        <h5 class="mt-4">Are you tired of missing out on the latest and greatest services? Don't worry, we've got you covered! Subscribe to our newsletter and be the first to know about our cutting-edge offerings</h5>
                      </div>
                   </div>
                </div>
@@ -954,7 +954,7 @@
                </div>
                <!-- Modal body -->
                <div class="modal-body p-4 p-sm-5">
-                  <form>
+                  <form method="post">
                      <div class="form-group mb-4">
                         <label for="usr">User Name</label>
                         <input type="text" class="form-control bg-input" id="usr" placeholder="Enter your User Name...">
@@ -1005,35 +1005,53 @@
                </div>
                <!-- Modal body -->
                <div class="modal-body p-2 p-sm-5">
-                  <form>
-                     <div class="form-group mb-4">
-                        <label for="name">User Name</label>
-                        <input type="text" class="form-control bg-input" id="name" placeholder="Enter your name...">
+               <form th:action="@{/user/register}" method="post">
+                  <div class="form-group mb-4">
+                     <label for="name">User Name</label>
+                     <input type="text" class="form-control bg-input" name="username" id="name" placeholder="Enter your name" required minlength="4" maxlength="20" pattern="[A-Za-z0-9]+">
+                  </div>
+                  <div class="form-group mb-4">
+                     <label for="email">Email Address</label>
+                     <input type="email" class="form-control bg-input" name="email" id="email" placeholder="Enter your email address" required>
+                  </div>
+                  <div class="form-group mb-4">
+                     <label for="pwdd">Password</label>
+                     <div class="input-group">
+                        <input type="password" class="form-control bg-input" name="password" id="pwdd" placeholder="Enter your password" required minlength="8" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).*$">
                      </div>
-                     <div class="form-group mb-4">
-                        <label for="email">Email Address</label>
-                        <input type="email" class="form-control bg-input" id="email" placeholder="Enter your email address...">
-                     </div>
-                     <div class="form-group mb-4">
-                        <label for="pwdd">Password</label>
-                        <input type="password" class="form-control bg-input" id="pwdd" placeholder="Enter your password...">
-                     </div>
-                     <div class="form-group mb-4">
-                        <label for="pwd-confirm">Confirm Password</label>
-                        <input type="password" class="form-control bg-input" id="pwd-confirm" placeholder="Enter your password...">
-                     </div>
-                     <div class="form-group mb-4">
-                        <a href="javascript:;" data-toggle="modal" data-dismiss="modal" data-target="#myLogin" class="btn btn-md btn-theme text-white py-2 px-4 py-sm-3 px-sm-5  text-capitalize shadow-theme-lg">Register Now</a>
-                     </div>
-                     <ul class="list-unstyled list-inline ml-0 mt-4">
-                        <li class="list-inline-item">
-                           <div class="text-left text">
-                              <p>Already have an account? <a href="javascript;" data-dismiss="modal" data-toggle="modal" data-target="#myLogin" class="">Login</a></p>
-                           </div>
-                        </li>
-                     </ul>
-                  </form>
-               </div>
+                     <small id="passwordHelp" class="form-text text-muted">At least 8 characters, including at least one uppercase letter, one lowercase letter, one digit, and one special character.</small>
+                  </div>
+                  <div class="form-group mb-4">
+                     <label for="pwd-confirm">Confirm Password</label>
+                     <input type="password" class="form-control bg-input" id="pwd-confirm" placeholder="Confirm your password" required oninput="checkPasswordMatch()">
+                  </div>
+                  <div class="form-group mb-4">
+                     <button type="submit" class="btn btn-md btn-theme text-white py-2 px-4 py-sm-3 px-sm-5  text-capitalize shadow-theme-lg">Register Now</button>
+                  </div>
+                  <ul class="list-unstyled list-inline ml-0 mt-4">
+                     <li class="list-inline-item">
+                        <div class="text-left text">
+                           <p>Already have an account? <a href="javascript;" data-dismiss="modal" data-toggle="modal" data-target="#myLogin" class="">Login</a></p>
+                        </div>
+                     </li>
+                  </ul>
+               </form>
+            </div>
+               <script>
+                  $(function () {
+                     $('[data-toggle="popover"]').popover()
+                  });
+                  function checkPasswordMatch() {
+                     var password = document.getElementById("pwdd").value;
+                     var confirmPassword = document.getElementById("pwd-confirm").value;
+
+                     if (password !== confirmPassword) {
+                        document.getElementById("pwd-confirm").setCustomValidity("Passwords do not match");
+                     } else {
+                        document.getElementById("pwd-confirm").setCustomValidity("");
+                     }
+                  }
+               </script>
             </div>
          </div>
       </div>

@@ -9,12 +9,14 @@ public interface CustomerService extends IService<Customer>{
 
     public List<Customer> getAllCustomer();
 
-    public Customer getCustomerById(Integer id);
+    public Customer getCustomerById(Long id);
+
+    public List<Customer> getCustomerByName(String name);
 
     public void insertCustomer(Customer customer);
 
     public void updateCustomer(Customer customer);
 
-    public void deleteCustomerById(Integer id);
+    public void deleteCustomerById(Long id);
 
 }

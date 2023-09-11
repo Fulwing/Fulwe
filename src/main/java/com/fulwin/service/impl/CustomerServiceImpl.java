@@ -7,6 +7,7 @@ import com.fulwin.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -20,8 +21,17 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper, Customer> i
     }
 
     @Override
-    public Customer getCustomerById(Integer id) {
+    public Customer getCustomerById(Long id) {
         return customerMapper.selectById(id);
+    }
+
+    @Override
+    public List<Customer> getCustomerByName(String name) {
+        HashMap<String, Object> map = new HashMap<>();
+        //自定义要查询的
+        map.put("name",name);
+
+        return customerMapper.selectByMap(map);
     }
 
     @Override
@@ -35,7 +45,7 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper, Customer> i
     }
 
     @Override
-    public void deleteCustomerById(Integer id) {
+    public void deleteCustomerById(Long id) {
         customerMapper.deleteById(id);
     }
 }
