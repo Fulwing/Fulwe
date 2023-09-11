@@ -1,0 +1,654 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Upload Item | Nookx</title>
+      <!-- Favicon -->
+      <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+      <!-- Linearicon Font -->
+      <link rel="stylesheet" href="assets/plugins/linearicon/css/lnr-icon.css">
+      <!-- FontAwesome Free Font -->
+      <link rel="stylesheet" href="assets/plugins/fontawesome/css/font-awesome.min.css">
+      <!-- Text Editor -->
+      <link rel="stylesheet" href="assets/plugins/summernote/css/summernote-bs4.css">
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="assets/css/style.css">
+      <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.min.js"></script>
+      <script src="assets/js/respond.min.js"></script>
+      <![endif]-->
+   </head>
+   <body>
+      <!-- Inner Wrapper -->
+      <div class="inner-wrapper">
+         <!-- Header -->
+         <header>
+            <!-- Top Header Section -->
+            <div class="top-header-section py-3 px-0 py-md-3 px-md-3">
+               <div class="container">
+                  <div class="row align-items-center">
+                     <div class="col-4 col-md-8 col-lg-8">
+                        <div class="media align-items-center d-inline-block mr-2 mr-md-4 mr-lg-5">
+                           <a href="tel:8503867896" class="">
+                              <span class="lnr lnr-phone-handset text-theme display-6"></span>
+                              <span class="media-body d-none d-md-inline-block ml-2 text-white">
+                                 Phone: (850) 386-7896
+                              </span>
+                           </a>
+                        </div>
+                        <div class="media align-items-center d-inline-block">
+                           <span class="lnr lnr-envelope text-theme display-6"></span>
+                           <span class="media-body d-none d-md-inline-block ml-2">
+                              <a class="text-white" href="mailto:support@example.com"> support@example.com</a>
+                           </span>
+                        </div>
+                     </div>
+                     <div class="col-8 col-md-4 col-lg-4">
+                        <div class="row align-items-center">
+                           <div class="col-6 col-sm-7 text-right">
+                              <div class="dropdown">
+                                 <a class="inr-toggle-arrow dropdown-toggle text-white" href="javascript:;" data-toggle="dropdown">
+                                 <img class="img img-fluid" src="assets/img/en.png" alt="Flag Image" /><span class="pl-2">En</span>
+                                 </a>
+                                 <div class="dropdown-menu l-auto r-0">
+                                    <a class="dropdown-item" href="#"><img class="img img-fluid" src="assets/img/in.png" alt="Flag Image" /><span class="pl-2">In</span></a>
+                                    <a class="dropdown-item" href="#"><img class="img img-fluid" src="assets/img/io.png" alt="Flag Image" /><span class="pl-2">Id</span></a>
+                                    <a class="dropdown-item" href="#"><img class="img img-fluid" src="assets/img/ca.png" alt="Flag Image" /><span class="pl-2">Ca</span></a>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-6 col-sm-5 text-right">
+                              <div class="dropdown">
+                                 <a class="inr-toggle-arrow dropdown-toggle text-white" href="javascript:;" data-toggle="dropdown">
+                                 <i class="fa fa-usd" aria-hidden="true"></i><span class="pl-2">Usd</span>
+                                 </a>
+                                 <div class="dropdown-menu l-auto r-0">
+                                    <a class="dropdown-item" href="#"><i class="fa fa-eur" aria-hidden="true"></i><span class="pl-2">Eur</span></a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-gbp" aria-hidden="true"></i><span class="pl-2">Gbp</span></a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-inr" aria-hidden="true"></i><span class="pl-2">Inr</span></a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-jpy" aria-hidden="true"></i><span class="pl-2">Jpy</span></a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- /Top Header Section -->
+            <!-- Main header Section -->
+            <div class="main-header-section">
+               <div class="container">
+                  <div class="row align-items-center">
+                     <div class="col-12">
+                        <!-- Main Menu -->
+                        <div class="main-menu menu-section w-100 d-inline-block d-md-block">
+                                 <!-- offcanvas menu -->
+                                 <div id="offcanvas_menu">
+                                    <span class="lnr lnr-cross float-left display-6 position-absolute t-1 l-1 text-white" id="close_navSidebar"></span>
+                                    <div class="user-info align-center bg-theme text-center">
+                                       <a href="javascript:;" class="d-block menu-style text-white">
+                                          <div class="user-avatar d-inline-block mr-3">
+                                             <img src="assets/img/owner-avatar-img.jpg" alt="user avatar" class="rounded-circle">
+                                          </div>
+                                          <div class="user-info d-inline-block align-middle">
+                                             <ul>
+                                                <li>Steve Bell</li>
+                                             </ul>
+                                          </div>
+                                       </a>
+                                    </div>
+                                    <div class="user-menu-items p-3 m-0 text-left">
+                                       <a class="d-block pb-3" href="user-profile.html">
+                                       <span class="lnr lnr-user mr-3"></span>
+                                       <span class="text-truncate">Profile</span>
+                                       </a>
+                                       <a class="d-block pb-3" href="user-dashboard.html">
+                                       <span class="lnr lnr-pie-chart mr-3"></span>
+                                       <span class="text-truncate">Dashboard</span>
+                                       </a>
+                                       <a class="d-block pb-3" href="user-settings.html">
+                                       <span class="lnr lnr-cog mr-3"></span>
+                                       <span class="text-truncate">Settings</span>
+                                       </a>
+                                       <a class="d-block pb-3" href="user-notifications.html">
+                                       <span class="lnr lnr-alarm mr-3"></span>
+                                       <span class="text-truncate">Notifications</span>
+                                       <span class="bg-theme d-inline-block text-white float-right px-3 py-0 radius-5 ">5</span>
+                                       </a>
+                                       <a class="d-block pb-3" href="cart-page.html">
+                                       <span class="lnr lnr-cart mr-3"></span>
+                                       <span class="text-truncate">Cart</span>
+                                       <span class="bg-theme d-inline-block text-white float-right px-3 py-0 radius-5 ">3</span>
+                                       </a>                    
+                                       <a class="d-block p-0" href="index.html">
+                                       <span class="lnr lnr-power-switch mr-3"></span>
+                                       <span class="text-truncate">Logout</span>
+                                       </a>
+                                    </div>
+                                 </div>
+                                 <!-- /offcanvas menu -->
+
+                                 <!-- Navbar menu-->
+                                 <nav class="navbar navbar-expand-lg p-0">                        
+                                    <div class="logo my-3 my-md-0">
+                                       <a class="navbar-brand" href="index.html">
+                                       <img src="assets/img/logo.png" alt="logo image" class="img-fluid">
+                                       </a>
+                                    </div>
+ 
+                                    <button class="navbar-toggler d-block d-md-none pr-0 ml-auto mr-3 collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                       <span class="icon-bar bg-theme top-bar"></span>
+                                       <span class="icon-bar bg-theme middle-bar"></span>
+                                       <span class="icon-bar bg-theme bottom-bar"></span>          
+                                    </button>
+
+                                    <div class="collapse navbar-collapse menu-items-position d-md-block" id="navbarSupportedContent">
+                                       <ul class="navbar-nav ml-auto text-uppercase">
+                                          <li class="nav-item active">
+                                             <a class="nav-link pl-md-0" href="index.html">Home <span class="sr-only">(current)</span></a>
+                                          </li>
+                                          <li class="nav-item">
+                                             <a class="nav-link" href="product-grid-view.html">Explore</a>
+                                          </li>
+                                          <li class="nav-item">
+                                             <a class="nav-link" href="blog.html">blog</a>
+                                          </li>
+                                          <li class="nav-item dropdown position-static">
+                                             <a class="nav-link dropdown-toggle" href="javascript:;" data-toggle="dropdown">Pages</a>
+                                             <div class="dropdown-menu w-100 megamenu scrollable-menu scrollbar mt-0 border-0 r-0 radius-0 p-4 p-md-5" id="custom-scroll">
+                                                <div class="row">
+                                                   <div class="col-lg-3 col-md-4">
+                                                      <p class="mb-3"><strong>Landing Page</strong></p>
+                                                      <div class="dropdown-item p-0">
+                                                         <ul>
+                                                            <li class="pb-3"><a href="index.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Home - Text Slider</a></li>
+                                                            <li class="pb-3"><a href="index-v2.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Home - Video</a></li>                                                                                <li class="pb-3"><a href="index-v3.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Home - Image Slider</a></li>                                        
+                                                            <li class="pb-3"><a href="loggedin.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Home - Loggedin</a></li>
+                                                         </ul>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-lg-3 col-md-4">
+                                                         <p class="mb-3"><strong>Shop</strong></p>
+                                                      <div class="dropdown-item p-0">
+                                                         <ul>
+                                                            <li class="pb-3"><a href="product-grid-3col.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Shop - 3 Grid Column</a></li>             
+                                                            <li class="pb-3"><a href="product-grid-4col.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Shop - 4 Grid Column</a></li>             
+                                                            <li class="pb-3"><a href="product-grid-view.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Shop - Left Sidebar</a></li>             
+                                                            <li class="pb-3"><a href="product-grid-right-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Shop - Right Sidebar</a></li>             
+                                                            <li class="pb-3"><a href="product-list-view.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Shop List - Left Sidebar</a></li>             
+                                                            <li class="pb-3"><a href="product-list-right-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Shop List - Right Sidebar</a></li>     
+                                                         </ul>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-lg-3 col-md-4">
+                                                         <p class="mb-3"><strong>Single Product</strong></p>
+                                                      <div class="dropdown-item p-0">
+                                                         <ul>
+                                                            <li class="pb-3"><a href="single-product.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Horizontal Bottom Slider</a></li>
+                                                            <li class="pb-3"><a href="single-product-v2.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Horizontal Top Slider</a></li>
+                                                            <li class="pb-3"><a href="single-product-v3.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Vertical Left Slider</a></li>
+                                                            <li class="pb-3"><a href="single-product-v4.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Vertical right Slider</a></li>
+                                                         </ul>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-lg-3 col-md-4">
+                                                         <p class="mb-3"><strong>Blog</strong></p>
+                                                      <div class="dropdown-item p-0">
+                                                         <ul>
+                                                            <li class="pb-3"><a href="blog.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Blog - 3 Grid Column</a></li>
+                                                            <li class="pb-3"><a href="blog-4col.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Blog - 4 Grid Column</a></li>
+                                                            <li class="pb-3"><a href="blog-left-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Blog - Left Sidebar</a></li>
+                                                            <li class="pb-3"><a href="blog-right-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Blog - Right Sidebar</a></li>
+                                                            <li class="pb-3"><a href="blog-single-post-left-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Single - Left Sidebar</a></li>
+                                                            <li class="pb-3"><a href="blog-single-post.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Single - Right Sidebar</a></li>             
+                                                         </ul>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-lg-3 col-md-4">
+                                                         <p class="mb-3"><strong>My Account</strong></p>
+                                                      <div class="dropdown-item p-0">
+                                                         <ul>
+                                                            <li class="pb-3"><a href="user-dashboard.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Dashboard</a></li>
+                                                            <li class="pb-3"><a href="user-add-item.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Add Service</a></li>
+                                                            <li class="pb-3"><a href="user-profile.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Profile</a></li>
+                                                            <li class="pb-3"><a href="user-wallet.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Wallet</a></li>
+                                                            <li class="pb-3"><a href="user-settings.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Settings</a></li>
+                                                            <li class="pb-3"><a href="user-notifications.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Notifications</a></li>
+                                                            <li class="pb-0 pb-md-3 pb-lg-0"><a href="purchase-history.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Purchase History</a></li>             
+                                                         </ul>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-lg-3 col-md-4">
+                                                         <p class="mb-3"><strong>Ecommerce</strong></p>
+                                                      <div class="dropdown-item p-0">
+                                                         <ul>
+                                                            <li class="pb-3"><a href="cart-page.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Cart</a></li>
+                                                            <li class="pb-3"><a href="checkout.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Checkout</a></li>
+                                                            <li class="pb-3"><a href="wishlist-grid-view.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Wishlist - Grid View</a></li>
+                                                            <li><a href="wishlist-list-view.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Wishlist - List View</a></li>             
+                                                         </ul>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-lg-3 col-md-4">
+                                                         <p class="mb-3"><strong>Other Pages</strong></p>
+                                                      <div class="dropdown-item p-0">
+                                                         <ul>
+                                                            <li class="pb-3"><a href="404.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>404</a></li>
+                                                            <li class="pb-3"><a href="500.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>500</a></li>
+                                                            <li class="pb-3"><a href="comingsoon.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Comingsoon</a></li>
+                                                            <li class="pb-3"><a href="terms-conditions.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Terms-Conditions</a></li>
+                                                            <li class="pb-3"><a href="faq.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>FAQ</a></li>
+                                                            <li><a href="contact.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Contact us</a></li>             
+                                                         </ul>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-lg-3 col-md-4">
+                                                         <p class="mb-3"><strong>Layout</strong></p>
+                                                      <div class="dropdown-item p-0">
+                                                         <ul>
+                                                            <li class="pb-3"><a href="sample.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Sample Page</a></li>
+                                                            <li class="pb-3"><a href="sample-full-width.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Full Width</a></li>
+                                                            <li class="pb-3"><a href="sample-left-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Left Sidebar</a></li>
+                                                            <li class="pb-3"><a href="sample-right-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Right Sidebar</a></li>
+                                                            
+                                                            <li><a href="sample-sticky-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Sticky Sidebar</a></li>             
+                                                         </ul>
+                                                      </div>
+                                                   </div>                                                   
+                                                </div>
+                                             </div>
+                                          </li>
+                                       </ul>       
+                                       <!--  User info-->
+                                 <div class="user-info align-right d-none d-md-inline-block dropdown">
+                                    <a href="javascript:;" data-toggle="dropdown" class="d-block menu-style dropdown-toggle">
+                                       <div class="user-avatar d-inline-block mr-3">
+                                          <img src="assets/img/owner-avatar-img.jpg" alt="user avatar" class="rounded-circle">
+                                       </div>
+                                    </a>
+                                    <!-- Notifications -->
+                                    <div class="dropdown-menu custom-minwidth notification-dropdown-menu shadow-lg border-0 p-3 m-0 dropdown-menu-right">
+                                       <a class="dropdown-item px-0 pt-0 pb-3" href="user-profile.html">
+                                       <span class="lnr lnr-user mr-3"></span>
+                                       <span class="text-truncate">Profile</span>
+                                       </a>
+                                       <a class="dropdown-item px-0 pt-0 pb-3" href="user-dashboard.html">
+                                       <span class="lnr lnr-pie-chart mr-3"></span>
+                                       <span class="text-truncate">Dashboard</span>
+                                       </a>
+                                       <a class="dropdown-item px-0 pt-0 pb-3" href="user-settings.html">
+                                       <span class="lnr lnr-cog mr-3"></span>
+                                       <span class="text-truncate">Settings</span>
+                                       </a>
+                                       <a class="dropdown-item px-0 pt-0 pb-3" href="user-notifications.html">
+                                       <span class="lnr lnr-alarm mr-3"></span>
+                                       <span class="text-truncate">Notify</span>
+                                       <span class="bg-theme d-inline-block text-white float-right px-3 py-0 radius-5 ">5</span>
+                                       </a>
+                                       <a class="dropdown-item px-0 pt-0 pb-3" href="cart-page.html">
+                                       <span class="lnr lnr-cart mr-3"></span>
+                                       <span class="text-truncate">Cart</span>
+                                       <span class="bg-theme d-inline-block text-white float-right px-3 py-0 radius-5 ">3</span>
+                                       </a>                                       
+                                       <a class="dropdown-item p-0" href="index.html">
+                                       <span class="lnr lnr-power-switch mr-3"></span>
+                                       <span class="text-truncate">Logout</span>
+                                       </a>
+                                    </div>
+                                 </div>
+                                       <!-- /User info-->
+                                    </div>
+                        <div class="d-inline-block align-middle d-md-none">
+                           <a href="javascript:;">
+                           <span class="lnr lnr-user d-block display-5" id="open_navSidebar"></span>
+                           </a>
+                        </div>                                           
+                                 </nav>
+                                 <!-- /Navbar menu-->
+                              </div>
+                        <!-- /Main Menu -->
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- /Main Header Section -->
+         </header>
+         <!-- /Header -->
+         <!-- Header Banner Section -->
+         <section class="slider-wrapper py-5">
+            <div class="container">
+               <div class="row">
+                  <div class="col-12 text-center">
+                     <div class="inner-banner-heading py-0 py-md-3 py-lg-5">
+                        <h1 class="text-white">Add Items</h1>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- /Header Banner Section -->
+         
+         <!-- Bread crumb -->
+         <div class="breadcrumb-wrapper bg-theme py-2">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-12">
+                        <div class="custom-breadcrumb">
+                           <ol class="breadcrumb no-bg-color p-0 m-0">
+                              <li class="breadcrumb-item d-inline-block"><a href="index.html" class="text-theme-secondary">Home</a></li>
+                              <li class="breadcrumb-item d-inline-block active">Add Items</li>
+                           </ol>
+                        </div>
+                  </div>
+               </div>
+            </div>   
+         </div>    
+         <!-- /Bread crumb -->   
+
+         <!--  Account Settings -->
+         <div class="user-add-item act-stgs py-5">
+            <div class="container">
+               <div class="row">
+                  <div class="col-lg-4 col-md-12">
+                     <aside class="sidebar sidebar-user">
+                        <div class="user-card shadow border p-4">
+                           <div class="user-info">
+                              <div class="user-avatar text-center mb-4">
+                                 <img src="assets/img/pdt-owner-img.jpg" alt="User Avatar" class="position-relative img-fluid rounded-circle">
+                                 <a href="user-settings.html">
+                                    <span class="badge badge-info bg-theme rounded-circle position-absolute p-2 ml-n3 border-white text-white"><i class="fa fa-cog display-6"></i></span>
+                                 </a>
+                              </div>
+                              <div class="user-details text-center">
+                                 <h4>Steve Bell</h4>
+                              <div class="rating-blk d-inline-block">
+                                 <i class="fa fa-star text-rating"></i>
+                                 <i class="fa fa-star text-rating"></i>
+                                 <i class="fa fa-star text-rating"></i>
+                                 <i class="fa fa-star text-rating"></i>
+                                 <i class="fa fa-star-o text-rating"></i>
+                              </div>
+                              <div class="pdt-rating-btn ml-1 d-inline-block">
+                                 <p>(5)</p>
+                              </div> 
+                              </div>                              
+                              <div class="my-wallet-blk text-center my-4">
+                              <span class="border-theme radius-5 d-inline-block px-4 py-2 mt-0 mb-4 text-theme">
+                                 My Wallet
+                              </span>                                 
+                                    <div class="d-flex justify-content-between align-items-center">
+                                       <span class="text-left d-inline-block"><i class="fa fa-usd"></i>&nbsp;770</span>
+                                       <span class="text-right d-inline-block"><i class="fa fa-usd"></i>&nbsp;1000</span>
+                                    </div>
+                                 <div class="progress radius-5">
+                                    <div class="progress-bar bg-theme-secondary radius-5" style="width:77%">77%</div>
+                                 </div>
+                                 <ul class="d-none">
+                                    <li class="list-inline-item">
+                                    </li>
+                                    <li class="list-inline-item"><a href="" class=""><span class=""><i class="fa fa-usd"></i>&nbsp;1000</span></a></li>
+                                 </ul>
+                              </div>
+                              <hr>                          
+                              <a href="user-wallet.html" class="d-block btn btn-style text-white radius-5 px-4 py-3 text-capitalize
+                                 36">Add Money</a>
+                           </div>
+                        </div>
+                        <div class="quicklink-sidebar-menu shadow border mt-4 p-4">
+                           <div class="user-title-info">
+                              <h4>Connect with me</h4>
+                           </div>
+                           <hr class="m-4">
+                           <ul class="list-group border-0">
+                              <li class="list-group-item border-0 p-0 mb-2">
+                                 <div class="bg-fb px-3 py-1">
+                                    <a class="text-white display-5" href="javascript:;">
+                                       <i class="fa fa-facebook"></i>
+                                       <h5 class="d-inline-block ml-5">Steve2019</h5>
+                                    </a>
+                                 </div>
+                              </li>
+                              <li class="list-group-item border-0 p-0 mb-2">
+                                 <div class="bg-tw px-3 py-1">
+                                    <a class="text-white display-5" href="javascript:;">
+                                       <i class="fa fa-twitter"></i>
+                                       <h5 class="d-inline-block ml-5">Steve2019</h5>
+                                    </a>
+                                 </div>
+                              </li>
+                              <li class="list-group-item border-0 p-0 mb-2">
+                                 <div class="bg-plus px-3 py-1">
+                                    <a class="text-white display-5" href="javascript:;">
+                                       <i class="fa fa-google"></i>
+                                       <h5 class="d-inline-block ml-5">Steve2019</h5>
+                                    </a>
+                                 </div>
+                              </li>
+                           </ul>
+                        </div>
+                     </aside>
+                  </div>                           
+                  <div class="col-lg-8 col-md-12 mt-5 mt-md-5 mt-lg-0">
+                     <div class="custom-border-left rounded shadow border p-4 mb-4 stg-title">
+                        <div class="row align-items-center">
+                           <div class="col-12">
+                              <h3 class="text-capitalize">Upload Item</h3>
+                           </div>
+                        </div>
+                     </div>                     
+                     <div class="card shadow border mb-0">
+                        <div class="card-header bg-white p-4">
+                           <h4 class="card-title mb-0 text-capitalize coll-arrow cursor-pointer" data-toggle="collapse" data-target="#name-desc" aria-expanded="true">Item Name & Description</h4>
+                        </div>
+                        <div id="name-desc" class="card-body p-4 collapse show">
+                           <div id="personal-inf" class="">
+                              <form>                                                                
+                                 <div class="form-row mb-4">
+                                    <div class="col">
+                                       <label class="col-form-label pt-0">Select Category <span class="text-danger">*</span></label>
+                                       <select class="select bg-input">
+                                          <option value="">Mobiles & Tablet</option>
+                                          <option value="1">Plumbing</option>
+                                          <option value="2">Gym</option>
+                                          <option value="3">Real Estate</option>
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <div class="form-row mb-4">
+                                    <div class="col">
+                                       <label>Product Name <span class="d-inline-block form-text text-muted">(Max 100 Characters)</span></label>
+                                       <input type="text" class="form-control bg-input" placeholder="Enter your product name here...">
+                                    </div>
+                                 </div>
+                                 <div class="form-row mb-4">
+                                    <div class="col">
+                                       <label>Product Description</label>
+                                       <textarea rows="4" class="bg-input form-control text-editor" placeholder="Short brief about your product..."></textarea>
+                                    </div>
+                                 </div>
+                                 <div class="form-row mb-4">
+                                 <div class="col-lg-6">
+                                    <p class="custom-label-style">Upload Thumbnail 1</p>
+                                   <div class="custom-file">
+                                     <input type="file" class="custom-file-input" id="customFile-upload1">
+                                     <label class="custom-file-label" for="customFile-upload1">Upload Image</label>
+                                   </div>
+                                 </div>
+                                 <div class="col-lg-6">
+                                    <p class="custom-label-style">Upload Thumbnail 2</p>
+                                   <div class="custom-file">
+                                     <input type="file" class="custom-file-input" id="customFile-upload2">
+                                     <label class="custom-file-label" for="customFile-upload2">Upload Image</label>
+                                   </div>
+                                 </div>                                   
+                                 </div>
+                                 <div class="form-row mb-4">
+                                 <div class="col-lg-6">
+                                    <p class="custom-label-style">Upload Thumbnail 3</p>
+                                   <div class="custom-file">
+                                     <input type="file" class="custom-file-input" id="customFile-upload3">
+                                     <label class="custom-file-label" for="customFile-upload3">Upload Image</label>
+                                   </div>
+                                 </div>
+                                 <div class="col-lg-6">
+                                    <p class="custom-label-style">Upload Thumbnail 4</p>
+                                   <div class="custom-file">
+                                     <input type="file" class="custom-file-input" id="customFile-upload4">
+                                     <label class="custom-file-label" for="customFile-upload4">Upload Image</label>
+                                   </div>
+                                 </div>                                   
+                                 </div> 
+                                 <div class="form-row mb-4">
+                                    <div class="col-lg-6">
+                                       <label>Regular Price <span class="text-danger">*</span></label>
+                                       <div class="input-group">
+                                          <span class="input-group-addon display-5 mr-3">$</span>
+                                          <input type="text" class="form-control bg-input" placeholder="00.00">
+                                       </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                       <label>Offer Price <span class="text-danger">*</span></label>
+                                       <div class="input-group align-items-center">
+                                          <span class="input-group-addon display-5 mr-3">$</span>
+                                          <input type="text" class="form-control bg-input" placeholder="00.00">
+                                       </div>
+                                    </div>
+                                 </div>   
+                                 <div class="form-row mb-4">
+                                    <div class="col">
+                                       <label>Item Tags <span class="d-inline-block form-text text-muted mt-0">(Max 10 tags)</span></label>
+                                       <input type="text" class="form-control bg-input" placeholder="Enter your product tag here...">
+                                    </div>
+                                 </div>                                                                    
+                                 <div class="save-btn-blk text-center">
+                                    <a href="javascript:;" class="btn btn-style d-block radius-5 text-white py-3 px-5 text-capitalize">Add Item</a>
+                                 </div>                             
+                              </form>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- /User Add Item -->
+         <!-- Footer -->
+         <footer>
+            <div class="top-footer py-5">
+               <div class="container">
+                  <div class="row align-items-center">
+                     <div class="col-md-3 text-left xs-text-center">
+                        <img class="img img-fluid" src="assets/img/logo-footer.png" alt="Footer Logo" />
+                     </div>
+                     <div class="col-md-6 text-center">
+                        <ul class="my-4 my-md-0">
+                           <li class="list-inline-item"><img class="img img-fluid" src="assets/img/pay1.png" alt="Payment Method" /></li>
+                           <li class="list-inline-item"><img class="img img-fluid" src="assets/img/pay2.png" alt="Payment Method" /></li>
+                           <li class="list-inline-item"><img class="img img-fluid" src="assets/img/pay3.png" alt="Payment Method" /></li>
+                           <li class="list-inline-item"><img class="img img-fluid" src="assets/img/pay4.png" alt="Payment Method" /></li>
+                           <li class="list-inline-item"><img class="img img-fluid mt-2 mt-sm-0" src="assets/img/pay5.png" alt="Payment Method" /></li>
+                        </ul>
+                     </div>
+                     <div class="col-md-3 text-right">
+                        <div class="social-widget">
+                           <ul class="lh-0 xs-text-center">
+                              <li class="list-inline-item"><a class="d-inline-block" href="javascript:;"><i class="fa fa-facebook"></i></a></li>
+                              <li class="list-inline-item"><a class="d-inline-block" href="javascript:;"><i class="fa fa-twitter"></i></a></li>
+                              <li class="list-inline-item"><a class="d-inline-block" href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="middle-footer py-6">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-6 col-lg-4 mb-md-5 mb-lg-0">
+                        <div class="company-info-widget mb-4 mb-md-0">
+                           <h5 class="text-theme">About</h5>
+                           <p class="pt-4">Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
+                           <p class="pt-3 pb-0">Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
+                        </div>
+                     </div>
+                     <div class="col-md-6 col-lg-3 mb-md-5 mb-lg-0">
+                        <div class="mb-4 mb-md-0">
+                           <h5 class="text-theme">My Account</h5>
+                           <ul class="pt-4 footer-list-style">
+                              <li><a class="text-footer" href="user-profile.html"><i class="lnr lnr-chevron-right mr-2"></i>Profile</a></li>
+                              <li><a class="text-footer" href="user-wallet.html"><i class="lnr lnr-chevron-right mr-2"></i>Wallet</a></li>
+                              <li><a class="text-footer" href="user-dashboard.html"><i class="lnr lnr-chevron-right mr-2"></i>Dashboard</a></li>
+                              <li><a class="text-footer" href="user-add-item.html"><i class="lnr lnr-chevron-right mr-2"></i>Add Service</a></li>
+                              <li class=" mb-0"><a class="text-footer mb-0" href="user-settings.html"><i class="lnr lnr-chevron-right mr-2"></i>Settings</a></li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="col-md-6 col-lg-2 mb-lg-0">
+                        <div class="mb-4 mb-md-0">
+                           <h5 class="text-theme">Links</h5>
+                           <ul class="pt-4 footer-list-style">
+                              <li><a class="text-footer" href="contact.html"><i class="lnr lnr-chevron-right mr-2"></i>Contact</a></li>
+                              <li><a class="text-footer" href="blog.html"><i class="lnr lnr-chevron-right mr-2"></i>Blog</a></li>
+                              <li><a class="text-footer" href="blog.html"><i class="lnr lnr-chevron-right mr-2"></i>FAQ</a></li>
+                              <li class="mb-0"><a class="text-footer" href="terms-conditions.html"><i class="lnr lnr-chevron-right mr-2"></i>Terms of Use</a></li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="col-md-6 col-lg-3 mb-lg-0">
+                        <div class="app-widget mb-0">
+                           <h5 class="text-theme">Download Apps</h5>
+                           <div class="pt-4 mb-0">
+                              <div class="media align-items-center mb-2">
+                                 <a href="javascript:;" class="d-block w-100 radius-1 p-3">
+                                    <span class="fa fa-android display-5" aria-hidden="true"></span>
+                                    <span class="media-body d-inline-block ml-2">
+                                       Get on GooglePlay
+                                    </span>
+                                 </a>
+                              </div>
+                              <div class="media align-items-center mb-0">
+                                 <a href="javascript:;" class="d-block w-100 radius-1 p-3">
+                                    <span class="fa fa-apple display-5" aria-hidden="true"></span>
+                                    <span class="media-body d-inline-block ml-2">
+                                       Get on AppStore
+                                    </span>
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="bottom-footer text-center py-4">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-12">
+                        <p>© Copyrights 2020. All Rights By <a href="http://www.bootstrapmb.com/">bootstrapmb</a></p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </footer>
+         <!-- /Footer -->
+         </div>
+      <!-- Inner Wrapper -->
+      <!-- Optional JavaScript -->
+      <!-- jQuery -->
+      <script src="assets/js/jquery.min.js"></script>
+      <!-- Text Editor Js-->
+      <script src="assets/plugins/summernote/js/summernote-bs4.js"></script>
+      <!-- Bootstrap Core JS -->
+      <script src="assets/js/popper.min.js"></script>
+      <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+      <!-- Custom JS -->
+      <script src="assets/js/script.js"></script>
+   </body>
+</html>
