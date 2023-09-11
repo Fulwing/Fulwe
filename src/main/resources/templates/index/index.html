@@ -18,7 +18,7 @@
       <link rel="stylesheet" th:href="@{/plugins/slick/css/slick.css}">
       <link rel="stylesheet" th:href="@{/plugins/slick/css/slick-theme.min.css}">
       <!-- Color Switcher CSS -->
-      <link rel="stylesheet" th:href="@{/plugins/color-switcher/css/jquery.colorpanel.css}">
+<!--      <link rel="stylesheet" th:href="@{/plugins/color-switcher/css/jquery.colorpanel.css}">-->
       <!-- Custom CSS -->
       <link rel="stylesheet" th:href="@{/css/style.css}" id="cpswitch">
       <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -117,7 +117,7 @@
                                        </ul>       
                                        <!--  User info-->
                                        <div class="cta-btn text-right d-none d-md-inline-block">
-                                          <a href="javascript:;" data-toggle="modal" data-target="#myRegister" class="btn-outline-theme px-4 radius-5 py-3"><span class="lnr lnr-user pr-2"></span>Login</a>
+                                          <a th:href="@{/login}" class="btn-outline-theme px-4 radius-5 py-3"><span class="lnr lnr-user pr-2"></span>Login</a>
                                        </div>
                                        <!-- /User info-->
                                     </div>
@@ -956,8 +956,8 @@
                <div class="modal-body p-4 p-sm-5">
                   <form method="post">
                      <div class="form-group mb-4">
-                        <label for="usr">User Name</label>
-                        <input type="text" class="form-control bg-input" id="usr" placeholder="Enter your User Name...">
+                        <label for="usr">Email</label>
+                        <input type="text" class="form-control bg-input" id="usr" placeholder="Enter your Email...">
                      </div>
                      <div class="form-group mb-4">
                         <label for="pwd">Password</label>
@@ -1056,6 +1056,7 @@
          </div>
       </div>
       <!-- Optional JavaScript -->
+
       <!-- jQuery -->
       <script th:src="@{/js/jquery.min.js}"></script>
       <!-- Bootstrap Core JS -->

@@ -26,10 +26,10 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper, Customer> i
     }
 
     @Override
-    public List<Customer> getCustomerByName(String name) {
+    public List<Customer> getCustomerByEmail(String email) {
         HashMap<String, Object> map = new HashMap<>();
         //自定义要查询的
-        map.put("name",name);
+        map.put("email",email);
 
         return customerMapper.selectByMap(map);
     }

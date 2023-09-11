@@ -38,13 +38,13 @@ public class AccountController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestParam("username") String username, @RequestParam("password") String password, Model model, HttpSession session){
+    public String login(@RequestParam("email") String email, @RequestParam("password") String password, Model model, HttpSession session){
 
         // get current user
         Subject subject = SecurityUtils.getSubject();
 
         //get login token
-        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+        UsernamePasswordToken token = new UsernamePasswordToken(email, password);
 
 
 
@@ -55,11 +55,11 @@ public class AccountController {
         }
         catch (UnknownAccountException e){ // no matching username
             model.addAttribute("msg", "username or password error");
-            return "index/index";
+            return "index/index" + "#myLogin";
         }
         catch (IncorrectCredentialsException e){
             model.addAttribute("msg", "username or password error");
-            return "index/index";
+            return "index/index" + "#myLogin";
         }
 
 //        if(!StringUtils.isEmpty(username) && "123456".equals(password)){

@@ -11,7 +11,7 @@ public interface CustomerService extends IService<Customer>{
 
     public Customer getCustomerById(Long id);
 
-    public List<Customer> getCustomerByName(String name);
+    public List<Customer> getCustomerByEmail(String email);
 
     public void insertCustomer(Customer customer);
 

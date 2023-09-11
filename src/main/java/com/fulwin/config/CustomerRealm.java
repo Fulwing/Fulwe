@@ -28,7 +28,7 @@ public class CustomerRealm extends AuthorizingRealm {
         System.out.println("认证");
 
         UsernamePasswordToken userToken = (UsernamePasswordToken) authenticationToken;
-        List<Customer> customerByName = customerService.getCustomerByName(userToken.getUsername());
+        List<Customer> customerByName = customerService.getCustomerByEmail(userToken.getUsername());
 
         if(!customerByName.get(0).getUsername().equals(userToken.getUsername()))
             return null;
