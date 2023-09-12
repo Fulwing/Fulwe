@@ -28,11 +28,22 @@ public class CustomerRealm extends AuthorizingRealm {
         System.out.println("认证");
 
         UsernamePasswordToken userToken = (UsernamePasswordToken) authenticationToken;
-        List<Customer> customerByName = customerService.getCustomerByEmail(userToken.getUsername());
+        List<Customer> customers = customerService.getCustomerByEmail(userToken.getUsername());
 
-        if(!customerByName.get(0).getUsername().equals(userToken.getUsername()))
+        if (customers.isEmpty()) {
+            // User not found
             return null;
+        }
 
-        return new SimpleAuthenticationInfo("",customerByName.get(0).getPassword(),"");
+        Customer customer = customers.get(0);
+
+        // Check if the provided password matches the stored password
+        if (!customer.getPassword().equals(new String(userToken.getPassword()))) {
+            // Passwords don't match
+            return null;
+        }
+
+        return new SimpleAuthenticationInfo(customer.getUsername(), customer.getPassword(), getName());
     }
+
 }

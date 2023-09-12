@@ -55,11 +55,11 @@ public class AccountController {
         }
         catch (UnknownAccountException e){ // no matching username
             model.addAttribute("msg", "username or password error");
-            return "index/index" + "#myLogin";
+            return "index/login";
         }
         catch (IncorrectCredentialsException e){
             model.addAttribute("msg", "username or password error");
-            return "index/index" + "#myLogin";
+            return "index/login";
         }
 
 //        if(!StringUtils.isEmpty(username) && "123456".equals(password)){

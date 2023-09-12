@@ -11,15 +11,20 @@
     <div class="container">
         <div class="forms-container">
             <div class="signin-signup">
-                <form action="#" class="sign-in-form">
+                <form method="post" th:action="@{/user/login}" class="sign-in-form">
                     <h2 class="title">Login</h2>
+                    <p style = "color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="text" placeholder="Email" />
+                        <input type="text" name="email" placeholder="Email" />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" />
+                        <input type="password" name="password" placeholder="Password" />
+                    </div>
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember" name="remember" />
+                        <label for="remember">Remember Me</label>
                     </div>
                     <input type="submit" value="Login" class="btn solid" />
                     <p class="social-text">Or Sign In With</p>
@@ -38,19 +43,20 @@
                         </a>
                     </div>
                 </form>
-                <form action="#" class="sign-up-form">
+
+                <form method="post" th:action="@{/user/register}" class="sign-up-form">
                     <h2 class="title">Register</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="User Name" />
+                        <input type="text" name="username" placeholder="User Name" />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="Email" />
+                        <input type="email" name="email" placeholder="Email" />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" />
+                        <input type="password" name="password" placeholder="Password" />
                     </div>
                     <input type="submit" class="btn" value="Register" />
                     <p class="social-text">Or Sign In With</p>
