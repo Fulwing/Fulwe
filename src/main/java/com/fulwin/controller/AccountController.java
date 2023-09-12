@@ -3,6 +3,7 @@ package com.fulwin.controller;
 import com.fulwin.pojo.Customer;
 import com.fulwin.service.CustomerService;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -53,22 +54,10 @@ public class AccountController {
             subject.login(token);
             return "index/loggedin";
         }
-        catch (UnknownAccountException e){ // no matching username
+        catch (AuthenticationException e){ // no matching username
             model.addAttribute("msg", "username or password error");
             return "index/login";
         }
-        catch (IncorrectCredentialsException e){
-            model.addAttribute("msg", "username or password error");
-            return "index/login";
-        }
-
-//        if(!StringUtils.isEmpty(username) && "123456".equals(password)){
-//            session.setAttribute("loginUser", username);
-//            return "redirect:/main";
-//        }else {
-//            model.addAttribute("msg", "用户名或者密码错误");
-//            return "index";
-//        }
     }
 
     @GetMapping("/logout")
