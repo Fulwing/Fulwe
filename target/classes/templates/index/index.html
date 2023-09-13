@@ -17,6 +17,24 @@
       <!-- Slick slider CSS -->
       <link rel="stylesheet" th:href="@{/plugins/slick/css/slick.css}">
       <link rel="stylesheet" th:href="@{/plugins/slick/css/slick-theme.min.css}">
+
+      <style>
+         .page-container {
+            color: black; /* Set font color to black */
+            padding-bottom: 275px;
+            padding-top: 170px;
+         }
+
+         .text-font-black{
+            color: black; /* Set font color to black */
+         }
+
+         .gradiant-color {
+            color: black; /* Set font color to black */
+            background-color: #8EC5FC;
+            background-image: linear-gradient(222deg, #8EC5FC 0%, #E0C3FC 100%);
+         }
+      </style>
       <!-- Color Switcher CSS -->
 <!--      <link rel="stylesheet" th:href="@{/plugins/color-switcher/css/jquery.colorpanel.css}">-->
       <!-- Custom CSS -->
@@ -34,6 +52,9 @@
            <ul></ul>
        </div>               
       <div class="home-wrapper">
+
+<!--         First Page-->
+         <div class="gradiant-color">
          <!-- Header -->
          <header>
             <!-- Top Header Section -->
@@ -112,7 +133,7 @@
                                              <a class="nav-link pl-md-0" href="index.html">Home <span class="sr-only">(current)</span></a>
                                           </li>
                                           <li class="nav-item">
-                                             <a class="nav-link" href="product-grid-view.html">Explore</a>
+                                             <a class="nav-link" th:href="@{/shop}">Explore</a>
                                           </li>
                                        </ul>       
                                        <!--  User info-->
@@ -139,26 +160,13 @@
          <!-- /Header -->
 
          <!-- Slider-wrapper -->
-         <section class="slider-wrapper">
-            <div id="carouselExampleIndicators" class="home-carousel carousel slide py-8" data-ride="carousel" data-interval="false">
+         <div class="page-container">
+            <div id="carouselExampleIndicators" class=" slide py-8" data-ride="carousel" data-interval="false">
                <div class="carousel-inner">
                   <div class="carousel-item active py-10">
                      <div class="carousel-caption custom-caption positiony-0">
-                        <h1 class="px-2 px-sm-0 d-inline-block">Fulwe<span class="d-block text-white bg-theme px-4 mt-2">Local College Secondhand Website</span></h1>
-                        <h4 class="my-4 my-md-5 px-4 px-md-5 px-sm-0">Local Marketplace for buyers & sellers</h4>
-                        <div class="row">
-                           <div class="col-12">
-                              <div class="btn-blk">
-                                 <a class="d-inline-block btn btn-outline-theme radius-5 px-4 py-3" href="product-grid-view.html">Register Now</a>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="carousel-item py-10">
-                     <div class="carousel-caption custom-caption positiony-0">
-                        <h1 class="px-2 px-sm-0 d-inline-block">Fulwe<span class="d-block text-white bg-theme px-4 mt-2">Local College Secondhand Website</span></h1>
-                        <h4 class="my-4 my-md-5 px-4 px-md-5 px-sm-0">Local Marketplace for buyers & sellers</h4>
+                        <h1 class="px-2 px-sm-0 d-inline-block text-font-black">Fulwe<span class="d-block text-black-50 bg-theme px-4 mt-2">Local College Secondhand Website</span></h1>
+                        <h4 class="my-4 my-md-5 px-4 px-md-5 px-sm-0 text-font-black">Local Marketplace for buyers & sellers</h4>
                         <div class="row">
                            <div class="col-12">
                               <div class="btn-blk">
@@ -170,43 +178,34 @@
                   </div>
                </div>
 
-  <!-- Left and right controls -->
-   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="no-bg carousel-control-prev-icon lnr lnr-chevron-left before-valign l-0" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-   </a>
-   <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="no-bg carousel-control-next-icon lnr lnr-chevron-right before-valign r-0" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-   </a>
 
             </div>
             <div class="section-bottom-wrapper pb-5 text-center d-none d-md-block">
                <div class="container">
                   <div class="row">
                      <div class="col-md-3">
-                        <div class="box-blk text-white">
+                        <div class="box-blk text-font-black">
                            <span class="lnr lnr-users font-lg d-inline-block mb-3"></span>                 
                            <h5 class="font-bold">250+ Seller</h5>
                            <p>Lorem ipsum dolor sit.</p>
                         </div>
                      </div>
                      <div class="col-md-3">
-                        <div class="box-blk text-white">
+                        <div class="box-blk text-font-black">
                            <span class="lnr lnr-star font-lg d-inline-block mb-3"></span>                 
                            <h5 class="font-bold">10+ Awards</h5>
                            <p>Lorem ipsum dolor sit.</p>
                         </div>
                      </div>
                      <div class="col-md-3">
-                        <div class="box-blk text-white">
+                        <div class="box-blk text-font-black">
                            <span class="lnr lnr-briefcase font-lg d-inline-block mb-3"></span>
                            <h5 class="font-bold">500+ Services</h5>
                            <p>Lorem ipsum dolor sit.</p>
                         </div>
                      </div>
                      <div class="col-md-3">
-                        <div class="box-blk text-white">
+                        <div class="box-blk text-font-black">
                            <span class="lnr lnr-smile font-lg d-inline-block mb-3"></span>
                            <h5 class="font-bold">230+ Customers</h5>
                            <p>Lorem ipsum dolor sit.</p>
@@ -215,7 +214,9 @@
                   </div>
                </div>
             </div>
-         </section>
+         </div>
+         </div>
+         <!--First Page End-->
          <!-- Slider-wrapper -->
          <section class="pdt-cat-wrapper py-6">
             <div class="container">
