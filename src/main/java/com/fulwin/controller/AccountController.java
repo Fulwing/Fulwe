@@ -47,11 +47,10 @@ public class AccountController {
         //get login token
         UsernamePasswordToken token = new UsernamePasswordToken(email, password);
 
-
-
         //try to login
         try{
             subject.login(token);
+            session.setAttribute("email", email);
             return "index/loggedin";
         }
         catch (AuthenticationException e){ // no matching username

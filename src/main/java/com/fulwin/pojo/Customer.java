@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -25,5 +27,6 @@ public class Customer {
     private Date utcCreate;
     @TableLogic
     private Integer deleted;
+    private String cart;
 
 }

@@ -4,17 +4,17 @@
       <!-- Required meta tags -->
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Cart Page | Nookx</title>
+      <title>Cart Page | Fulwe</title>
       <!-- Favicon -->
-      <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+      <link rel="icon" type="image/x-icon" th:href="@{/img/favicon.ico}">
       <!-- Bootstrap CSS -->
-      <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" th:href="@{/plugins/bootstrap/css/bootstrap.min.css}">
       <!-- Linearicon Font -->
-      <link rel="stylesheet" href="assets/plugins/linearicon/css/lnr-icon.css">
+      <link rel="stylesheet" th:href="@{/plugins/linearicon/css/lnr-icon.css}">
       <!-- FontAwesome Free Font -->
-      <link rel="stylesheet" href="assets/plugins/fontawesome/css/font-awesome.min.css">
+      <link rel="stylesheet" th:href="@{/plugins/fontawesome/css/font-awesome.min.css}">
       <!-- Custom CSS -->
-      <link rel="stylesheet" href="assets/css/style.css">
+      <link rel="stylesheet" th:href="@{/css/style.css}">
       <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
       <!--[if lt IE 9]>
       <script src="assets/js/html5shiv.min.js"></script>
@@ -22,62 +22,11 @@
       <![endif]-->
    </head>
    <body>
-      <!-- Inner Wrapper -->
-      <div class="inner-wrapper">
-         <!-- Header -->
-         <header>
+   <!-- Inner Wrapper -->
+   <div class="inner-wrapper">
+      <!-- Header -->
+      <header>
             <!-- Top Header Section -->
-            <div class="top-header-section py-3 px-0 py-md-3 px-md-3">
-               <div class="container">
-                  <div class="row align-items-center">
-                     <div class="col-4 col-md-8 col-lg-8">
-                        <div class="media align-items-center d-inline-block mr-2 mr-md-4 mr-lg-5">
-                           <a href="tel:8503867896" class="">
-                              <span class="lnr lnr-phone-handset text-theme display-6"></span>
-                              <span class="media-body d-none d-md-inline-block ml-2 text-white">
-                                 Phone: (850) 386-7896
-                              </span>
-                           </a>
-                        </div>
-                        <div class="media align-items-center d-inline-block">
-                           <span class="lnr lnr-envelope text-theme display-6"></span>
-                           <span class="media-body d-none d-md-inline-block ml-2">
-                              <a class="text-white" href="mailto:support@example.com"> support@example.com</a>
-                           </span>
-                        </div>
-                     </div>
-                     <div class="col-8 col-md-4 col-lg-4">
-                        <div class="row align-items-center">
-                           <div class="col-6 col-sm-7 text-right">
-                              <div class="dropdown">
-                                 <a class="inr-toggle-arrow dropdown-toggle text-white" href="javascript:;" data-toggle="dropdown">
-                                 <img class="img img-fluid" src="assets/img/en.png" alt="Flag Image" /><span class="pl-2">En</span>
-                                 </a>
-                                 <div class="dropdown-menu l-auto r-0">
-                                    <a class="dropdown-item" href="#"><img class="img img-fluid" src="assets/img/in.png" alt="Flag Image" /><span class="pl-2">In</span></a>
-                                    <a class="dropdown-item" href="#"><img class="img img-fluid" src="assets/img/io.png" alt="Flag Image" /><span class="pl-2">Id</span></a>
-                                    <a class="dropdown-item" href="#"><img class="img img-fluid" src="assets/img/ca.png" alt="Flag Image" /><span class="pl-2">Ca</span></a>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-6 col-sm-5 text-right">
-                              <div class="dropdown">
-                                 <a class="inr-toggle-arrow dropdown-toggle text-white" href="javascript:;" data-toggle="dropdown">
-                                 <i class="fa fa-usd" aria-hidden="true"></i><span class="pl-2">Usd</span>
-                                 </a>
-                                 <div class="dropdown-menu l-auto r-0">
-                                    <a class="dropdown-item" href="#"><i class="fa fa-eur" aria-hidden="true"></i><span class="pl-2">Eur</span></a>
-                                    <a class="dropdown-item" href="#"><i class="fa fa-gbp" aria-hidden="true"></i><span class="pl-2">Gbp</span></a>
-                                    <a class="dropdown-item" href="#"><i class="fa fa-inr" aria-hidden="true"></i><span class="pl-2">Inr</span></a>
-                                    <a class="dropdown-item" href="#"><i class="fa fa-jpy" aria-hidden="true"></i><span class="pl-2">Jpy</span></a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
             <!-- /Top Header Section -->
 
             <!-- Main header Section -->
@@ -134,148 +83,40 @@
                                  <!-- /offcanvas menu -->
 
                                  <!-- Navbar menu-->
-                                 <nav class="navbar navbar-expand-lg p-0">                        
-                                    <div class="logo my-3 my-md-0">
-                                       <a class="navbar-brand" href="index.html">
-                                       <img src="assets/img/logo.png" alt="logo image" class="img-fluid">
-                                       </a>
-                                    </div>
- 
-                                    <button class="navbar-toggler d-block d-md-none pr-0 ml-auto mr-3 collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                       <span class="icon-bar bg-theme top-bar"></span>
-                                       <span class="icon-bar bg-theme middle-bar"></span>
-                                       <span class="icon-bar bg-theme bottom-bar"></span>          
-                                    </button>
+                           <nav class="navbar navbar-expand-lg p-0">
+                              <div class="logo my-3 my-md-0">
+                                 <a class="navbar-brand" href="/">
+                                    <img th:src="@{/img/logo.png}" alt="logo image" class="img-fluid">
+                                 </a>
+                              </div>
 
-                                    <div class="collapse navbar-collapse menu-items-position d-md-block" id="navbarSupportedContent">
-                                       <ul class="navbar-nav ml-auto text-uppercase">
-                                          <li class="nav-item active">
-                                             <a class="nav-link pl-md-0" href="index.html">Home <span class="sr-only">(current)</span></a>
-                                          </li>
-                                          <li class="nav-item">
-                                             <a class="nav-link" href="product-grid-view.html">Explore</a>
-                                          </li>
-                                          <li class="nav-item">
-                                             <a class="nav-link" href="blog.html">blog</a>
-                                          </li>
-                                          <li class="nav-item dropdown position-static">
-                                             <a class="nav-link dropdown-toggle" href="javascript:;" data-toggle="dropdown">Pages</a>
-                                             <div class="dropdown-menu w-100 megamenu scrollable-menu scrollbar mt-0 border-0 r-0 radius-0 p-4 p-md-5" id="custom-scroll">
-                                                <div class="row">
-                                                   <div class="col-lg-3 col-md-4">
-                                                      <p class="mb-3"><strong>Landing Page</strong></p>
-                                                      <div class="dropdown-item p-0">
-                                                         <ul>
-                                                            <li class="pb-3"><a href="index.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Home - Text Slider</a></li>
-                                                            <li class="pb-3"><a href="index-v2.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Home - Video</a></li>                                                                                <li class="pb-3"><a href="index-v3.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Home - Image Slider</a></li>                                        
-                                                            <li class="pb-3"><a href="loggedin.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Home - Loggedin</a></li>
-                                                         </ul>
-                                                      </div>
-                                                   </div>
-                                                   <div class="col-lg-3 col-md-4">
-                                                         <p class="mb-3"><strong>Shop</strong></p>
-                                                      <div class="dropdown-item p-0">
-                                                         <ul>
-                                                            <li class="pb-3"><a href="product-grid-3col.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Shop - 3 Grid Column</a></li>             
-                                                            <li class="pb-3"><a href="product-grid-4col.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Shop - 4 Grid Column</a></li>             
-                                                            <li class="pb-3"><a href="product-grid-view.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Shop - Left Sidebar</a></li>             
-                                                            <li class="pb-3"><a href="product-grid-right-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Shop - Right Sidebar</a></li>             
-                                                            <li class="pb-3"><a href="product-list-view.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Shop List - Left Sidebar</a></li>             
-                                                            <li class="pb-3"><a href="product-list-right-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Shop List - Right Sidebar</a></li>     
-                                                         </ul>
-                                                      </div>
-                                                   </div>
-                                                   <div class="col-lg-3 col-md-4">
-                                                         <p class="mb-3"><strong>Single Product</strong></p>
-                                                      <div class="dropdown-item p-0">
-                                                         <ul>
-                                                            <li class="pb-3"><a href="single-product.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Horizontal Bottom Slider</a></li>
-                                                            <li class="pb-3"><a href="single-product-v2.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Horizontal Top Slider</a></li>
-                                                            <li class="pb-3"><a href="single-product-v3.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Vertical Left Slider</a></li>
-                                                            <li class="pb-3"><a href="single-product-v4.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Vertical right Slider</a></li>
-                                                         </ul>
-                                                      </div>
-                                                   </div>
-                                                   <div class="col-lg-3 col-md-4">
-                                                         <p class="mb-3"><strong>Blog</strong></p>
-                                                      <div class="dropdown-item p-0">
-                                                         <ul>
-                                                            <li class="pb-3"><a href="blog.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Blog - 3 Grid Column</a></li>
-                                                            <li class="pb-3"><a href="blog-4col.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Blog - 4 Grid Column</a></li>
-                                                            <li class="pb-3"><a href="blog-left-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Blog - Left Sidebar</a></li>
-                                                            <li class="pb-3"><a href="blog-right-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Blog - Right Sidebar</a></li>
-                                                            <li class="pb-3"><a href="blog-single-post-left-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Single - Left Sidebar</a></li>
-                                                            <li class="pb-3"><a href="blog-single-post.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Single - Right Sidebar</a></li>             
-                                                         </ul>
-                                                      </div>
-                                                   </div>
-                                                   <div class="col-lg-3 col-md-4">
-                                                         <p class="mb-3"><strong>My Account</strong></p>
-                                                      <div class="dropdown-item p-0">
-                                                         <ul>
-                                                            <li class="pb-3"><a href="user-dashboard.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Dashboard</a></li>
-                                                            <li class="pb-3"><a href="user-add-item.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Add Service</a></li>
-                                                            <li class="pb-3"><a href="user-profile.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Profile</a></li>
-                                                            <li class="pb-3"><a href="user-wallet.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Wallet</a></li>
-                                                            <li class="pb-3"><a href="user-settings.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Settings</a></li>
-                                                            <li class="pb-3"><a href="user-notifications.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Notifications</a></li>
-                                                            <li class="pb-0 pb-md-3 pb-lg-0"><a href="purchase-history.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Purchase History</a></li>             
-                                                         </ul>
-                                                      </div>
-                                                   </div>
-                                                   <div class="col-lg-3 col-md-4">
-                                                         <p class="mb-3"><strong>Ecommerce</strong></p>
-                                                      <div class="dropdown-item p-0">
-                                                         <ul>
-                                                            <li class="pb-3"><a href="cart-page.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Cart</a></li>
-                                                            <li class="pb-3"><a href="checkout.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Checkout</a></li>
-                                                            <li class="pb-3"><a href="wishlist-grid-view.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Wishlist - Grid View</a></li>
-                                                            <li><a href="wishlist-list-view.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Wishlist - List View</a></li>             
-                                                         </ul>
-                                                      </div>
-                                                   </div>
-                                                   <div class="col-lg-3 col-md-4">
-                                                         <p class="mb-3"><strong>Other Pages</strong></p>
-                                                      <div class="dropdown-item p-0">
-                                                         <ul>
-                                                            <li class="pb-3"><a href="404.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>404</a></li>
-                                                            <li class="pb-3"><a href="500.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>500</a></li>
-                                                            <li class="pb-3"><a href="comingsoon.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Comingsoon</a></li>
-                                                            <li class="pb-3"><a href="terms-conditions.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Terms-Conditions</a></li>
-                                                            <li class="pb-3"><a href="faq.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>FAQ</a></li>
-                                                            <li><a href="contact.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Contact us</a></li>             
-                                                         </ul>
-                                                      </div>
-                                                   </div>
-                                                   <div class="col-lg-3 col-md-4">
-                                                         <p class="mb-3"><strong>Layout</strong></p>
-                                                      <div class="dropdown-item p-0">
-                                                         <ul>
-                                                            <li class="pb-3"><a href="sample.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Sample Page</a></li>
-                                                            <li class="pb-3"><a href="sample-full-width.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Full Width</a></li>
-                                                            <li class="pb-3"><a href="sample-left-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Left Sidebar</a></li>
-                                                            <li class="pb-3"><a href="sample-right-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Right Sidebar</a></li>
-                                                            
-                                                            <li><a href="sample-sticky-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Sticky Sidebar</a></li>             
-                                                         </ul>
-                                                      </div>
-                                                   </div>                                                   
-                                                </div>
-                                             </div>
-                                          </li>
-                                       </ul>       
-                                       <!--  User info-->
-                                       <div class="cta-btn text-right d-none d-md-inline-block">
-                                          <a href="javascript:;" data-toggle="modal" data-target="#myRegister" class="btn-outline-theme px-4 radius-5 py-3"><span class="lnr lnr-user pr-2"></span>Login</a>
-                                       </div>
-                                       <!-- /User info-->
-                                    </div>
-                        <div class="d-inline-block align-middle d-md-none">
-                           <a href="javascript:;">
-                           <span class="lnr lnr-user d-block display-5" id="open_navSidebar"></span>
-                           </a>
-                        </div>
-                                 </nav>
+                              <button class="navbar-toggler d-block d-md-none pr-0 ml-auto mr-3 collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                 <span class="icon-bar bg-theme top-bar"></span>
+                                 <span class="icon-bar bg-theme middle-bar"></span>
+                                 <span class="icon-bar bg-theme bottom-bar"></span>
+                              </button>
+
+                              <div class="collapse navbar-collapse menu-items-position d-md-block" id="navbarSupportedContent">
+                                 <ul class="navbar-nav ml-auto text-uppercase">
+                                    <li class="nav-item active">
+                                       <a class="nav-link pl-md-0" th:href="@{/}">Home <span class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                       <a class="nav-link" th:href="@{/shop}">Explore</a>
+                                    </li>
+                                 </ul>
+                                 <!--  User info-->
+                                 <div class="cta-btn text-right d-none d-md-inline-block">
+                                    <a th:href="@{/login}" class="btn-outline-theme px-4 radius-5 py-3"><span class="lnr lnr-user pr-2"></span>Login</a>
+                                 </div>
+                                 <!-- /User info-->
+                              </div>
+                              <div class="d-inline-block align-middle d-md-none">
+                                 <a href="javascript:;">
+                                    <span class="lnr lnr-user d-block display-5" id="open_navSidebar"></span>
+                                 </a>
+                              </div>
+                           </nav>
                                  <!-- /Navbar menu-->
                               </div>
                         <!-- /Main Menu -->
@@ -306,7 +147,7 @@
                   <div class="col-md-12">
                      <div class="custom-breadcrumb">
                         <ol class="breadcrumb no-bg-color p-0 m-0">
-                           <li class="breadcrumb-item d-inline-block"><a href="index.html" class="text-theme-secondary">Home</a></li>
+                           <li class="breadcrumb-item d-inline-block"><a th:href="@{/}" class="text-theme-secondary">Home</a></li>
                            <li class="breadcrumb-item d-inline-block active">Cart</li>
                         </ol>
                      </div>
@@ -335,55 +176,9 @@
                               </div>
                            </div>
                         </div>
-                        <div class="card-body p-4">
-                           <div class="cart-item-list clearfix">
-                              <div class="row align-items-center">
-                                 <div class="col-lg-8 col-md-8">
-                                    <div class="cart-item-desc xs-text-center">
-                                       <img src="assets/img/cart-img-1.png" alt="Edit image" class="img-fluid d-inline-block align-middle d-lg-inline-block">
-                                       <div class="cart-item-info d-inline-block align-middle pl-0 pl-md-3 py-3 py-md-0 xs-text-center">
-                                          <h5><a href="single-product.html" class="text-link"><strong>Healing Kits</strong></a></h5>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-2 col-md-2 p-0 text-center">
-                                    <div class="cart-item-price-wrapper">
-                                       <div class="cart-item-price d-inline-block display-5">
-                                          <span class=""><i class="fa fa-dollar"></i>&nbsp;59</span>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-2 col-md-2 mt-4 mt-md-0 text-center">
-                                    <a href="javascript:;" class=""><span class="lnr lnr-trash text-theme display-5"></span></a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <hr class="m-0">
-                        <div class="card-body p-4">
-                           <div class="cart-item-list clearfix">
-                              <div class="row align-items-center">
-                                 <div class="col-lg-8 col-md-8">
-                                    <div class="cart-item-desc xs-text-center">
-                                       <img src="assets/img/cart-img-2.jpg" alt="Edit image" class="img-fluid d-inline-block align-middle d-lg-inline-block">
-                                       <div class="cart-item-info d-inline-block align-middle pl-0 pl-md-3 py-3 py-md-0 xs-text-center">
-                                          <h5><a href="single-product.html" class="text-link"><strong>Decoration Wall Sticker</strong></a></h5>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-2 col-md-2 p-0 text-center">
-                                    <div class="cart-item-price-wrapper">
-                                       <div class="cart-item-price d-inline-block display-5">
-                                          <span class=""><i class="fa fa-dollar"></i>&nbsp;32</span>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-2 col-md-2 mt-4 mt-md-0 text-center">
-                                    <a href="javascript:;" class=""><span class="lnr lnr-trash text-theme display-5"></span></a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
+
+<!--                        Item Loop Start-->
+                        <div th:if="${not #lists.isEmpty(items)}" th:each="item, eee: ${items}">
                         <hr class="m-0">
                         <div class="card-body p-4">
                            <div class="cart-item-list clearfix">
@@ -392,23 +187,27 @@
                                     <div class="cart-item-desc xs-text-center">
                                        <img src="assets/img/cart-img-3.jpg" alt="Edit image" class="img-fluid d-inline-block align-middle d-lg-inline-block">
                                        <div class="cart-item-info d-inline-block align-middle pl-0 pl-md-3 py-3 py-md-0 xs-text-center">
-                                          <h5><a href="single-product.html" class="text-link"><strong>Pet Boarding cage</strong></a></h5>
+                                          <h5><a th:href="@{/shop/item/{itemId}(itemId=${item.getItemId()})}" class="text-link"><strong>[[${item.getItemName()}]]</strong></a></h5>
                                        </div>
                                     </div>
                                  </div>
                                  <div class="col-lg-2 col-md-2 p-0 text-center">
                                     <div class="cart-item-price-wrapper">
                                        <div class="cart-item-price d-inline-block display-5">
-                                          <span class=""><i class="fa fa-dollar"></i>&nbsp;14</span>
+                                          <span class=""><i class="fa fa-dollar"></i>&nbsp;[[${item.getItemPrice()}]]</span>
                                        </div>
                                     </div>
                                  </div>
                                  <div class="col-lg-2 col-md-2 mt-4 mt-md-0 text-center">
-                                    <a href="javascript:;" class=""><span class="lnr lnr-trash text-theme display-5"></span></a>
+                                    <a th:href="@{/shop/deleteitem/{itemId}/{cusId}(itemId=${item.getItemId()},cusId=${cusid})}" class=""><span class="lnr lnr-trash text-theme display-5"></span></a>
+
                                  </div>
                               </div>
                            </div>
                         </div>
+                        </div>
+<!--                        Item Loop end-->
+
                      </div>
                   </div>
                   <div class="col-12 col-lg-5">
@@ -425,19 +224,19 @@
                                        <td class="text-grey text-capitalize p-4 border-top-0">
                                           Sub Total
                                        </td>
-                                       <td class="text-right p-4 border-top-0">$1400</td>
+                                       <td class="text-right p-4 border-top-0">$[[${subtotal}]]</td>
                                     </tr>
                                     <tr>
                                        <td class="text-grey p-4 text-capitalize">
                                           Estimated Taxes & Fees:
                                        </td>
-                                       <td class="text-right p-4">$2</td>
+                                       <td class="text-right p-4">$[[${fee}]]</td>
                                     </tr>
                                     <tr class="ord-sum-total">
                                        <td class="display-6 p-4">
                                           <b>Total</b>
                                        </td>
-                                       <td class="text-right p-4 display-6"><b>$1402</b></td>
+                                       <td class="text-right p-4 display-6"><b>$[[${total}]]</b></td>
                                     </tr>
                                  </tbody>
                               </table>
@@ -660,11 +459,11 @@
       </div>
       <!-- Optional JavaScript -->
       <!-- jQuery -->
-      <script src="assets/js/jquery.min.js"></script>
+      <script th:src="@{/js/jquery.min.js}"></script>
       <!-- Bootstrap Core JS -->
-      <script src="assets/js/popper.min.js"></script>
-      <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+      <script th:src="@{/js/popper.min.js}"></script>
+      <script th:src="@{/plugins/bootstrap/js/bootstrap.min.js}"></script>
       <!-- Custom JS -->
-      <script src="assets/js/script.js"></script>
+      <script th:src="@{/js/script.js}"></script>
    </body>
 </html>

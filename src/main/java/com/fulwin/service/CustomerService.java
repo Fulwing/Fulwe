@@ -5,7 +5,7 @@ import com.fulwin.pojo.Customer;
 
 import java.util.List;
 
-public interface CustomerService extends IService<Customer>{
+public interface CustomerService extends IService<Customer> {
 
     public List<Customer> getAllCustomer();
 
@@ -18,5 +18,11 @@ public interface CustomerService extends IService<Customer>{
     public void updateCustomer(Customer customer);
 
     public void deleteCustomerById(Long id);
+
+    public void addCommodityToCartByUserId(Long userId, Long newItemId);
+
+    public void deleteCommodityFromCartByUserId(Long userId, Long newItemId);
+
+    public List<Long> getCartByCusId(Long userId);
 
 }

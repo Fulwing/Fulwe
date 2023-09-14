@@ -1,14 +1,21 @@
 package com.fulwin.controller;
 
 import com.fulwin.pojo.Commodity;
+import com.fulwin.pojo.Customer;
 import com.fulwin.service.CommodityService;
 import com.fulwin.service.CustomerService;
+import com.fulwin.util.ListAndString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.List;
 
 import static com.fulwin.util.Image.splitImagesAndToBase64;
 
@@ -44,6 +51,41 @@ public class CommodityController {
 
         return "shop/single-product";
     }
+
+    @GetMapping("/cart")
+    public String cart(Model model, HttpSession session){
+        String email = (String) session.getAttribute("email");
+        List<Customer> customerByEmail = customerService.getCustomerByEmail(email);
+        Customer customer = customerByEmail.get(0);
+        List<Long> itemIds = ListAndString.convertCartStringToLongList(customer.getCart());
+        List<Commodity> items = new ArrayList<>();
+        BigDecimal totalMoney = new BigDecimal("0");
+
+        for (Long itemId : itemIds) {
+            Commodity commodityById = commodityService.getCommodityById(itemId);
+            totalMoney = totalMoney.add(commodityById.getItemPrice());
+            items.add(commodityById);
+        }
+
+        model.addAttribute("items", items);
+        model.addAttribute("subtotal", totalMoney.setScale(2, RoundingMode.HALF_UP));
+        model.addAttribute("fee", totalMoney.multiply(new BigDecimal("0.037")).setScale(2, RoundingMode.HALF_UP));
+        model.addAttribute("total", totalMoney.add(totalMoney.multiply(new BigDecimal("0.037"))).setScale(2, RoundingMode.HALF_UP));
+        model.addAttribute("userid", customer.getId());
+
+        return "shop/cart-page";
+    }
+
+    @GetMapping("/deleteitem/{id}")
+    public String deleteCartItem(@PathVariable Long id, HttpSession session) {
+        String email = (String) session.getAttribute("email");
+        List<Customer> customerByEmail = customerService.getCustomerByEmail(email);
+        Customer customer = customerByEmail.get(0);
+        customerService.deleteCommodityFromCartByUserId(customer.getId(), id);
+        return "redirect:/shop/cart"; // Redirect to /shop/cart
+    }
+
+
 
 
 }
