@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
    <head>
       <!-- Required meta tags -->
       <meta charset="utf-8">
@@ -76,7 +76,7 @@
                                        <span class="text-truncate">Cart</span>
                                        <span class="bg-theme d-inline-block text-white float-right px-3 py-0 radius-5 ">3</span>
                                        </a>                    
-                                       <a class="d-block p-0" href="index.html">
+                                       <a class="d-block p-0" href="/">
                                        <span class="lnr lnr-power-switch mr-3"></span>
                                        <span class="text-truncate">Logout</span>
                                        </a>
@@ -87,7 +87,7 @@
                                  <!-- Navbar menu-->
                                  <nav class="navbar navbar-expand-lg p-0">                        
                                     <div class="logo my-3 my-md-0">
-                                       <a class="navbar-brand" href="index.html">
+                                       <a class="navbar-brand" href="/">
                                        <img th:src="@{/img/logo.png}" alt="logo image" class="img-fluid">
                                        </a>
                                     </div>
@@ -101,7 +101,7 @@
                                     <div class="collapse navbar-collapse menu-items-position d-md-block" id="navbarSupportedContent">
                                        <ul class="navbar-nav ml-auto text-uppercase">
                                           <li class="nav-item active">
-                                             <a class="nav-link pl-md-0" href="index.html">Home <span class="sr-only">(current)</span></a>
+                                             <a class="nav-link pl-md-0" href="/">Home <span class="sr-only">(current)</span></a>
                                           </li>
                                           <li class="nav-item">
                                              <a class="nav-link" th:href="@{/shop}">Explore</a>
@@ -149,7 +149,7 @@
                   <div class="col-md-12">
                      <div class="custom-breadcrumb">
                         <ol class="breadcrumb no-bg-color p-0 m-0">
-                           <li class="breadcrumb-item d-inline-block"><a href="index.html" class="text-theme-secondary">Home</a></li>
+                           <li class="breadcrumb-item d-inline-block"><a href="/" class="text-theme-secondary">Home</a></li>
                            <li class="breadcrumb-item d-inline-block active">Product</li>
                         </ol>
                      </div>
@@ -352,7 +352,7 @@
                               const imageOverlay = document.createElement('div');
                               imageOverlay.className = 'image-overlay';
                               imageOverlay.innerHTML = `
-        <a href="single-product.html" class="btn btn-outline-white radius-5 py-3 px-4 text-capitalize">More Info</a>
+        <a href="/shop/item/${commodity.itemId}" class="btn btn-outline-white radius-5 py-3 px-4 text-capitalize">More Info</a>
     `;
 
                               // Append the overlay to the card image

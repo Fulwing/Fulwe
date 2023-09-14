@@ -1,22 +1,22 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
    <head>
       <!-- Required meta tags -->
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Single Product | Nookx</title>
+      <title>Single Product | Fulwe</title>
       <!-- Favicon -->
-      <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+      <link rel="icon" type="image/x-icon" th:href="@{/img/favicon.ico}">
       <!-- Bootstrap CSS -->
-      <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" th:href="@{/plugins/bootstrap/css/bootstrap.min.css}">
       <!-- Linearicon Font -->
-      <link rel="stylesheet" href="assets/plugins/linearicon/css/lnr-icon.css">
+      <link rel="stylesheet" th:href="@{/plugins/linearicon/css/lnr-icon.css}">
       <!-- FontAwesome Free Font -->
-      <link rel="stylesheet" href="assets/plugins/fontawesome/css/font-awesome.min.css">
+      <link rel="stylesheet" th:href="@{/plugins/fontawesome/css/font-awesome.min.css}">
       <!-- Slick slider CSS -->
-      <link rel="stylesheet" href="assets/plugins/slick/css/slick.css">
+      <link rel="stylesheet" th:href="@{/plugins/slick/css/slick.css}">
       <!-- Custom CSS -->
-      <link rel="stylesheet" href="assets/css/style.css">
+      <link rel="stylesheet" th:href="@{/css/style.css}">
       <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
       <!--[if lt IE 9]>
       <script src="assets/js/html5shiv.min.js"></script>
@@ -29,57 +29,6 @@
          <!-- Header -->
          <header>
             <!-- Top Header Section -->
-            <div class="top-header-section py-3 px-0 py-md-3 px-md-3">
-               <div class="container">
-                  <div class="row align-items-center">
-                     <div class="col-4 col-md-8 col-lg-8">
-                        <div class="media align-items-center d-inline-block mr-2 mr-md-4 mr-lg-5">
-                           <a href="tel:8503867896" class="">
-                              <span class="lnr lnr-phone-handset text-theme display-6"></span>
-                              <span class="media-body d-none d-md-inline-block ml-2 text-white">
-                                 Phone: (850) 386-7896
-                              </span>
-                           </a>
-                        </div>
-                        <div class="media align-items-center d-inline-block">
-                           <span class="lnr lnr-envelope text-theme display-6"></span>
-                           <span class="media-body d-none d-md-inline-block ml-2">
-                              <a class="text-white" href="mailto:support@example.com"> support@example.com</a>
-                           </span>
-                        </div>
-                     </div>
-                     <div class="col-8 col-md-4 col-lg-4">
-                        <div class="row align-items-center">
-                           <div class="col-6 col-sm-7 text-right">
-                              <div class="dropdown">
-                                 <a class="inr-toggle-arrow dropdown-toggle text-white" href="javascript:;" data-toggle="dropdown">
-                                 <img class="img img-fluid" src="assets/img/en.png" alt="Flag Image" /><span class="pl-2">En</span>
-                                 </a>
-                                 <div class="dropdown-menu l-auto r-0">
-                                    <a class="dropdown-item" href="#"><img class="img img-fluid" src="assets/img/in.png" alt="Flag Image" /><span class="pl-2">In</span></a>
-                                    <a class="dropdown-item" href="#"><img class="img img-fluid" src="assets/img/io.png" alt="Flag Image" /><span class="pl-2">Id</span></a>
-                                    <a class="dropdown-item" href="#"><img class="img img-fluid" src="assets/img/ca.png" alt="Flag Image" /><span class="pl-2">Ca</span></a>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-6 col-sm-5 text-right">
-                              <div class="dropdown">
-                                 <a class="inr-toggle-arrow dropdown-toggle text-white" href="javascript:;" data-toggle="dropdown">
-                                 <i class="fa fa-usd" aria-hidden="true"></i><span class="pl-2">Usd</span>
-                                 </a>
-                                 <div class="dropdown-menu l-auto r-0">
-                                    <a class="dropdown-item" href="#"><i class="fa fa-eur" aria-hidden="true"></i><span class="pl-2">Eur</span></a>
-                                    <a class="dropdown-item" href="#"><i class="fa fa-gbp" aria-hidden="true"></i><span class="pl-2">Gbp</span></a>
-                                    <a class="dropdown-item" href="#"><i class="fa fa-inr" aria-hidden="true"></i><span class="pl-2">Inr</span></a>
-                                    <a class="dropdown-item" href="#"><i class="fa fa-jpy" aria-hidden="true"></i><span class="pl-2">Jpy</span></a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
             <!-- /Top Header Section -->
 
             <!-- Main header Section -->
@@ -89,197 +38,89 @@
                      <div class="col-12">
                         <!-- Main Menu -->
                         <div class="main-menu menu-section w-100 d-inline-block d-md-block">
-                                 <!-- offcanvas menu -->
-                                 <div id="offcanvas_menu">
-                                    <span class="lnr lnr-cross float-left display-6 position-absolute t-1 l-1 text-white" id="close_navSidebar"></span>
-                                    <div class="user-info align-center bg-theme text-center">
-                                       <a href="javascript:;" class="d-block menu-style text-white">
-                                          <div class="user-avatar d-inline-block mr-3">
-                                             <img src="assets/img/owner-avatar-img.jpg" alt="user avatar" class="rounded-circle">
-                                          </div>
-                                          <div class="user-info d-inline-block align-middle">
-                                             <ul>
-                                                <li>Steve Bell</li>
-                                             </ul>
-                                          </div>
-                                       </a>
+                           <!-- offcanvas menu -->
+                           <div id="offcanvas_menu">
+                              <span class="lnr lnr-cross float-left display-6 position-absolute t-1 l-1 text-white" id="close_navSidebar"></span>
+                              <div class="user-info align-center bg-theme text-center">
+                                 <a href="javascript:;" class="d-block menu-style text-white">
+                                    <div class="user-avatar d-inline-block mr-3">
+                                       <img src="assets/img/owner-avatar-img.jpg" alt="user avatar" class="rounded-circle">
                                     </div>
-                                    <div class="user-menu-items p-3 m-0 text-left">
-                                       <a class="d-block pb-3" href="user-profile.html">
-                                       <span class="lnr lnr-user mr-3"></span>
-                                       <span class="text-truncate">Profile</span>
-                                       </a>
-                                       <a class="d-block pb-3" href="user-dashboard.html">
-                                       <span class="lnr lnr-pie-chart mr-3"></span>
-                                       <span class="text-truncate">Dashboard</span>
-                                       </a>
-                                       <a class="d-block pb-3" href="user-settings.html">
-                                       <span class="lnr lnr-cog mr-3"></span>
-                                       <span class="text-truncate">Settings</span>
-                                       </a>
-                                       <a class="d-block pb-3" href="user-notifications.html">
-                                       <span class="lnr lnr-alarm mr-3"></span>
-                                       <span class="text-truncate">Notifications</span>
-                                       <span class="bg-theme d-inline-block text-white float-right px-3 py-0 radius-5 ">5</span>
-                                       </a>
-                                       <a class="d-block pb-3" href="cart-page.html">
-                                       <span class="lnr lnr-cart mr-3"></span>
-                                       <span class="text-truncate">Cart</span>
-                                       <span class="bg-theme d-inline-block text-white float-right px-3 py-0 radius-5 ">3</span>
-                                       </a>                    
-                                       <a class="d-block p-0" href="index.html">
-                                       <span class="lnr lnr-power-switch mr-3"></span>
-                                       <span class="text-truncate">Logout</span>
-                                       </a>
+                                    <div class="user-info d-inline-block align-middle">
+                                       <ul>
+                                          <li>Steve Bell</li>
+                                       </ul>
                                     </div>
-                                 </div>
-                                 <!-- /offcanvas menu -->
-
-                                 <!-- Navbar menu-->
-                                 <nav class="navbar navbar-expand-lg p-0">                        
-                                    <div class="logo my-3 my-md-0">
-                                       <a class="navbar-brand" href="index.html">
-                                       <img src="assets/img/logo.png" alt="logo image" class="img-fluid">
-                                       </a>
-                                    </div>
- 
-                                    <button class="navbar-toggler d-block d-md-none pr-0 ml-auto mr-3 collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                       <span class="icon-bar bg-theme top-bar"></span>
-                                       <span class="icon-bar bg-theme middle-bar"></span>
-                                       <span class="icon-bar bg-theme bottom-bar"></span>          
-                                    </button>
-
-                                    <div class="collapse navbar-collapse menu-items-position d-md-block" id="navbarSupportedContent">
-                                       <ul class="navbar-nav ml-auto text-uppercase">
-                                          <li class="nav-item active">
-                                             <a class="nav-link pl-md-0" href="index.html">Home <span class="sr-only">(current)</span></a>
-                                          </li>
-                                          <li class="nav-item">
-                                             <a class="nav-link" href="product-grid-view.html">Explore</a>
-                                          </li>
-                                          <li class="nav-item">
-                                             <a class="nav-link" href="blog.html">blog</a>
-                                          </li>
-                                          <li class="nav-item dropdown position-static">
-                                             <a class="nav-link dropdown-toggle" href="javascript:;" data-toggle="dropdown">Pages</a>
-                                             <div class="dropdown-menu w-100 megamenu scrollable-menu scrollbar mt-0 border-0 r-0 radius-0 p-4 p-md-5" id="custom-scroll">
-                                                <div class="row">
-                                                   <div class="col-lg-3 col-md-4">
-                                                      <p class="mb-3"><strong>Landing Page</strong></p>
-                                                      <div class="dropdown-item p-0">
-                                                         <ul>
-                                                            <li class="pb-3"><a href="index.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Home - Text Slider</a></li>
-                                                            <li class="pb-3"><a href="index-v2.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Home - Video</a></li>                                                                                <li class="pb-3"><a href="index-v3.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Home - Image Slider</a></li>                                        
-                                                            <li class="pb-3"><a href="loggedin.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Home - Loggedin</a></li>
-                                                         </ul>
-                                                      </div>
-                                                   </div>
-                                                   <div class="col-lg-3 col-md-4">
-                                                         <p class="mb-3"><strong>Shop</strong></p>
-                                                      <div class="dropdown-item p-0">
-                                                         <ul>
-                                                            <li class="pb-3"><a href="product-grid-3col.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Shop - 3 Grid Column</a></li>             
-                                                            <li class="pb-3"><a href="product-grid-4col.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Shop - 4 Grid Column</a></li>             
-                                                            <li class="pb-3"><a href="product-grid-view.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Shop - Left Sidebar</a></li>             
-                                                            <li class="pb-3"><a href="product-grid-right-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Shop - Right Sidebar</a></li>             
-                                                            <li class="pb-3"><a href="product-list-view.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Shop List - Left Sidebar</a></li>             
-                                                            <li class="pb-3"><a href="product-list-right-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Shop List - Right Sidebar</a></li>     
-                                                         </ul>
-                                                      </div>
-                                                   </div>
-                                                   <div class="col-lg-3 col-md-4">
-                                                         <p class="mb-3"><strong>Single Product</strong></p>
-                                                      <div class="dropdown-item p-0">
-                                                         <ul>
-                                                            <li class="pb-3"><a href="single-product.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Horizontal Bottom Slider</a></li>
-                                                            <li class="pb-3"><a href="single-product-v2.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Horizontal Top Slider</a></li>
-                                                            <li class="pb-3"><a href="single-product-v3.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Vertical Left Slider</a></li>
-                                                            <li class="pb-3"><a href="single-product-v4.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Vertical right Slider</a></li>
-                                                         </ul>
-                                                      </div>
-                                                   </div>
-                                                   <div class="col-lg-3 col-md-4">
-                                                         <p class="mb-3"><strong>Blog</strong></p>
-                                                      <div class="dropdown-item p-0">
-                                                         <ul>
-                                                            <li class="pb-3"><a href="blog.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Blog - 3 Grid Column</a></li>
-                                                            <li class="pb-3"><a href="blog-4col.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Blog - 4 Grid Column</a></li>
-                                                            <li class="pb-3"><a href="blog-left-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Blog - Left Sidebar</a></li>
-                                                            <li class="pb-3"><a href="blog-right-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Blog - Right Sidebar</a></li>
-                                                            <li class="pb-3"><a href="blog-single-post-left-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Single - Left Sidebar</a></li>
-                                                            <li class="pb-3"><a href="blog-single-post.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Single - Right Sidebar</a></li>             
-                                                         </ul>
-                                                      </div>
-                                                   </div>
-                                                   <div class="col-lg-3 col-md-4">
-                                                         <p class="mb-3"><strong>My Account</strong></p>
-                                                      <div class="dropdown-item p-0">
-                                                         <ul>
-                                                            <li class="pb-3"><a href="user-dashboard.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Dashboard</a></li>
-                                                            <li class="pb-3"><a href="user-add-item.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Add Service</a></li>
-                                                            <li class="pb-3"><a href="user-profile.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Profile</a></li>
-                                                            <li class="pb-3"><a href="user-wallet.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Wallet</a></li>
-                                                            <li class="pb-3"><a href="user-settings.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Settings</a></li>
-                                                            <li class="pb-3"><a href="user-notifications.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Notifications</a></li>
-                                                            <li class="pb-0 pb-md-3 pb-lg-0"><a href="purchase-history.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Purchase History</a></li>             
-                                                         </ul>
-                                                      </div>
-                                                   </div>
-                                                   <div class="col-lg-3 col-md-4">
-                                                         <p class="mb-3"><strong>Ecommerce</strong></p>
-                                                      <div class="dropdown-item p-0">
-                                                         <ul>
-                                                            <li class="pb-3"><a href="cart-page.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Cart</a></li>
-                                                            <li class="pb-3"><a href="checkout.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Checkout</a></li>
-                                                            <li class="pb-3"><a href="wishlist-grid-view.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Wishlist - Grid View</a></li>
-                                                            <li><a href="wishlist-list-view.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Wishlist - List View</a></li>             
-                                                         </ul>
-                                                      </div>
-                                                   </div>
-                                                   <div class="col-lg-3 col-md-4">
-                                                         <p class="mb-3"><strong>Other Pages</strong></p>
-                                                      <div class="dropdown-item p-0">
-                                                         <ul>
-                                                            <li class="pb-3"><a href="404.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>404</a></li>
-                                                            <li class="pb-3"><a href="500.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>500</a></li>
-                                                            <li class="pb-3"><a href="comingsoon.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Comingsoon</a></li>
-                                                            <li class="pb-3"><a href="terms-conditions.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Terms-Conditions</a></li>
-                                                            <li class="pb-3"><a href="faq.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>FAQ</a></li>
-                                                            <li><a href="contact.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Contact us</a></li>             
-                                                         </ul>
-                                                      </div>
-                                                   </div>
-                                                   <div class="col-lg-3 col-md-4">
-                                                         <p class="mb-3"><strong>Layout</strong></p>
-                                                      <div class="dropdown-item p-0">
-                                                         <ul>
-                                                            <li class="pb-3"><a href="sample.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Sample Page</a></li>
-                                                            <li class="pb-3"><a href="sample-full-width.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Full Width</a></li>
-                                                            <li class="pb-3"><a href="sample-left-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Left Sidebar</a></li>
-                                                            <li class="pb-3"><a href="sample-right-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Right Sidebar</a></li>
-                                                            
-                                                            <li><a href="sample-sticky-sidebar.html" class=""><i class="lnr lnr-chevron-right mr-2"></i>Sticky Sidebar</a></li>             
-                                                         </ul>
-                                                      </div>
-                                                   </div>                                                   
-                                                </div>
-                                             </div>
-                                          </li>
-                                       </ul>       
-                                       <!--  User info-->
-                                       <div class="cta-btn text-right d-none d-md-inline-block">
-                                          <a href="javascript:;" data-toggle="modal" data-target="#myRegister" class="btn-outline-theme px-4 radius-5 py-3"><span class="lnr lnr-user pr-2"></span>Login</a>
-                                       </div>
-                                       <!-- /User info-->
-                                    </div>
-                        <div class="d-inline-block align-middle d-md-none">
-                           <a href="javascript:;">
-                           <span class="lnr lnr-user d-block display-5" id="open_navSidebar"></span>
-                           </a>
-                        </div>
-                                 </nav>
-                                 <!-- /Navbar menu-->
+                                 </a>
                               </div>
+                              <div class="user-menu-items p-3 m-0 text-left">
+                                 <a class="d-block pb-3" href="user-profile.html">
+                                    <span class="lnr lnr-user mr-3"></span>
+                                    <span class="text-truncate">Profile</span>
+                                 </a>
+                                 <a class="d-block pb-3" href="user-dashboard.html">
+                                    <span class="lnr lnr-pie-chart mr-3"></span>
+                                    <span class="text-truncate">Dashboard</span>
+                                 </a>
+                                 <a class="d-block pb-3" href="user-settings.html">
+                                    <span class="lnr lnr-cog mr-3"></span>
+                                    <span class="text-truncate">Settings</span>
+                                 </a>
+                                 <a class="d-block pb-3" href="user-notifications.html">
+                                    <span class="lnr lnr-alarm mr-3"></span>
+                                    <span class="text-truncate">Notifications</span>
+                                    <span class="bg-theme d-inline-block text-white float-right px-3 py-0 radius-5 ">5</span>
+                                 </a>
+                                 <a class="d-block pb-3" href="cart-page.html">
+                                    <span class="lnr lnr-cart mr-3"></span>
+                                    <span class="text-truncate">Cart</span>
+                                    <span class="bg-theme d-inline-block text-white float-right px-3 py-0 radius-5 ">3</span>
+                                 </a>
+                                 <a class="d-block p-0" href="/">
+                                    <span class="lnr lnr-power-switch mr-3"></span>
+                                    <span class="text-truncate">Logout</span>
+                                 </a>
+                              </div>
+                           </div>
+                           <!-- /offcanvas menu -->
+
+                           <!-- Navbar menu-->
+                           <nav class="navbar navbar-expand-lg p-0">
+                              <div class="logo my-3 my-md-0">
+                                 <a class="navbar-brand" href="/">
+                                    <img th:src="@{/img/logo.png}" alt="logo image" class="img-fluid">
+                                 </a>
+                              </div>
+
+                              <button class="navbar-toggler d-block d-md-none pr-0 ml-auto mr-3 collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                 <span class="icon-bar bg-theme top-bar"></span>
+                                 <span class="icon-bar bg-theme middle-bar"></span>
+                                 <span class="icon-bar bg-theme bottom-bar"></span>
+                              </button>
+
+                              <div class="collapse navbar-collapse menu-items-position d-md-block" id="navbarSupportedContent">
+                                 <ul class="navbar-nav ml-auto text-uppercase">
+                                    <li class="nav-item active">
+                                       <a class="nav-link pl-md-0" href="/">Home <span class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                       <a class="nav-link" th:href="@{/shop}">Explore</a>
+                                    </li>
+                                 </ul>
+                                 <!--  User info-->
+                                 <div class="cta-btn text-right d-none d-md-inline-block">
+                                    <a th:href="@{/login}" class="btn-outline-theme px-4 radius-5 py-3"><span class="lnr lnr-user pr-2"></span>Login</a>
+                                 </div>
+                                 <!-- /User info-->
+                              </div>
+                              <div class="d-inline-block align-middle d-md-none">
+                                 <a href="javascript:;">
+                                    <span class="lnr lnr-user d-block display-5" id="open_navSidebar"></span>
+                                 </a>
+                              </div>
+                           </nav>
+                           <!-- /Navbar menu-->
+                        </div>
                         <!-- /Main Menu -->
                      </div>
                   </div>
@@ -294,7 +135,7 @@
                <div class="row">
                   <div class="col-12 text-center">
                      <div class="inner-banner-heading py-0 py-md-3 py-lg-5">
-                        <h1 class="text-white">Single Product</h1>
+                        <h1 class="text-white">Product</h1>
                      </div>
                   </div>
                </div>
@@ -309,8 +150,8 @@
                   <div class="col-md-12">
                         <div class="custom-breadcrumb">
                            <ol class="breadcrumb no-bg-color p-0 m-0">
-                              <li class="breadcrumb-item d-inline-block"><a href="index.html" class="text-theme-secondary">Home</a></li>
-                              <li class="breadcrumb-item d-inline-block active">Single Product</li>
+                              <li class="breadcrumb-item d-inline-block"><a href="/" class="text-theme-secondary">Home</a></li>
+                              <li class="breadcrumb-item d-inline-block active">Shop</li>
                            </ol>
                         </div>
                   </div>
@@ -328,30 +169,10 @@
                         <div class="user-card shadow border bg-white p-4 text-center">
                            <div class="user-info">
                               <div class="user-avatar mb-4">
-                                 <img src="assets/img/pdt-owner-img.jpg" alt="User Avatar" class="img-fluid rounded-circle border-theme">
+                                 <img th:src="@{/img/pdt-owner-img.jpg}" alt="User Avatar" class="img-fluid rounded-circle border-theme">
                               </div>
                               <div class="user-details">
-                                 <h4>Steve Bell</h4>
-                              </div>
-                              <div class="rating-blk text-center d-inline-block">
-                                 <ul class="list-group list-group-horizontal">
-                                    <li class="pr-1">
-                                       <span class="fa fa-star"></span>
-                                    </li>
-                                    <li class="pr-1">
-                                       <span class="fa fa-star"></span>
-                                    </li>
-                                    <li class="pr-1">
-                                       <span class="fa fa-star"></span>
-                                    </li>
-                                    <li class="pr-1">
-                                       <span class="fa fa-star"></span>
-                                    </li>
-                                    <li class="pr-1">
-                                       <span class="fa fa-star"></span>
-                                    </li>
-                                 </ul>
-                                 <span class="rating__count">( 5 Rating )</span>
+                                 <h4>[[${username}]]</h4>
                               </div>
                               <hr>
                               <div class="pdt-contact-btn">
@@ -371,7 +192,7 @@
                         <div class="sidebar-pdt-desc mt-4">
                            <div class="shadow border p-4 text-center">
                               <div class="sidebar-price-tag">
-                                 <h2 class="text-theme"><strong>$ 230</strong></h2>
+                                 <h2 class="text-theme"><strong>$ [[${price}]]</strong></h2>
                               </div>
                               <hr class="my-4">
                               <div class="pricing-cta">
@@ -390,7 +211,7 @@
                                  <div class="bg-fb px-3 py-1">
                                     <a class="text-white display-5" href="javascript:;">
                                        <i class="fa fa-facebook"></i>
-                                       <h5 class="d-inline-block ml-5">Steve2019</h5>
+                                       <h5 class="d-inline-block ml-5">[[${username}]]</h5>
                                     </a>
                                  </div>
                               </li>
@@ -398,7 +219,7 @@
                                  <div class="bg-tw px-3 py-1">
                                     <a class="text-white display-5" href="javascript:;">
                                        <i class="fa fa-twitter"></i>
-                                       <h5 class="d-inline-block ml-5">Steve2019</h5>
+                                       <h5 class="d-inline-block ml-5">[[${username}]]</h5>
                                     </a>
                                  </div>
                               </li>
@@ -406,7 +227,7 @@
                                  <div class="bg-plus px-3 py-1">
                                     <a class="text-white display-5" href="javascript:;">
                                        <i class="fa fa-google"></i>
-                                       <h5 class="d-inline-block ml-5">Steve2019</h5>
+                                       <h5 class="d-inline-block ml-5">[[${username}]]</h5>
                                     </a>
                                  </div>
                               </li>
@@ -418,47 +239,35 @@
                      <div class="custom-border-left rounded shadow border p-4 bg-white mb-4 stg-title">
                         <div class="row align-items-center">
                            <div class="col-12">
-                              <h3 class="text-capitalize">Decorations</h3>
+                              <h3 class="text-capitalize">[[${name}]]</h3>
                            </div>
                         </div>
                      </div>
                      <div class="pdt-item-showcase shadow border">
                         <div class="single-pdt-slider">
                            <div class="slide">
-                              <img src="assets/img/single-pdt-slide-2.jpg" alt="Pdt Image Grid">
+                              <img th:src="'data:image/jpeg;base64,' + ${picture}" alt="Pdt Image Grid">
                            </div>
-                           <div class="slide">
-                              <img src="assets/img/single-pdt-slide-3.jpg" alt="Pdt Image Grid">
-                           </div>
-                           <div class="slide">
-                              <img src="assets/img/single-pdt-slide-2.jpg" alt="Pdt Image Grid">
-                           </div>
-                           <div class="slide">
-                              <img src="assets/img/single-pdt-slide-3.jpg" alt="Pdt Image Grid">
-                           </div>
-                           <div class="slide">
-                              <img src="assets/img/single-pdt-slide-2.jpg" alt="Pdt Image Grid">
+                           <div th:each="pic, eee: ${bpictures}">
+                              <div class="slide">
+                                 <img th:src="'data:image/jpeg;base64,' + ${pic}" alt="Pdt Image Grid">
+                              </div>
                            </div>
                         </div>
+
+
                         <div class="row align-items-center">
                            <div class="col-sm-12">
                               <div class="single-pdt-thumb text-center my-3 my-sm-5 px-4">
                                  <div class="wrapper-thumb">
                                     <div class="slider-thumb">
                                        <div class="slide-thumb">
-                                          <img class="border-theme p-1" src="assets/img/single-pdt-thumb-2.jpg" alt="Pdt Image Thumbnail">
+                                          <img class="border-theme p-1" th:src="'data:image/jpeg;base64,' + ${picture}" alt="Pdt Image Thumbnail">
                                        </div>
-                                       <div class="slide-thumb">
-                                          <img class="border-theme p-1" src="assets/img/single-pdt-thumb-3.jpg" alt="Pdt Image Thumbnail">
-                                       </div>
-                                       <div class="slide-thumb">
-                                          <img class="border-theme p-1" src="assets/img/single-pdt-thumb-2.jpg" alt="Pdt Image Thumbnail">
-                                       </div>
-                                       <div class="slide-thumb">
-                                          <img class="border-theme p-1" src="assets/img/single-pdt-thumb-3.jpg" alt="Pdt Image Thumbnail">
-                                       </div>
-                                       <div class="slide-thumb">
-                                          <img class="border-theme p-1" src="assets/img/single-pdt-thumb-2.jpg" alt="Pdt Image Thumbnail">
+                                       <div class="slide-thumb" th:each="pic, eee: ${bpictures}">
+                                          <div class=class="slide-thumb">
+                                             <img class="border-theme p-1" th:src="'data:image/jpeg;base64,' + ${pic}" alt="Pdt Image Thumbnail">
+                                          </div>
                                        </div>
                                     </div>
                                     <!-- /thumb-slider -->
@@ -483,26 +292,14 @@
                               <li>
                                  <a href="#product-details" class="active px-4 py-2" data-toggle="tab">Item Details</a>
                               </li>
-                              <li>
-                                 <a href="#product-comments" class="px-4 py-2" data-toggle="tab">Comments </a>
-                              </li>
-                              <li>
-                                 <a href="#product-reviews" class="px-4 py-2" data-toggle="tab">Reviews
-                                 <span>(1)</span>
-                                 </a>
-                              </li>
-                              <li>
-                                 <a href="#product-faq" class="px-4 py-2" data-toggle="tab">item FAQ</a>
-                              </li>                              
-                              <li>
                            </ul>
                         </div>
                         <!-- /pdt-item-nav -->
                         <div class="tab-content">
                            <div class="fade show tab-pane product-tab active" id="product-details">
                               <div class="tab-content-wrapper p-4">
-                                 <h3 class="mb-3">Landing Page Details</h3>
-                                 <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scelerisque the mattis, leo quam aliquet congue placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scel erisque the mattis, leo quam aliquet congue justo ut scelerisque. Praesent pharetra, justo ut scelerisque the mattis, leo quam aliquet congue justo ut scelerisque.
+                                 <h3 class="mb-3">Description</h3>
+                                 <p>[[${intro}]]
                                  </p>
                               </div>
                            </div>
@@ -511,7 +308,7 @@
                                  <div class="card-body p-0">
                                     <div class="media align-items-top mb-4">
                                        <div class="rounded-circle">
-                                          <img src="assets/img/user-avatar-1.png" alt="user avatar" class="mr-4">
+                                          <img th:src="@{/img/user-avatar-1.png}" alt="user avatar" class="mr-4">
                                        </div>
                                        <div class="media-body">
                                           <h6 class="mb-1">Aana &nbsp;&nbsp;<button class="btn btn-theme radius-5 my-2 my-md-0 text-white">Purchased</button></h6>
@@ -526,7 +323,7 @@
                                     </div>
                                     <div class="media align-items-top mb-0">
                                        <div class="rounded-circle">
-                                          <img src="assets/img/owner-avatar-img.jpg" alt="user avatar" class="rounded-circle mr-4">
+                                          <img th:src="@{/img/owner-avatar-img.jpg}" alt="user avatar" class="rounded-circle mr-4">
                                        </div>
                                        <div class="media-body">
                                           <form>
@@ -543,7 +340,7 @@
                                  <div class="card-body p-0">
                                     <div class="media align-items-top mb-4">
                                        <div class="rounded-circle">
-                                          <img src="assets/img/user-avatar-3.png" alt="user avatar" class="mr-4">
+                                          <img th:src="@{/img/user-avatar-3.png}" alt="user avatar" class="mr-4">
                                        </div>
                                        <div class="media-body">
                                           <h6 class="mb-1">Miller &nbsp;&nbsp;<a class="btn btn-theme radius-5 my-2 my-md-0 text-white">Support</a>
@@ -579,7 +376,7 @@
                                     </div>
                                     <div class="media align-items-top mb-0">
                                        <div class="rounded-circle">
-                                          <img src="assets/img/owner-avatar-img.jpg" alt="user avatar" class="rounded-circle mr-4">
+                                          <img th:src="@{/img/owner-avatar-img.jpg}" alt="user avatar" class="rounded-circle mr-4">
                                        </div>
                                        <div class="media-body">
                                           <form>
@@ -591,38 +388,6 @@
                                  </div>
                               </div>
                            </div>
-                           <div class="fade show tab-pane faq-tab" id="product-faq">
-                              <div class="tab-content-wrapper p-4">
-                                 <div id="accordion" class="accordion">
-                                    <div class="card mb-0 border-0">
-                                       <div class="card-header border-theme bg-white mb-0">
-                                          <a href="#collapseOne" class="card-title d-block collapsed d-block mb-0" data-toggle="collapse">
-                                             <h5 class="d-inline-block">What is Lorem Ipsum? </h5>
-                                          </a>
-                                       </div>
-                                       <div id="collapseOne" class="card-body collapse border-theme border-top-0" data-parent="#accordion">
-                                          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                       </div>
-                                       <div class="card-header border-theme bg-white mt-3 mb-0">
-                                          <a href="#collapseTwo" class="card-title collapsed d-block mb-0" data-toggle="collapse">
-                                             <h5 class="d-inline-block">Why do we use it? </h5>
-                                          </a>
-                                       </div>
-                                       <div id="collapseTwo" class="card-body collapse border-theme border-top-0" data-parent="#accordion">
-                                          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here'.</p>
-                                       </div>
-                                       <div class="card-header card-header border-theme bg-white mt-3 mb-0">
-                                          <a href="#collapseThree" class="card-title collapsed d-block mb-0" data-toggle="collapse">
-                                             <h5 class="d-inline-block">Where does come? </h5>
-                                          </a>
-                                       </div>
-                                       <div id="collapseThree" class="card-body collapse border-theme border-top-0" data-parent="#accordion">
-                                          <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia</p>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>                           
                         </div>
                         <!-- /tab-content -->
                      </div>
@@ -652,7 +417,7 @@
                                  <a href="wishlist-grid-view.html"><i class="fa fa-heart-o text-white"></i></a>
                               </div>
                               <div class="card-image">
-                                 <img class="card-img-top" src="assets/img/service-img-4.jpg" alt="Card image">
+                                 <img class="card-img-top" th:src="@{/img/service-img-4.jpg}" alt="Card image">
                                  <div class="image-overlay">
                                     <a href="single-product.html" class="btn btn-outline-white radius-5 py-3 px-4  text-capitalize">More Info</a>
                                  </div>
@@ -665,7 +430,7 @@
                                           <div class="col-6">
                                              <div class="media align-items-center">
                                                 <a href="user-profile.html" class="text-link d-inline-block">
-                                                   <img src="assets/img/owner-avatar-img.jpg" alt="John Doe" class="mr-3 img-fluid rounded-circle d-inline-block">
+                                                   <img th:src="@{/img/owner-avatar-img.jpg}" alt="John Doe" class="mr-3 img-fluid rounded-circle d-inline-block">
                                                    <div class="media-body d-inline-block">
                                                       <p><strong>Steve</strong></p>
                                                    </div>
@@ -830,7 +595,7 @@
                                  <a href="wishlist-grid-view.html"><i class="fa fa-heart-o text-white"></i></a>
                               </div>
                               <div class="card-image">
-                                 <img class="card-img-top" src="assets/img/service-img-1.jpg" alt="Card image">
+                                 <img class="card-img-top" th:src="@{/img/service-img-1.jpg}" alt="Card image">
                                  <div class="image-overlay">
                                     <a href="single-product.html" class="btn btn-outline-white radius-5 py-3 px-4  text-capitalize">More Info</a>
                                  </div>
@@ -843,7 +608,7 @@
                                           <div class="col-6">
                                              <div class="media align-items-center">
                                                 <a href="user-profile.html" class="text-link d-inline-block">
-                                                   <img src="assets/img/owner-avatar-img.jpg" alt="John Doe" class="mr-3 rounded-circle d-inline-block">
+                                                   <img th:src="@{/img/owner-avatar-img.jpg}" alt="John Doe" class="mr-3 rounded-circle d-inline-block">
                                                    <div class="media-body d-inline-block">
                                                       <p><strong>Steve</strong></p>
                                                    </div>
@@ -926,11 +691,11 @@
                      </div>
                      <div class="col-md-6 text-center">
                         <ul class="my-4 my-md-0">
-                           <li class="list-inline-item"><img class="img img-fluid" src="assets/img/pay1.png" alt="Payment Method" /></li>
-                           <li class="list-inline-item"><img class="img img-fluid" src="assets/img/pay2.png" alt="Payment Method" /></li>
-                           <li class="list-inline-item"><img class="img img-fluid" src="assets/img/pay3.png" alt="Payment Method" /></li>
-                           <li class="list-inline-item"><img class="img img-fluid" src="assets/img/pay4.png" alt="Payment Method" /></li>
-                           <li class="list-inline-item"><img class="img img-fluid mt-2 mt-sm-0" src="assets/img/pay5.png" alt="Payment Method" /></li>
+                           <li class="list-inline-item"><img class="img img-fluid" th:src="@{/img/pay1.png}" alt="Payment Method" /></li>
+                           <li class="list-inline-item"><img class="img img-fluid" th:src="@{/img/pay2.png}" alt="Payment Method" /></li>
+                           <li class="list-inline-item"><img class="img img-fluid" th:src="@{/img/pay3.png}" alt="Payment Method" /></li>
+                           <li class="list-inline-item"><img class="img img-fluid" th:src="@{/img/pay4.png}" alt="Payment Method" /></li>
+                           <li class="list-inline-item"><img class="img img-fluid mt-2 mt-sm-0" th:src="@{/img/pay5.png}" alt="Payment Method" /></li>
                         </ul>
                      </div>
                      <div class="col-md-3 text-right">
@@ -1008,7 +773,7 @@
                <div class="container">
                   <div class="row">
                      <div class="col-12">
-                        <p>© Copyrights 2020. All Rights By <a href="http://www.bootstrapmb.com/">bootstrapmb</a></p>
+                        <p>© Copyrights 2020. All Rights By bootstrap</p>
                      </div>
                   </div>
                </div>
@@ -1018,113 +783,15 @@
       </div>
       <!-- Inner Wrapper -->
       <!-- The Login Modal -->
-      <div class="modal login-modal-blk" id="myLogin">
-         <div class="modal-dialog">
-            <div class="modal-content">
-               <!-- Modal Header -->
-               <div class="modal-header d-block text-center p-2 p-sm-5">
-                  <h3 class="modal-title">Welcome Back</h3>
-                  <h5 class="mt-2 mr-0">You can sign in with your User Name</h5>
-                  <button type="button" class="close position-absolute t-1 r-1" data-dismiss="modal">&times;</button>
-               </div>
-               <!-- Modal body -->
-               <div class="modal-body p-4 p-sm-5">
-                  <form>
-                     <div class="form-group mb-4">
-                        <label for="usr">User Name</label>
-                        <input type="text" class="form-control bg-input" id="usr" placeholder="Enter your User Name...">
-                     </div>
-                     <div class="form-group mb-4">
-                        <label for="pwd">Password</label>
-                        <input type="password" class="form-control bg-input" id="pwd" placeholder="Enter your Password...">
-                     </div>
-                     <div class="form-group mb-4">
-                        <div class="custom-control custom-checkbox">
-                           <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
-                           <label class="pl-2 custom-control-label" for="customCheck">Remember me</label>
-                        </div>
-                     </div>
-                     <div class="form-group mb-0">
-                        <a href="loggedin.html" class="btn btn-md btn-theme text-white py-2 px-4 py-sm-3 px-sm-5  text-capitalize shadow-theme-lg">Login Now</a>
-                     </div>
-                  </form>
-               </div>
-               <div class="custom-legend-blk position-relative text-center"><span class="text-theme">OR</span></div>
-               <!-- Modal footer -->
-               <div class="modal-footer d-block position-relative border-0 p-4 p-sm-5 text-center">
-                  <h5>Sign in with a simple click</h5>
-                  <ul class="list-unstyled list-inline social-login-blk ml-0 mt-3 mt-sm-4">
-                     <li class="list-inline-item">
-                        <div class="card bg-fb text-white py-2 px-4 text-center"><a href="javascript:;"><i class="fa fa-facebook"></i><span class="pl-2 d-none d-sm-inline-block">Facebook</span></a></div>
-                     </li>
-                     <li class="list-inline-item">
-                        <div class="card bg-gplus text-white py-2 px-4 text-center"><a href="javascript:;"><i class="fa fa-google-plus"></i><span class="pl-2 d-none d-sm-inline-block">Google+</span></a></div>
-                     </li>
-                     <li class="list-inline-item">
-                        <div class="card bg-twitter text-white py-2 px-4 text-center"><a href="javascript:;"><i class="fa fa-twitter"></i><span class="pl-2 d-none d-sm-inline-block">Twitter</span></a></div>
-                     </li>
-                  </ul>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- The Register Modal -->
-      <div class="modal login-modal-blk" id="myRegister">
-         <div class="modal-dialog">
-            <div class="modal-content">
-               <!-- Modal Header -->
-               <div class="modal-header d-block text-center p-2 p-sm-5">
-                  <h3 class="modal-title text-capitalize">create your account</h3>
-                  <h5 class="mt-2">Please fill the following fields with appropriate information to register a new account.</h5>
-                  <button type="button" class="close position-absolute t-1 r-1" data-dismiss="modal">&times;</button>
-               </div>
-               <!-- Modal body -->
-               <div class="modal-body p-2 p-sm-5">
-                  <form>
-                     <div class="form-group mb-4">
-                        <label for="name">Your Name</label>
-                        <input type="text" class="form-control bg-input" id="name" placeholder="Enter your name...">
-                     </div>
-                     <div class="form-group mb-4">
-                        <label for="email">Email Address</label>
-                        <input type="email" class="form-control bg-input" id="email" placeholder="Enter your email address...">
-                     </div>
-                     <div class="form-group mb-4">
-                        <label for="usr1">User Name</label>
-                        <input type="text" class="form-control bg-input" id="usr1" placeholder="Enter your User Name...">
-                     </div>
-                     <div class="form-group mb-4">
-                        <label for="pwdd">Password</label>
-                        <input type="password" class="form-control bg-input" id="pwdd" placeholder="Enter your password...">
-                     </div>
-                     <div class="form-group mb-4">
-                        <label for="pwd-confirm">Confirm Password</label>
-                        <input type="password" class="form-control bg-input" id="pwd-confirm" placeholder="Enter your password...">
-                     </div>
-                     <div class="form-group mb-4">
-                        <a href="javascript:;" data-toggle="modal" data-dismiss="modal" data-target="#myLogin" class="btn btn-md btn-theme text-white py-2 px-4 py-sm-3 px-sm-5  text-capitalize shadow-theme-lg">Register Now</a>
-                     </div>
-                     <ul class="list-unstyled list-inline ml-0 mt-4">
-                        <li class="list-inline-item">
-                           <div class="text-left text">
-                              <p>Already have an account? <a href="javascript;" data-dismiss="modal" data-toggle="modal" data-target="#myLogin" class="">Login</a></p>
-                           </div>
-                        </li>
-                     </ul>
-                  </form>
-               </div>
-            </div>
-         </div>
-      </div>
       <!-- Optional JavaScript -->
       <!-- jQuery -->
-      <script src="assets/js/jquery.min.js"></script>
+      <script th:src="@{/js/jquery.min.js}"></script>
       <!-- Bootstrap Core JS -->
-      <script src="assets/js/popper.min.js"></script>
-      <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+      <script th:src="@{/js/popper.min.js}"></script>
+      <script th:src="@{/plugins/bootstrap/js/bootstrap.min.js}"></script>
       <!-- Slick Js-->
-      <script src="assets/plugins/slick/js/slick.min.js"></script>
+      <script th:src="@{/plugins/slick/js/slick.min.js}"></script>
       <!-- Custom JS -->
-      <script src="assets/js/script.js"></script>
+      <script th:src="@{/js/script.js}"></script>
    </body>
 </html>

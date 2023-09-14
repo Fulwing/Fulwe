@@ -30,5 +30,6 @@ public class Commodity {
     private Integer version;
     @TableLogic
     private Integer deleted;
+    private byte[] itemBpicture;
 
 }

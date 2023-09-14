@@ -5,9 +5,13 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.fulwin.mapper.CommodityMapper;
 import com.fulwin.pojo.Commodity;
 import com.fulwin.service.CommodityService;
+import com.fulwin.util.Image;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 
 @Service
@@ -50,5 +54,16 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
         wrapper.last("LIMIT " + offset + "," + limit);
 
         return commodityMapper.selectList(wrapper);
+    }
+
+    @Override
+    public void addBouImageByUserId(Long id, List<byte[]> images) throws IOException {
+
+		Commodity commodity = getCommodityById(id);
+
+		commodity.setItemBpicture(Image.concatenateImagesWithDelimiter(images));
+
+		updateCommodity(commodity);
+
     }
 }
