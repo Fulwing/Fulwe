@@ -43,7 +43,6 @@ class FulweApplicationTests {
 
 		customerService.addCommodityToCartByUserId(userId, 1L);
 		customerService.addCommodityToCartByUserId(userId, 2L);
-    	customerService.addCommodityToCartByUserId(userId, 3L);
 
 //		List<Long> cartByCusId = customerService.getCartByCusId(userId);
 //
@@ -73,18 +72,7 @@ class FulweApplicationTests {
 		Long userId = 1701074383603658753L;
 		Customer customer = customerService.getCustomerById(userId);
 
-		String cartString = customer.getCart();
-		List<Long> cartList = ListAndString.convertCartStringToLongList(cartString);
-		cartList.remove(3L);
-		cartList.forEach(System.out::println);
-
-		// Convert the updated cart list back to a comma-separated string
-		String updatedCartString = ListAndString.convertCartStringToLongList(cartList);
-		System.out.println(updatedCartString);
-
-		// Update the customer's cart
-		customer.setCart("");
-		customerService.updateCustomer(customer);
+		customerService.deleteCommodityFromCartByUserId(userId, 3L);
 	}
 
 }

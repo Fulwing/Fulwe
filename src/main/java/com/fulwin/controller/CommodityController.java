@@ -59,10 +59,16 @@ public class CommodityController {
         Customer customer = customerByEmail.get(0);
         List<Long> itemIds = ListAndString.convertCartStringToLongList(customer.getCart());
         List<Commodity> items = new ArrayList<>();
+        List<String> pictures = new ArrayList<>();
         BigDecimal totalMoney = new BigDecimal("0");
 
         for (Long itemId : itemIds) {
             Commodity commodityById = commodityService.getCommodityById(itemId);
+            String picture = "";
+            if (commodityById.getItemPicture() != null) {
+                picture = Base64.getEncoder().encodeToString(commodityById.getItemPicture());
+            }
+            pictures.add(picture);
             totalMoney = totalMoney.add(commodityById.getItemPrice());
             items.add(commodityById);
         }
@@ -72,6 +78,7 @@ public class CommodityController {
         model.addAttribute("fee", totalMoney.multiply(new BigDecimal("0.037")).setScale(2, RoundingMode.HALF_UP));
         model.addAttribute("total", totalMoney.add(totalMoney.multiply(new BigDecimal("0.037"))).setScale(2, RoundingMode.HALF_UP));
         model.addAttribute("userid", customer.getId());
+        model.addAttribute("pictures", pictures);
 
         return "shop/cart-page";
     }
