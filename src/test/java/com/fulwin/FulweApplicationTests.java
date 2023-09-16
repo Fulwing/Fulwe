@@ -56,15 +56,16 @@ class FulweApplicationTests {
 
 	@Test
 	public void addImage() throws IOException {
-				File imageFile = new File("C:/Users/danie/Downloads/test2.jpg");
-		File imageFile2 = new File("C:/Users/danie/Downloads/test3.jpg");
+		File imageFile = new File("C:/Users/danie/Downloads/profilenina.jpg");
+		File imageFile2 = new File("C:/Users/danie/Downloads/profilefulwin.jpg");
 		byte[] imageData = Files.readAllBytes(imageFile.toPath());
 		byte[] imageData2 = Files.readAllBytes(imageFile2.toPath());
-		List<byte[]> listImg = new ArrayList<>();
-		listImg.add(imageData);
-		listImg.add(imageData2);
 
-		commodityService.addBouImageByUserId(1L, listImg);
+		Long userId = 1701435301533503489L;
+
+		Customer customer = customerService.getCustomerById(userId);
+		customer.setProfilePicture(imageData);
+		customerService.updateCustomer(customer);
 	}
 
 	@Test

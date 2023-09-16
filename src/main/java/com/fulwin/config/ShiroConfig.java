@@ -24,10 +24,16 @@ public class ShiroConfig {
         // logged in users with the 'document:read' permission
 //        chainDefinition.addPathDefinition("/docs/**", "authc, perms[document:read]");
 
-        // all other paths require a logged in user
-        chainDefinition.addPathDefinition("/log", "authc");
+        chainDefinition.addPathDefinition("/static/**" , "anon");
+        chainDefinition.addPathDefinition("/templates/**" , "anon");
+        chainDefinition.addPathDefinition("/", "anon");
+        chainDefinition.addPathDefinition("/login", "anon");
+        chainDefinition.addPathDefinition("/shop/**", "anon");
+        chainDefinition.addPathDefinition("/user/**", "anon");
+        chainDefinition.addPathDefinition("/login", "anon");
+        chainDefinition.addPathDefinition("/api/commodities", "anon");
 
-        chainDefinition.addPathDefinition("/user/login", "anon");
+        chainDefinition.addPathDefinition("/**", "user");
 
 
         return chainDefinition;

@@ -3,11 +3,10 @@ package com.fulwin.controller;
 import com.fulwin.pojo.Customer;
 import com.fulwin.service.CustomerService;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.authc.UnknownAccountException;
-import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authc.*;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
+import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,35 +32,37 @@ public class AccountController {
 
         customerService.insertCustomer(customer);
 
-        session.setAttribute("username", username);
+        session.setAttribute("email", email);
 
-        return "index/loggedin";
+        return "index/index";
     }
 
     @PostMapping("/login")
-    public String login(@RequestParam("email") String email, @RequestParam("password") String password, Model model, HttpSession session){
-
+    public String login(@RequestParam("email") String email, @RequestParam("password") String password, @RequestParam(defaultValue = "false", name = "remember") boolean rememberMe, Model model){
         // get current user
         Subject subject = SecurityUtils.getSubject();
-
         //get login token
         UsernamePasswordToken token = new UsernamePasswordToken(email, password);
+        token.setRememberMe(rememberMe);
+
+        Session session = subject.getSession();
 
         //try to login
-        try{
+        try {
             subject.login(token);
-            session.setAttribute("email", email);
-            return "index/loggedin";
+            session.setAttribute( "email", email);
+            return "redirect:/";
         }
-        catch (AuthenticationException e){ // no matching username
+        catch ( AuthenticationException ae ) {
             model.addAttribute("msg", "username or password error");
             return "index/login";
         }
     }
 
     @GetMapping("/logout")
-    public String logout(HttpSession session){
-        session.invalidate();
+    public String logout(){
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
         return "index/index";
     }
 }

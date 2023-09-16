@@ -108,8 +108,48 @@
                                           </li>
                                        </ul>
                                        <!--  User info-->
-                                       <div class="cta-btn text-right d-none d-md-inline-block">
+                                       <div class="cta-btn text-right d-none d-md-inline-block" th:if="${session.email == null}">
                                           <a th:href="@{/login}" class="btn-outline-theme px-4 radius-5 py-3"><span class="lnr lnr-user pr-2"></span>Login</a>
+                                       </div>
+                                       <div class="user-info align-right dropdown d-none d-md-inline-block" th:if="${session.email != null}">
+                                          <a href="javascript:;" data-toggle="dropdown" class="d-block menu-style text-theme-secondary dropdown-toggle">
+                                             <div class="user-avatar d-inline-block">
+                                                <img th:src="'data:image/jpeg;base64,' + ${session.profilepic}"
+                                                     alt="user avatar"
+                                                     class="rounded-circle"
+                                                     style="object-fit: cover; object-position: center center; width: 50px; height: 50px;">
+
+                                             </div>
+                                          </a>
+                                          <!-- Notifications -->
+                                          <div class="dropdown-menu custom-minwidth notification-dropdown-menu shadow-lg border-0 p-4 m-0 dropdown-menu-right">
+                                             <a class="dropdown-item user-menu-item px-0 pt-0 pb-3" href="user-profile.html">
+                                                <span class="lnr lnr-user mr-3"></span>
+                                                <span class="text-truncate">Profile</span>
+                                             </a>
+                                             <a class="dropdown-item user-menu-item px-0 pt-0 pb-3" href="user-dashboard.html">
+                                                <span class="lnr lnr-pie-chart mr-3"></span>
+                                                <span class="text-truncate">Dashboard</span>
+                                             </a>
+                                             <a class="dropdown-item user-menu-item px-0 pt-0 pb-3" href="user-settings.html">
+                                                <span class="lnr lnr-cog mr-3"></span>
+                                                <span class="text-truncate">Settings</span>
+                                             </a>
+                                             <a class="dropdown-item user-menu-item px-0 pt-0 pb-3" href="user-notifications.html">
+                                                <span class="lnr lnr-alarm mr-3"></span>
+                                                <span class="text-truncate">Notify</span>
+                                                <span class="bg-theme d-inline-block text-white float-right px-3 py-0 radius-5 ">5</span>
+                                             </a>
+                                             <a class="dropdown-item user-menu-item px-0 pt-0 pb-3" th:href="@{/shop/cart}">
+                                                <span class="lnr lnr-cart mr-3"></span>
+                                                <span class="text-truncate">Cart</span>
+                                                <!--                                       <span class="bg-theme d-inline-block text-white float-right px-3 py-0 radius-5 ">3</span>-->
+                                             </a>
+                                             <a class="dropdown-item user-menu-item p-0" th:href="@{/user/logout}">
+                                                <span class="lnr lnr-power-switch mr-3"></span>
+                                                <span class="text-truncate">Logout</span>
+                                             </a>
+                                          </div>
                                        </div>
                                        <!-- /User info-->
                                     </div>

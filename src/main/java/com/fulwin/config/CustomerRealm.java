@@ -2,10 +2,13 @@ package com.fulwin.config;
 
 import com.fulwin.pojo.Customer;
 import com.fulwin.service.CustomerService;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
@@ -19,7 +22,6 @@ public class CustomerRealm extends AuthorizingRealm {
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        System.out.println("授权");
         return null;
     }
 
@@ -43,7 +45,7 @@ public class CustomerRealm extends AuthorizingRealm {
             return null;
         }
 
-        return new SimpleAuthenticationInfo(customer.getUsername(), customer.getPassword(), getName());
+        return new SimpleAuthenticationInfo(customer.getId(), customer.getPassword(), getName());
     }
 
 }

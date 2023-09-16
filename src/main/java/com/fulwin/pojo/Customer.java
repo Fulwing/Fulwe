@@ -28,5 +28,6 @@ public class Customer {
     @TableLogic
     private Integer deleted;
     private String cart;
+    private byte[] profilePicture;
 
 }

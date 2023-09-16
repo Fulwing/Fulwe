@@ -9,17 +9,10 @@ public class MyMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("index/index");
         registry.addViewController("/dashboard").setViewName("dashboard/user-dashboard");
-        registry.addViewController("/log").setViewName("index/loggedin");
         registry.addViewController("/login").setViewName("index/login");
         registry.addViewController("/shop").setViewName("shop/product");
     }
-
-//    @Bean
-//    public LocaleResolver localeResolver(){
-//        return new MyLocaleResolver();
-//    }
 
 }
 
