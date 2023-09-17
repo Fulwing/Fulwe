@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
    <head>
       <!-- Required meta tags -->
       <meta charset="utf-8">
@@ -95,79 +95,8 @@
                                  <!-- /offcanvas menu -->
 
                                  <!-- Navbar menu-->
-                           <nav class="navbar navbar-expand-lg p-0">
-                              <div class="logo my-3 my-md-0">
-                                 <a class="navbar-brand" href="/">
-                                    <img th:src="@{/img/logo.png}" alt="logo image" class="img-fluid">
-                                 </a>
-                              </div>
+                           <nav th:replace="index/index::navbar" class="navbar navbar-expand-lg p-0">
 
-                              <button class="navbar-toggler d-block d-md-none pr-0 ml-auto mr-3 collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                 <span class="icon-bar bg-theme top-bar"></span>
-                                 <span class="icon-bar bg-theme middle-bar"></span>
-                                 <span class="icon-bar bg-theme bottom-bar"></span>
-                              </button>
-
-                              <div class="collapse navbar-collapse menu-items-position d-md-block" id="navbarSupportedContent">
-                                 <ul class="navbar-nav ml-auto text-uppercase">
-                                    <li class="nav-item active">
-                                       <a class="nav-link pl-md-0" th:href="@{/}">Home <span class="sr-only">(current)</span></a>
-                                    </li>
-                                    <li class="nav-item">
-                                       <a class="nav-link" th:href="@{/shop}">Explore</a>
-                                    </li>
-                                 </ul>
-                                 <!--  User info-->
-                                 <div class="cta-btn text-right d-none d-md-inline-block" th:if="${session.email == null}">
-                                    <a th:href="@{/login}" class="btn-outline-theme px-4 radius-5 py-3"><span class="lnr lnr-user pr-2"></span>Login</a>
-                                 </div>
-                                 <div class="user-info align-right dropdown d-none d-md-inline-block" th:if="${session.email != null}">
-                                    <a href="javascript:;" data-toggle="dropdown" class="d-block menu-style text-theme-secondary dropdown-toggle">
-                                       <div class="user-avatar d-inline-block">
-                                          <img th:src="'data:image/jpeg;base64,' + ${session.profilepic}"
-                                               alt="user avatar"
-                                               class="rounded-circle"
-                                               style="object-fit: cover; object-position: center center; width: 50px; height: 50px;">
-
-                                       </div>
-                                    </a>
-                                    <!-- Notifications -->
-                                    <div class="dropdown-menu custom-minwidth notification-dropdown-menu shadow-lg border-0 p-4 m-0 dropdown-menu-right">
-                                       <a class="dropdown-item user-menu-item px-0 pt-0 pb-3" href="user-profile.html">
-                                          <span class="lnr lnr-user mr-3"></span>
-                                          <span class="text-truncate">Profile</span>
-                                       </a>
-                                       <a class="dropdown-item user-menu-item px-0 pt-0 pb-3" href="user-dashboard.html">
-                                          <span class="lnr lnr-pie-chart mr-3"></span>
-                                          <span class="text-truncate">Dashboard</span>
-                                       </a>
-                                       <a class="dropdown-item user-menu-item px-0 pt-0 pb-3" href="user-settings.html">
-                                          <span class="lnr lnr-cog mr-3"></span>
-                                          <span class="text-truncate">Settings</span>
-                                       </a>
-                                       <a class="dropdown-item user-menu-item px-0 pt-0 pb-3" href="user-notifications.html">
-                                          <span class="lnr lnr-alarm mr-3"></span>
-                                          <span class="text-truncate">Notify</span>
-                                          <span class="bg-theme d-inline-block text-white float-right px-3 py-0 radius-5 ">5</span>
-                                       </a>
-                                       <a class="dropdown-item user-menu-item px-0 pt-0 pb-3" th:href="@{/shop/cart}">
-                                          <span class="lnr lnr-cart mr-3"></span>
-                                          <span class="text-truncate">Cart</span>
-                                          <!--                                       <span class="bg-theme d-inline-block text-white float-right px-3 py-0 radius-5 ">3</span>-->
-                                       </a>
-                                       <a class="dropdown-item user-menu-item p-0" th:href="@{/user/logout}">
-                                          <span class="lnr lnr-power-switch mr-3"></span>
-                                          <span class="text-truncate">Logout</span>
-                                       </a>
-                                    </div>
-                                 </div>
-                                 <!-- /User info-->
-                              </div>
-                              <div class="d-inline-block align-middle d-md-none">
-                                 <a href="javascript:;">
-                                    <span class="lnr lnr-user d-block display-5" id="open_navSidebar"></span>
-                                 </a>
-                              </div>
                            </nav>
                                  <!-- /Navbar menu-->
                               </div>
@@ -251,7 +180,7 @@
                                     </div>
                                  </div>
                                  <div class="col-lg-2 col-md-2 mt-4 mt-md-0 text-center">
-                                    <a th:href="@{/shop/deleteitem/{itemId}/{cusId}(itemId=${item.getItemId()},cusId=${cusid})}" class=""><span class="lnr lnr-trash text-theme display-5"></span></a>
+                                    <a th:href="@{/shop/deletecartitem/{itemId}/{cusId}(itemId=${item.getItemId()},cusId=${cusid})}" class=""><span class="lnr lnr-trash text-theme display-5"></span></a>
 
                                  </div>
                               </div>
@@ -310,43 +239,7 @@
          </section>
          <!-- /Cart Page -->
          <!-- Footer -->
-         <footer>
-            <div class="top-footer py-5">
-               <div class="container">
-                  <div class="row align-items-center">
-                     <div class="col-md-3 text-left xs-text-center">
-                        <img class="img img-fluid" th:src="@{/img/logo-footer.png}" alt="Footer Logo" />
-                     </div>
-                     <div class="col-md-6 text-center">
-                        <ul class="my-4 my-md-0">
-                           <li class="list-inline-item"><img class="img img-fluid" th:src="@{/img/pay1.png}" alt="Payment Method" /></li>
-                           <li class="list-inline-item"><img class="img img-fluid" th:src="@{/img/pay2.png}" alt="Payment Method" /></li>
-                           <li class="list-inline-item"><img class="img img-fluid" th:src="@{/img/pay3.png}" alt="Payment Method" /></li>
-                           <li class="list-inline-item"><img class="img img-fluid" th:src="@{/img/pay4.png}" alt="Payment Method" /></li>
-                           <li class="list-inline-item"><img class="img img-fluid mt-2 mt-sm-0" th:src="@{/img/pay5.png}" alt="Payment Method" /></li>
-                        </ul>
-                     </div>
-                     <div class="col-md-3 text-right">
-                        <div class="social-widget">
-                           <ul class="lh-0 xs-text-center">
-                              <li class="list-inline-item"><a class="d-inline-block" href="javascript:;"><i class="fa fa-facebook"></i></a></li>
-                              <li class="list-inline-item"><a class="d-inline-block" href="javascript:;"><i class="fa fa-twitter"></i></a></li>
-                              <li class="list-inline-item"><a class="d-inline-block" href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
-                           </ul>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="bottom-footer text-center py-4">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-12">
-                        <p>© Copyrights 2020. All Rights By bootstrap</p>
-                     </div>
-                  </div>
-               </div>
-            </div>
+         <footer th:replace="index/index::footer">
          </footer>
          <!-- /Footer -->
          </div>

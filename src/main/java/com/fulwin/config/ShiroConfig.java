@@ -24,16 +24,17 @@ public class ShiroConfig {
         // logged in users with the 'document:read' permission
 //        chainDefinition.addPathDefinition("/docs/**", "authc, perms[document:read]");
 
-        chainDefinition.addPathDefinition("/static/**" , "anon");
-        chainDefinition.addPathDefinition("/templates/**" , "anon");
-        chainDefinition.addPathDefinition("/", "anon");
-        chainDefinition.addPathDefinition("/login", "anon");
-        chainDefinition.addPathDefinition("/shop/**", "anon");
-        chainDefinition.addPathDefinition("/user/**", "anon");
-        chainDefinition.addPathDefinition("/login", "anon");
-        chainDefinition.addPathDefinition("/api/commodities", "anon");
+        chainDefinition.addPathDefinition("/shop/cart","user");
+        chainDefinition.addPathDefinition("/shop/deleteitem/**","user");
+        chainDefinition.addPathDefinition("/dashboard/**","user");
+        chainDefinition.addPathDefinition("/dashboard","user");
 
-        chainDefinition.addPathDefinition("/**", "user");
+        chainDefinition.addPathDefinition("/dashboard/setting","authc");
+        chainDefinition.addPathDefinition("/user/updateacc","authc");
+        chainDefinition.addPathDefinition("/dashboard/deleteitem","authc");
+
+
+
 
 
         return chainDefinition;

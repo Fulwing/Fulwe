@@ -66,4 +66,12 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
 		updateCommodity(commodity);
 
     }
+
+    @Override
+    public List<Commodity> getCusAllItemByUserId(Long id) {
+        QueryWrapper<Commodity> wrapper = new QueryWrapper<>();
+        wrapper.eq("item_cusid", id); // Filter by user ID
+
+        return this.list(wrapper);
+    }
 }

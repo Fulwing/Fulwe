@@ -21,4 +21,6 @@ public interface CommodityService extends IService<Commodity> {
     List<Commodity> getCommoditiesPage(int offset, int limit);
 
     public void addBouImageByUserId(Long id, List<byte[]> images) throws IOException;
+
+    public List<Commodity> getCusAllItemByUserId(Long id);
 }

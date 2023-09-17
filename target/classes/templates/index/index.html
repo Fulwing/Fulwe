@@ -34,6 +34,7 @@
             background-color: #8EC5FC;
             background-image: linear-gradient(222deg, #8EC5FC 0%, #E0C3FC 100%);
          }
+
       </style>
       <!-- Custom CSS -->
       <link rel="stylesheet" th:href="@{/css/style.css}" id="cpswitch">
@@ -65,9 +66,9 @@
                                  <!-- /offcanvas menu -->
 
                                  <!-- Navbar menu-->
-                                 <nav class="navbar navbar-expand-lg p-0">                        
+                                 <nav th:fragment="navbar" class="navbar navbar-expand-lg p-0">
                                     <div class="logo my-3 my-md-0">
-                                       <a class="navbar-brand" href="index.html">
+                                       <a class="navbar-brand" href="/">
                                        <img th:src="@{/img/logo.png}" alt="logo image" class="img-fluid">
                                        </a>
                                     </div>
@@ -81,7 +82,7 @@
                                     <div class="collapse navbar-collapse menu-items-position d-md-block" id="navbarSupportedContent">
                                        <ul class="navbar-nav ml-auto text-uppercase">
                                           <li class="nav-item active">
-                                             <a class="nav-link pl-md-0" href="index.html">Home <span class="sr-only">(current)</span></a>
+                                             <a class="nav-link pl-md-0" href="/">Home <span class="sr-only">(current)</span></a>
                                           </li>
                                           <li class="nav-item">
                                              <a class="nav-link" th:href="@{/shop}">Explore</a>
@@ -103,15 +104,15 @@
                                           </a>
                                           <!-- Notifications -->
                                           <div class="dropdown-menu custom-minwidth notification-dropdown-menu shadow-lg border-0 p-4 m-0 dropdown-menu-right">
-                                             <a class="dropdown-item user-menu-item px-0 pt-0 pb-3" href="user-profile.html">
+                                             <a class="dropdown-item user-menu-item px-0 pt-0 pb-3" th:href="@{/dashboard/profile}">
                                                 <span class="lnr lnr-user mr-3"></span>
                                                 <span class="text-truncate">Profile</span>
                                              </a>
-                                             <a class="dropdown-item user-menu-item px-0 pt-0 pb-3" href="user-dashboard.html">
+                                             <a class="dropdown-item user-menu-item px-0 pt-0 pb-3" th:href="@{/dashboard}">
                                                 <span class="lnr lnr-pie-chart mr-3"></span>
                                                 <span class="text-truncate">Dashboard</span>
                                              </a>
-                                             <a class="dropdown-item user-menu-item px-0 pt-0 pb-3" href="user-settings.html">
+                                             <a class="dropdown-item user-menu-item px-0 pt-0 pb-3" th:href="@{/dashboard/setting}">
                                                 <span class="lnr lnr-cog mr-3"></span>
                                                 <span class="text-truncate">Settings</span>
                                              </a>
@@ -133,11 +134,11 @@
                                        </div>
                                        <!-- /User info-->
                                     </div>
-                        <div class="d-inline-block align-middle d-md-none">
-                           <a href="javascript:;">
-                           <span class="lnr lnr-user d-block display-5" id="open_navSidebar"></span>
-                           </a>
-                        </div>
+                                          <div class="d-inline-block align-middle d-md-none">
+                                             <a href="javascript:;">
+                                             <span class="lnr lnr-user d-block display-5" id="open_navSidebar"></span>
+                                             </a>
+                                          </div>
                                  </nav>
                                  <!-- /Navbar menu-->
                               </div>
@@ -893,7 +894,7 @@
             </div>
          </section>
          <!-- Footer -->
-         <footer>
+         <footer th:fragment="footer">
             <div class="top-footer py-5">
                <div class="container">
                   <div class="row align-items-center">
@@ -1029,25 +1030,25 @@
                   </ul>
                </form>
             </div>
-               <script>
-                  $(function () {
-                     $('[data-toggle="popover"]').popover()
-                  });
-                  function checkPasswordMatch() {
-                     var password = document.getElementById("pwdd").value;
-                     var confirmPassword = document.getElementById("pwd-confirm").value;
-
-                     if (password !== confirmPassword) {
-                        document.getElementById("pwd-confirm").setCustomValidity("Passwords do not match");
-                     } else {
-                        document.getElementById("pwd-confirm").setCustomValidity("");
-                     }
-                  }
-               </script>
             </div>
          </div>
       </div>
       <!-- Optional JavaScript -->
+      <script>
+         $(function () {
+            $('[data-toggle="popover"]').popover()
+         });
+         function checkPasswordMatch() {
+            var password = document.getElementById("pwdd").value;
+            var confirmPassword = document.getElementById("pwd-confirm").value;
+
+            if (password !== confirmPassword) {
+               document.getElementById("pwd-confirm").setCustomValidity("Passwords do not match");
+            } else {
+               document.getElementById("pwd-confirm").setCustomValidity("");
+            }
+         }
+      </script>
 
       <!-- jQuery -->
       <script th:src="@{/js/jquery.min.js}"></script>
