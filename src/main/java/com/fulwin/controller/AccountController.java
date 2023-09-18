@@ -19,6 +19,7 @@ import org.thymeleaf.util.StringUtils;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.List;
 
 
@@ -110,6 +111,8 @@ public class AccountController {
                 throw new RuntimeException(e);
             }
             customer.setProfilePicture(fileBytes);
+            customerService.updateCustomer(customer);
+            session.setAttribute("profilepic", Base64.getEncoder().encodeToString(fileBytes));
         }
 
         if (!newPassword.isEmpty()) {

@@ -210,11 +210,11 @@
                               <div class="form-row mb-4">
                                  <p class="custom-label-style">Upload Profile Image</p>
                                  <div class="custom-file">
-                                    <input  type="file" class="custom-file-input" name="customFile" id="customFile" accept=".jpg, .jpeg, .webp" onchange="displayFileName()">
+                                    <input type="file" class="custom-file-input" name="customFile" id="customFile" accept=".jpg, .jpeg, .webp, .png" onchange="displayFileName()">
                                     <label class="custom-file-label" for="customFile">Upload Image</label>
                                  </div>
+                                 <div id="file-upload-message" class="mb-2" style="font-size: small;"></div>
                               </div>
-                              <div id="file-upload-message" class="mb-2 bg-instagram"></div>
                               <div class="form-row mb-4">
                                  <div class="col">
                                     <label>User Name</label>
@@ -476,7 +476,16 @@
 
             if (fileInput.files.length > 0) {
                const fileName = fileInput.files[0].name;
-               messageContainer.textContent = "You uploaded: " + fileName;
+               const fileExtension = fileName.split('.').pop().toLowerCase(); // Get the file extension
+
+               if (['jpg', 'jpeg', 'webp', 'png'].includes(fileExtension)) {
+                  messageContainer.textContent = "You uploaded: " + fileName;
+                  messageContainer.style.color = "blue"; // Set text color to blue
+               } else {
+                  messageContainer.textContent = "Please select a file with a .jpg, .jpeg, .webp, or .png extension.";
+                  messageContainer.style.color = "red"; // Set text color to red
+                  fileInput.value = ""; // Clear the file input (ignore the file)
+               }
             } else {
                messageContainer.textContent = "";
             }

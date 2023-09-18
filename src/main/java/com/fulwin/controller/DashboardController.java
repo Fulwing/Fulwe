@@ -50,6 +50,7 @@ public class DashboardController {
             pictures.add(Base64.getEncoder().encodeToString(c.getItemPicture()));
         }
 
+        model.addAttribute("info", cusinfoService.getCusinfoById(customer.getId()));
         model.addAttribute("name", customer.getUsername());
         model.addAttribute("balance", customer.getBalance());
         model.addAttribute("commodities", commodities);
