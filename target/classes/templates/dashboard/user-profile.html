@@ -4,7 +4,7 @@
       <!-- Required meta tags -->
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Fulwe</title>
+      <title>User Profile | Fulwe</title>
       <!-- Favicon -->
       <link rel="icon" type="image/x-icon" th:href="@{/img/favicon.ico}">
       <!-- Bootstrap CSS -->
@@ -16,6 +16,24 @@
       <!-- Custom CSS -->
       <link rel="stylesheet" th:href="@{/css/style.css}">
       <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <style>
+         /* Discord background color */
+         .bg-discord {
+            background-color: #7289da; /* Discord's color */
+         }
+
+         /* Snapchat background color */
+         .bg-snapchat {
+            background-color: #ffea00; /* Dimmer Snapchat color */
+         }
+         /* Instagram background color */
+         .bg-instagram {
+            background-color: #e4405f; /* Instagram's color */
+         }
+         .bg-nothing{
+            background-color: #000000;
+         }
+      </style>
       <!--[if lt IE 9]>
       <script src="assets/js/html5shiv.min.js"></script>
       <script src="assets/js/respond.min.js"></script>
@@ -114,32 +132,39 @@
                               <h4>Connect with me</h4>
                            </div>
                            <hr class="m-4">
-                           <ul class="list-group border-0">
-                              <li class="list-group-item border-0 p-0 mb-2">
-                                 <div class="bg-fb px-3 py-1">
-                                    <a class="text-white display-5" href="javascript:;">
-                                       <i class="fa fa-facebook"></i>
-                                       <h5 class="d-inline-block ml-5">Steve2019</h5>
+                           <ul class="list-group border-0" th:if="${info != null}">
+                              <li class="list-group-item border-0 p-0 mb-2" th:if="${info.getInstagram() != null}">
+                                 <div class="bg-instagram px-3 py-1">
+                                    <a class="text-white display-5" th:href="@{${info.getInstagram()}}">
+                                       <i class="fab fa-instagram"></i>
+                                       <h5 class="d-inline-block ml-5">Connect with me</h5>
                                     </a>
                                  </div>
                               </li>
-                              <li class="list-group-item border-0 p-0 mb-2">
-                                 <div class="bg-tw px-3 py-1">
-                                    <a class="text-white display-5" href="javascript:;">
-                                       <i class="fa fa-twitter"></i>
-                                       <h5 class="d-inline-block ml-5">Steve2019</h5>
+                              <li class="list-group-item border-0 p-0 mb-2" th:if="${info.getDiscord() != null}">
+                                 <div class="bg-discord px-3 py-1">
+                                    <a class="text-white display-5" href="https://discord.com/">
+                                       <i class="fab fa-discord"></i>
+                                       <h5 class="d-inline-block ml-5" th:text="${info.getDiscord()}"></h5>
                                     </a>
                                  </div>
                               </li>
-                              <li class="list-group-item border-0 p-0 mb-2">
-                                 <div class="bg-plus px-3 py-1">
-                                    <a class="text-white display-5" href="javascript:;">
-                                       <i class="fa fa-google"></i>
-                                       <h5 class="d-inline-block ml-5">Steve2019</h5>
+                              <li class="list-group-item border-0 p-0 mb-2" th:if="${info.getSnapchat() != null}">
+                                 <div class="bg-snapchat px-3 py-1">
+                                    <a class="text-white display-5" th:href="@{${info.getSnapchat()}}">
+                                       <i class="fab fa-snapchat-ghost"></i>
+                                       <h5 class="d-inline-block ml-5">Connect with me</h5>
                                     </a>
                                  </div>
                               </li>
                            </ul>
+
+                           <div class="bg-nothing px-3 py-1" th:if="${info == null}">
+                              <a class="text-white display-5" >
+                                 <i class="fa fa-frown-o" aria-hidden="true"></i>
+                                 <h5 class="d-inline-block ml-5">No Account Added</h5>
+                              </a>
+                           </div>
                         </div>
                      </aside>
                   </div>
