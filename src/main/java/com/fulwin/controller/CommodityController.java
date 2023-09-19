@@ -6,6 +6,7 @@ import com.fulwin.pojo.Customer;
 import com.fulwin.service.CommodityService;
 import com.fulwin.service.CusinfoService;
 import com.fulwin.service.CustomerService;
+import com.fulwin.util.Image;
 import com.fulwin.util.ListAndString;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
@@ -14,11 +15,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
 
@@ -119,6 +123,70 @@ public class CommodityController {
         else
             model.addAttribute("error", "you can't delete other's item");
         return "redirect:/dashboard/profile";
+    }
+
+    @GetMapping("/addcommodity")
+    public String addItemPage(Model model){
+
+        Subject subject = SecurityUtils.getSubject();
+        Session session = subject.getSession();
+        List<Customer> customers = customerService.getCustomerByEmail((String) session.getAttribute("email"));
+        Customer customer = customers.get(0);
+
+        model.addAttribute("name", customer.getUsername());
+        model.addAttribute("balance", customer.getBalance());
+        model.addAttribute("info", cusinfoService.getCusinfoById(customer.getId()));
+
+        return "dashboard/user-add-item";
+    }
+
+    @PostMapping("/addcommodity")
+    public String addItem(@RequestParam("group") String category,
+                          @RequestParam("name") String productName,
+                          @RequestParam("intro") String productDescription,
+                          @RequestParam("price") BigDecimal regularPrice,
+                          @RequestParam(value = "offerPrice", required = false) BigDecimal offerPrice,
+                          @RequestPart("cover") MultipartFile coverImage,
+                          @RequestPart(value = "firpic", required = false) MultipartFile firstImage,
+                          @RequestPart(value = "secpic", required = false) MultipartFile secondImage,
+                          @RequestPart(value = "thipic", required = false) MultipartFile thirdImage,
+                          Model model) throws IOException {
+
+
+        // Convert MultipartFile to byte[]
+        byte[] coverImageBytes = coverImage.getBytes();
+        byte[] firstImageBytes = (firstImage != null) ? firstImage.getBytes() : null;
+        byte[] secondImageBytes = (secondImage != null) ? secondImage.getBytes() : null;
+        byte[] thirdImageBytes = (thirdImage != null) ? thirdImage.getBytes() : null;;
+
+        Subject subject = SecurityUtils.getSubject();
+        Session session = subject.getSession();
+        List<Customer> customers = customerService.getCustomerByEmail((String) session.getAttribute("email"));
+        Customer customer = customers.get(0);
+
+        Commodity commodity = new Commodity();
+        commodity.setItemCusid(customer.getId());
+        commodity.setItemPrice(regularPrice);
+        commodity.setItemName(productName);
+        commodity.setItemGroup(category);
+        commodity.setItemIntro(productDescription);
+        commodity.setItemPicture(coverImageBytes);
+
+        List<byte[]> images = new ArrayList<>();
+
+        if(firstImageBytes != null)
+            images.add(firstImageBytes);
+        if(secondImageBytes != null)
+            images.add(secondImageBytes);
+        if(thirdImageBytes != null)
+            images.add(thirdImageBytes);
+
+        if(!images.isEmpty())
+            commodity.setItemBpicture(Image.concatenateImagesWithDelimiter(images));
+
+        commodityService.insertCommodity(commodity);
+
+        return "redirect:/shop/addcommodity?success=Success Added!";
     }
 
 

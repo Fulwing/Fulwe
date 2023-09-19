@@ -32,9 +32,7 @@ public class ShiroConfig {
         chainDefinition.addPathDefinition("/dashboard/setting","authc");
         chainDefinition.addPathDefinition("/user/updateacc","authc");
         chainDefinition.addPathDefinition("/dashboard/deleteitem","authc");
-
-
-
+        chainDefinition.addPathDefinition("/shop/addcommodity","authc");
 
 
         return chainDefinition;

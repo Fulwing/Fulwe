@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 @Service
@@ -31,7 +33,25 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
 
     @Override
     public void insertCommodity(Commodity commodity) {
-
+        List<byte[]> newImages = new ArrayList<>();
+        try {
+            byte[] resizedImage = Image.resizeImage(commodity.getItemPicture(), 1080, 1080);
+            commodity.setItemPicture(resizedImage);
+            if (commodity.getItemBpicture() != null && commodity.getItemBpicture().length > 0) {
+                // The byte array is not empty; you can proceed with further processing
+                List<String> images = Image.splitImagesAndToBase64(commodity.getItemBpicture());
+                System.out.println(commodity.getItemBpicture().length);
+                for (String image: images) {
+                    byte[] byteArray = Base64.getDecoder().decode(image);
+                    newImages.add((Image.resizeImage(byteArray, 1080, 1080)));
+                }
+                byte[] finalImages = Image.concatenateImagesWithDelimiter(newImages);
+                commodity.setItemBpicture(finalImages);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        commodityMapper.insert(commodity);
     }
 
     @Override
@@ -41,7 +61,7 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
 
     @Override
     public void deleteCommodityById(Long id) {
-
+        commodityMapper.deleteById(id);
     }
 
     @Override

@@ -5,9 +5,9 @@ import com.fulwin.service.CommodityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -92,5 +92,21 @@ public class Image {
         return base64Images;
     }
 
+    public static byte[] resizeImage(byte[] imageData, int targetWidth, int targetHeight) throws IOException {
+        // Convert byte array to BufferedImage
+        InputStream inputStream = new ByteArrayInputStream(imageData);
+        BufferedImage originalImage = ImageIO.read(inputStream);
+
+        // Create a new BufferedImage with the desired dimensions
+        BufferedImage resizedImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_RGB);
+
+        // Resize the original image to the new dimensions
+        resizedImage.createGraphics().drawImage(originalImage, 0, 0, targetWidth, targetHeight, null);
+
+        // Convert the resized BufferedImage back to a byte array
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        ImageIO.write(resizedImage, "jpg", outputStream);
+        return outputStream.toByteArray();
+    }
 
 }
