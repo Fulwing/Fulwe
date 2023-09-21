@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Edit Item | Fulwe</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" th:href="@{/img/favicon.ico}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{/plugins/bootstrap/css/bootstrap.min.css}">
+    <!-- Linearicon Font -->
+    <link rel="stylesheet" th:href="@{/plugins/linearicon/css/lnr-icon.css}">
+    <!-- FontAwesome Free Font -->
+    <link rel="stylesheet" th:href="@{/plugins/fontawesome/css/font-awesome.min.css}">
+    <!-- Text Editor -->
+    <link rel="stylesheet" th:href="@{/plugins/summernote/css/summernote-bs4.css}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <style>
+        /* Discord background color */
+        .bg-discord {
+            background-color: #7289da; /* Discord's color */
+        }
+
+        /* Snapchat background color */
+        .bg-snapchat {
+            background-color: #ffea00; /* Dimmer Snapchat color */
+        }
+        /* Instagram background color */
+        .bg-instagram {
+            background-color: #e4405f; /* Instagram's color */
+        }
+        .bg-nothing{
+            background-color: #000000;
+        }
+
+        .notification {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.min.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<!-- Inner Wrapper -->
+<div class="inner-wrapper">
+    <!-- Header -->
+    <header>
+        <!-- Top Header Section -->
+        <!-- /Top Header Section -->
+        <!-- Main header Section -->
+        <div class="main-header-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12">
+                        <!-- Main Menu -->
+                        <div class="main-menu menu-section w-100 d-inline-block d-md-block">
+                            <!-- offcanvas menu -->
+                            <!-- /offcanvas menu -->
+
+                            <!-- Navbar menu-->
+                            <nav th:replace="index/index::navbar" class="navbar navbar-expand-lg p-0">
+
+                            </nav>
+                            <!-- /Navbar menu-->
+                        </div>
+                        <!-- /Main Menu -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- /Main Header Section -->
+    </header>
+    <!-- /Header -->
+    <!-- Header Banner Section -->
+    <section class="slider-wrapper py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="inner-banner-heading py-0 py-md-3 py-lg-5">
+                        <h1 class="text-white">Edit Items</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /Header Banner Section -->
+
+    <!-- Bread crumb -->
+    <div class="breadcrumb-wrapper bg-theme py-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="custom-breadcrumb">
+                        <ol class="breadcrumb no-bg-color p-0 m-0">
+                            <li class="breadcrumb-item d-inline-block"><a href="index.html" class="text-theme-secondary">Home</a></li>
+                            <li class="breadcrumb-item d-inline-block active">Edit Items</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Bread crumb -->
+
+    <!--  Account Settings -->
+    <div class="user-add-item act-stgs py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-12">
+                    <aside class="sidebar sidebar-user">
+                        <div class="user-card shadow border p-4">
+                            <div class="user-info">
+                                <div class="user-avatar text-center mb-4">
+                                    <img th:src="'data:image/jpeg;base64,' + ${session.profilepic}" alt="User Avatar" class="position-relative img-fluid rounded-circle" style="object-fit: cover; object-position: center center; width: 100px; height: 100px;">
+                                    <a href="/dashboard/setting">
+                                        <span class="badge badge-info bg-theme rounded-circle position-absolute p-2 ml-n3 border-white text-white"><i class="fa fa-cog display-6"></i></span>
+                                    </a>
+                                </div>
+                                <div class="user-details text-center">
+                                    <h4>[[${name}]]</h4>
+                                </div>
+                                <div class="my-wallet-blk text-center my-4">
+                              <span class="border-theme radius-5 d-inline-block px-4 py-2 mt-0 mb-4 text-theme">
+                                 My Wallet
+                              </span>
+                                    <div class="align-items-center">
+                                        <span class="text-center "><i class="fa fa-usd"></i>&nbsp;[[${balance}]]</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quicklink-sidebar-menu shadow border mt-4 p-4">
+                            <div class="user-title-info">
+                                <h4>Connect with me</h4>
+                            </div>
+                            <hr class="m-4">
+                            <ul class="list-group border-0" th:if="${info != null}">
+                                <li class="list-group-item border-0 p-0 mb-2" th:if="${info.getInstagram() != null}">
+                                    <div class="bg-instagram px-3 py-1">
+                                        <a class="text-white display-5" th:href="@{${info.getInstagram()}}">
+                                            <i class="fab fa-instagram"></i>
+                                            <h5 class="d-inline-block ml-5">Connect with me</h5>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="list-group-item border-0 p-0 mb-2" th:if="${info.getDiscord() != null}">
+                                    <div class="bg-discord px-3 py-1">
+                                        <a class="text-white display-5" href="https://discord.com/">
+                                            <i class="fab fa-discord"></i>
+                                            <h5 class="d-inline-block ml-5" th:text="${info.getDiscord()}"></h5>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="list-group-item border-0 p-0 mb-2" th:if="${info.getSnapchat() != null}">
+                                    <div class="bg-snapchat px-3 py-1">
+                                        <a class="text-white display-5" th:href="@{${info.getSnapchat()}}">
+                                            <i class="fab fa-snapchat-ghost"></i>
+                                            <h5 class="d-inline-block ml-5">Connect with me</h5>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div class="bg-nothing px-3 py-1" th:if="${info == null}">
+                                <a class="text-white display-5" >
+                                    <i class="fa fa-frown-o" aria-hidden="true"></i>
+                                    <h5 class="d-inline-block ml-5">No Account Added</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+                <div class="col-lg-8 col-md-12 mt-5 mt-md-5 mt-lg-0">
+                    <div class="custom-border-left rounded shadow border p-4 mb-4 stg-title">
+                        <div class="row align-items-center">
+                            <div class="col-12">
+                                <h3 class="text-capitalize">Edit Item</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card shadow border mb-0">
+                        <div class="card-header bg-white p-4">
+                            <h4 class="card-title mb-0 text-capitalize coll-arrow cursor-pointer" data-toggle="collapse" data-target="#name-desc" aria-expanded="true">Item Name & Description</h4>
+                        </div>
+                        <div id="name-desc" class="card-body p-4 collapse show">
+                            <div id="personal-inf" class="">
+                                <form method="post" th:action="@{/shop/editcommodity}" enctype="multipart/form-data">
+                                    <div class="form-row mb-4">
+                                        <div class="col">
+                                            <label class="col-form-label pt-0">Select Category <span class="text-danger">*</span></label>
+                                            <select class="select bg-input" name="group" required>
+                                                <option value="Electronics">Electronics</option>
+                                                <option value="Textbooks">Textbooks</option>
+                                                <option value="Furniture">Furniture</option>
+                                                <option value="Clothing">Clothing</option>
+                                                <option value="Cookware">Cookware</option>
+                                                <option value="Autos">Autos</option>
+                                                <option value="Dorm Decor">Dorm Decor</option>
+                                                <option value="Music Gear">Music Gear</option>
+                                                <option value="Sport Gear">Sport Gear</option>
+                                                <option value="Art Supplies">Art Supplies</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row mb-4">
+                                        <div class="col">
+                                            <label>Product Name<span class="text-danger">*</span><span class="d-inline-block form-text text-muted">(Max 20 Characters)</span></label>
+                                            <input type="text" class="form-control bg-input" name="name" placeholder="Enter your product name here..." maxlength="20" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row mb-4">
+                                        <div class="col">
+                                            <label>Product Description <span class="text-danger">*</span></label>
+                                            <textarea rows="4" class="bg-input form-control text-editor" name="intro" placeholder="Short brief about your product..." required></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row mb-4">
+                                        <div class="col-lg-6">
+                                            <p class="custom-label-style">Upload Cover <span class="text-danger">*</span></p>
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" accept=".jpg, .jpeg, .png" name="cover" id="customFile-upload1" required>
+                                                <label class="custom-file-label" for="customFile-upload1" data-browse="Browse">Choose File</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <p class="custom-label-style">Upload more pictures</p>
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" accept=".jpg, .jpeg, .png" name="firpic" id="customFile-upload2">
+                                                <label class="custom-file-label" for="customFile-upload2" data-browse="Browse">Choose File</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row mb-4">
+                                        <div class="col-lg-6">
+                                            <p class="custom-label-style">Upload more pictures</p>
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" accept=".jpg, .jpeg, .png" name="secpic" id="customFile-upload3">
+                                                <label class="custom-file-label" for="customFile-upload3" data-browse="Browse">Choose File</label>
+                                            </div>
+                                        </div>
+                                        <!--                                    <div class="col-lg-6">-->
+                                        <!--                                       <p class="custom-label-style">Upload more pictures</p>-->
+                                        <!--                                       <div class="custom-file">-->
+                                        <!--                                          <input type="file" class="custom-file-input" accept=".jpg, .jpeg, .png" name="thipic" id="customFile-upload4">-->
+                                        <!--                                          <label class="custom-file-label" for="customFile-upload4" data-browse="Browse">Choose File</label>-->
+                                        <!--                                       </div>-->
+                                        <!--                                    </div>-->
+                                    </div>
+
+                                    <div class="form-row mb-4">
+                                        <div class="col-lg-6">
+                                            <label>Regular Price <span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon display-5 mr-3">$</span>
+                                                <input type="text" name="price" class="form-control bg-input" placeholder="0.00" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label>Offer Price</label>
+                                            <div class="input-group align-items-center">
+                                                <span class="input-group-addon display-5 mr-3">$</span>
+                                                <input type="text" name="offerprice" class="form-control bg-input" placeholder="0.00">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="save-btn-blk text-center">
+                                        <button type="submit" class="btn btn-style d-block radius-5 text-white py-3 px-5 text-capitalize">Submit Changes</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="notification" class="notification" th:if="${param.success}">
+        <span id="notification-message" th:text="${param.success}"></span>
+        <span class="close" onclick="closeNotification()">&times;</span>
+    </div>
+    <!-- /User Add Item -->
+    <!-- Footer -->
+    <footer th:replace="index/index::footer">
+    </footer>
+    <!-- /Footer -->
+</div>
+<!-- Inner Wrapper -->
+<!-- Optional JavaScript -->
+<script>
+    function showNotification(message) {
+        var notification = document.getElementById("notification");
+        var notificationMessage = document.getElementById("notification-message");
+
+        if (message) {
+            notificationMessage.textContent = message;
+            notification.style.display = "block";
+            setTimeout(function () {
+                notification.style.display = "none";
+            }, 3000); // Hide after 3 seconds (adjust as needed)
+        } else {
+            notification.style.display = "none";
+        }
+    }
+
+    function closeNotification() {
+        var notification = document.getElementById("notification");
+        notification.style.display = "none";
+    }
+
+    // Get the value of the success query parameter from the URL
+    var urlParams = new URLSearchParams(window.location.search);
+    var successMessage = urlParams.get("success");
+
+    // Check if the successMessage is not empty
+    if (successMessage) {
+        showNotification(successMessage);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const fileInputs = document.querySelectorAll(".custom-file-input");
+
+        fileInputs.forEach(function (input) {
+            input.addEventListener("change", function () {
+                const fileName = input.files[0] ? input.files[0].name : "";
+                const fileLabel = input.nextElementSibling;
+
+                // Check if the selected file matches the accepted file types
+                const acceptedTypes = [".jpg", ".jpeg", ".png"];
+                const fileType = fileName.substring(fileName.lastIndexOf(".")).toLowerCase();
+
+                if (fileName) {
+                    if (acceptedTypes.includes(fileType)) {
+                        fileLabel.textContent = fileName;
+                        fileLabel.style.color = "blue"; // Set text color to blue
+                    } else {
+                        fileLabel.textContent = "Incorrect Format";
+                        fileLabel.style.color = "red"; // Set text color to red
+                        // Reset the file input to clear the invalid selection
+                        input.value = "";
+                    }
+                } else {
+                    fileLabel.textContent = "Choose File";
+                    fileLabel.style.color = ""; // Reset text color
+                }
+            });
+        });
+    });
+
+    // JavaScript code for input validation
+    document.addEventListener("DOMContentLoaded", function () {
+        const priceInput = document.querySelector('input[name="price"]');
+        const offerPriceInput = document.querySelector('input[name="offerprice"]');
+
+        priceInput.addEventListener("input", validateNumericInput);
+        offerPriceInput.addEventListener("input", validateNumericInput);
+
+        function validateNumericInput(event) {
+            const input = event.target;
+            let value = input.value;
+
+            // Remove any non-numeric characters except for the decimal point
+            value = value.replace(/[^0-9.]/g, "");
+
+            // Ensure that there's only one decimal point
+            const decimalCount = (value.match(/\./g) || []).length;
+            if (decimalCount > 1) {
+                value = value.substring(0, value.lastIndexOf("."));
+            }
+
+            // Update the input value
+            input.value = value;
+        }
+    });
+</script>
+<!-- jQuery -->
+<script th:src="@{/js/jquery.min.js}"></script>
+<!-- Text Editor Js-->
+<script th:src="@{/plugins/summernote/js/summernote-bs4.js}"></script>
+<!-- Bootstrap Core JS -->
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/plugins/bootstrap/js/bootstrap.min.js}"></script>
+<!-- Custom JS -->
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>

@@ -205,7 +205,7 @@
                                                 </div>
                                              </div>
                                              <div class="col-6">
-                                                <div class="pdt-cat-tag text-right">
+                                                <div class="pdt-cat-tag text-right long-string">
                                                    <span class="bg-theme text-white px-3 py-1 radius-5">[[${commodity.getItemGroup()}]]</span>
                                                 </div>
                                              </div>
@@ -215,14 +215,14 @@
                                           <div class="row align-items-center">
                                              <div class="pdt-contact-btn text-right">
                                                 <span class="p-2 display-5">
-                                                   <a href="javascript:;">
+                                                   <a th:href="@{/shop/editcommodity/{itemId}(itemId=${commodity.getItemId()})}">
                                                       <span class="lnr lnr-cog"></span>
                                                    </a>
                                                 </span>
                                                 <span class="p-2 display-5">
-                                                   <a href="javascript:;" th:onclick="'confirmDelete(' + ${commodity.getItemId()} + ')'" >
-                                                       <span class="lnr lnr-trash"></span>
-                                                   </a>
+                                                  <a href="javascript:;" class="delete-button" th:data-item-id="${commodity.getItemId()}" th:onclick="'confirmDelete(\'' + ${commodity.getItemId()} + '\')'">
+                                                     <span class="lnr lnr-trash"></span>
+                                                  </a>
                                                 </span>
                                              </div>
                                           </div>
@@ -230,8 +230,7 @@
                                        <div class="card-section-3 py-3">
                                           <div class="row">
                                              <div class="col-12">
-                                                <div class="pdt-description">
-                                                   <p>[[${commodity.getItemIntro()}]]</p>
+                                                <div class="pdt-description" th:utext="${commodity.getItemIntro()}">
                                                 </div>
                                              </div>
                                           </div>
@@ -264,7 +263,6 @@
 
          </footer>
          <!-- /Footer -->
-
       <!-- Modal -->
       <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
          <div class="modal-dialog modal-dialog-centered" role="document">
@@ -281,36 +279,42 @@
                </div>
                <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                  <button type="button" class="btn btn-danger" onclick="deleteItem(${commodity.getItemId()})">Delete</button>
+                  <button type="button" class="btn btn-danger" onclick="deleteItem($('#deleteModal').data('item-id'))">Delete</button>
                </div>
             </div>
          </div>
       </div>
+
       <!-- Inner Wrapper -->
       <!-- Optional JavaScript -->
       <script>
-            function confirmDelete(itemId) {
-               $('#deleteModal').modal('show'); // Show the modal
-            }
-            function deleteItem(itemId) {
-               // Perform the delete action here
-               // You can send a GET request to the /shop/deleteitem endpoint with the item's ID
-               $.get(`/shop/deleteitem/${itemId}`, function(data) {
-                  // Check for the presence of an "error" message in the response
-                  if (data.error) {
-                     // Handle the error case
-                     alert('Error: ' + data.error);
-                  } else {
-                     // Handle the success case
-                     alert('Item deleted successfully.');
-                  }
-               }).fail(function() {
-                  // Handle the failure, e.g., show an error message
-                  alert('Failed to delete item.'); // For demonstration purposes
-               }).always(function() {
-                  $('#deleteModal').modal('hide'); // Hide the modal
-               });
-            }
+         function confirmDelete(itemId) {
+            // Set the itemId in the modal for reference when deleting
+            $('#deleteModal').data('item-id', itemId);
+            // Show the modal
+            $('#deleteModal').modal('show');
+         }
+
+         function deleteItem(itemId) {
+            // Hide the modal first
+            $('#deleteModal').modal('hide');
+            $.get(`/shop/deleteitem/${itemId}`, function (data) {
+               // Check for the presence of an "error" message in the response
+               if (data.error) {
+                  // Handle the error case and show an alert
+                  alert('Error: ' + data.error);
+               } else {
+                  // Handle the success case and show an alert
+                  alert('Item deleted successfully.');
+               }
+            }).fail(function () {
+               // Handle the failure, e.g., show an error message in an alert
+               alert('Failed to delete item.'); // For demonstration purposes
+            }).always(function () {
+               // Refresh the page after the alert is closed
+               location.reload();
+            });
+         }
       </script>
       <!-- jQuery -->
       <script th:src="@{/js/jquery.min.js}"></script>

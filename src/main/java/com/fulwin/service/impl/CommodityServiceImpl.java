@@ -40,7 +40,7 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
             if (commodity.getItemBpicture() != null && commodity.getItemBpicture().length > 0) {
                 // The byte array is not empty; you can proceed with further processing
                 List<String> images = Image.splitImagesAndToBase64(commodity.getItemBpicture());
-                System.out.println(commodity.getItemBpicture().length);
+                System.out.println(images.size());
                 for (String image: images) {
                     byte[] byteArray = Base64.getDecoder().decode(image);
                     newImages.add((Image.resizeImage(byteArray, 1080, 1080)));

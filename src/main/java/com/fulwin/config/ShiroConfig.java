@@ -25,14 +25,14 @@ public class ShiroConfig {
 //        chainDefinition.addPathDefinition("/docs/**", "authc, perms[document:read]");
 
         chainDefinition.addPathDefinition("/shop/cart","user");
-        chainDefinition.addPathDefinition("/shop/deleteitem/**","user");
-        chainDefinition.addPathDefinition("/dashboard/**","user");
-        chainDefinition.addPathDefinition("/dashboard","user");
+        chainDefinition.addPathDefinition("/shop/deletecartitem/**","user");
 
-        chainDefinition.addPathDefinition("/dashboard/setting","authc");
         chainDefinition.addPathDefinition("/user/updateacc","authc");
-        chainDefinition.addPathDefinition("/dashboard/deleteitem","authc");
+        chainDefinition.addPathDefinition("/dashboard/**","authc");
         chainDefinition.addPathDefinition("/shop/addcommodity","authc");
+        chainDefinition.addPathDefinition("/shop/deleteitem/**","authc");
+        chainDefinition.addPathDefinition("/shop/editcommodity/**","authc");
+        chainDefinition.addPathDefinition("/shop/addcommodity","user");
 
 
         return chainDefinition;

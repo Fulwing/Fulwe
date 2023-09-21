@@ -118,10 +118,13 @@ public class CommodityController {
 
         Commodity commodityById = commodityService.getCommodityById(id);
 
-        if (customer.getId().equals(commodityById.getItemCusid()))
+        if (customer.getId().equals(commodityById.getItemCusid())) {
             commodityService.deleteCommodityById(id);
+            model.addAttribute("success", "Item deleted successfully.");
+        }
         else
             model.addAttribute("error", "you can't delete other's item");
+
         return "redirect:/dashboard/profile";
     }
 
@@ -149,15 +152,14 @@ public class CommodityController {
                           @RequestPart("cover") MultipartFile coverImage,
                           @RequestPart(value = "firpic", required = false) MultipartFile firstImage,
                           @RequestPart(value = "secpic", required = false) MultipartFile secondImage,
-                          @RequestPart(value = "thipic", required = false) MultipartFile thirdImage,
+//                          @RequestPart(value = "thipic", required = false) MultipartFile thirdImage,
                           Model model) throws IOException {
 
 
         // Convert MultipartFile to byte[]
         byte[] coverImageBytes = coverImage.getBytes();
-        byte[] firstImageBytes = (firstImage != null) ? firstImage.getBytes() : null;
-        byte[] secondImageBytes = (secondImage != null) ? secondImage.getBytes() : null;
-        byte[] thirdImageBytes = (thirdImage != null) ? thirdImage.getBytes() : null;;
+        byte[] firstImageBytes = (firstImage != null) ? firstImage.getBytes() : new byte[0];
+        byte[] secondImageBytes = (secondImage != null) ? secondImage.getBytes() : new byte[0];
 
         Subject subject = SecurityUtils.getSubject();
         Session session = subject.getSession();
@@ -174,19 +176,38 @@ public class CommodityController {
 
         List<byte[]> images = new ArrayList<>();
 
-        if(firstImageBytes != null)
-            images.add(firstImageBytes);
-        if(secondImageBytes != null)
-            images.add(secondImageBytes);
-        if(thirdImageBytes != null)
-            images.add(thirdImageBytes);
+        images.add(firstImageBytes);
+        images.add(secondImageBytes);
+//        images.add(thirdImageBytes);
 
-        if(!images.isEmpty())
+        if (images.stream().anyMatch(arr -> arr.length > 0)) {
             commodity.setItemBpicture(Image.concatenateImagesWithDelimiter(images));
+        }
 
         commodityService.insertCommodity(commodity);
 
         return "redirect:/shop/addcommodity?success=Success Added!";
+    }
+
+    @GetMapping("/editcommodity/{id}")
+    public String editItemPage(@PathVariable("id") Long id, Model model){
+
+        //check does user has this model
+        Subject subject = SecurityUtils.getSubject();
+        Session session = subject.getSession();
+        List<Customer> customers = customerService.getCustomerByEmail((String) session.getAttribute("email"));
+        Customer customer = customers.get(0);
+
+        //check does user has this commodity
+        if(commodityService.getCommodityById(id).getItemCusid().equals(customer.getId())){
+            model.addAttribute("name", customer.getUsername());
+            model.addAttribute("balance", customer.getBalance());
+            model.addAttribute("info", cusinfoService.getCusinfoById(customer.getId()));
+            return "dashboard/user-edit-item";
+        }
+        else
+            return "error/500";
+
     }
 
 
