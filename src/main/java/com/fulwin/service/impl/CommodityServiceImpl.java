@@ -38,7 +38,6 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
             byte[] resizedImage = Image.resizeImage(commodity.getItemPicture(), 1080, 1080);
             commodity.setItemPicture(resizedImage);
             if (commodity.getItemBpicture() != null && commodity.getItemBpicture().length > 0) {
-                // The byte array is not empty; you can proceed with further processing
                 List<String> images = Image.splitImagesAndToBase64(commodity.getItemBpicture());
                 System.out.println(images.size());
                 for (String image: images) {
@@ -56,6 +55,23 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
 
     @Override
     public void updateCommodity(Commodity commodity) {
+        List<byte[]> newImages = new ArrayList<>();
+        try {
+            byte[] resizedImage = Image.resizeImage(commodity.getItemPicture(), 1080, 1080);
+            commodity.setItemPicture(resizedImage);
+            if (commodity.getItemBpicture() != null && commodity.getItemBpicture().length > 0) {
+                List<String> images = Image.splitImagesAndToBase64(commodity.getItemBpicture());
+                System.out.println(images.size());
+                for (String image: images) {
+                    byte[] byteArray = Base64.getDecoder().decode(image);
+                    newImages.add((Image.resizeImage(byteArray, 1080, 1080)));
+                }
+                byte[] finalImages = Image.concatenateImagesWithDelimiter(newImages);
+                commodity.setItemBpicture(finalImages);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         commodityMapper.updateById(commodity);
     }
 

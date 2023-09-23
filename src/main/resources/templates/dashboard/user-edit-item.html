@@ -209,50 +209,53 @@
                         </div>
                         <div id="name-desc" class="card-body p-4 collapse show">
                             <div id="personal-inf" class="">
-                                <form method="post" th:action="@{/shop/editcommodity}" enctype="multipart/form-data">
+                                <form method="post" th:action="@{/shop/editcommodity/{itemId}(itemId=${item.getItemId()})}" enctype="multipart/form-data">
                                     <div class="form-row mb-4">
                                         <div class="col">
-                                            <label class="col-form-label pt-0">Select Category <span class="text-danger">*</span></label>
-                                            <select class="select bg-input" name="group" required>
-                                                <option value="Electronics">Electronics</option>
-                                                <option value="Textbooks">Textbooks</option>
-                                                <option value="Furniture">Furniture</option>
-                                                <option value="Clothing">Clothing</option>
-                                                <option value="Cookware">Cookware</option>
-                                                <option value="Autos">Autos</option>
-                                                <option value="Dorm Decor">Dorm Decor</option>
-                                                <option value="Music Gear">Music Gear</option>
-                                                <option value="Sport Gear">Sport Gear</option>
-                                                <option value="Art Supplies">Art Supplies</option>
+                                            <label class="col-form-label pt-0">Select Category </label>
+                                            <select class="select bg-input" name="group">
+                                                <option value="Electronics" th:selected="${item.getItemGroup() == 'Electronics'}">Electronics</option>
+                                                <option value="Textbooks" th:selected="${item.getItemGroup() == 'Textbooks'}">Textbooks</option>
+                                                <option value="Furniture" th:selected="${item.getItemGroup() == 'Furniture'}">Furniture</option>
+                                                <option value="Clothing" th:selected="${item.getItemGroup() == 'Clothing'}">Clothing</option>
+                                                <option value="Cookware" th:selected="${item.getItemGroup() == 'Cookware'}">Cookware</option>
+                                                <option value="Autos" th:selected="${item.getItemGroup() == 'Autos'}">Autos</option>
+                                                <option value="Dorm Decor" th:selected="${item.getItemGroup() == 'Dorm Decor'}">Dorm Decor</option>
+                                                <option value="Music Gear" th:selected="${item.getItemGroup() == 'Music Gear'}">Music Gear</option>
+                                                <option value="Sport Gear" th:selected="${item.getItemGroup() == 'Sport Gear'}">Sport Gear</option>
+                                                <option value="Art Supplies" th:selected="${item.getItemGroup() == 'Art Supplies'}">Art Supplies</option>
                                             </select>
+
                                         </div>
                                     </div>
                                     <div class="form-row mb-4">
                                         <div class="col">
-                                            <label>Product Name<span class="text-danger">*</span><span class="d-inline-block form-text text-muted">(Max 20 Characters)</span></label>
-                                            <input type="text" class="form-control bg-input" name="name" placeholder="Enter your product name here..." maxlength="20" required>
+                                            <label>Product Name<span class="d-inline-block form-text text-muted">(Max 20 Characters)</span></label>
+                                            <input type="text" class="form-control bg-input" name="name" th:value="${item.getItemName()}" placeholder="Enter your product name here..." maxlength="20" >
                                         </div>
                                     </div>
                                     <div class="form-row mb-4">
                                         <div class="col">
-                                            <label>Product Description <span class="text-danger">*</span></label>
-                                            <textarea rows="4" class="bg-input form-control text-editor" name="intro" placeholder="Short brief about your product..." required></textarea>
+                                            <label>Product Description </label>
+                                            <textarea rows="4" class="bg-input form-control text-editor" name="intro" placeholder="Short brief about your product..." > [[${item.getItemIntro()}]]</textarea>
                                         </div>
                                     </div>
 
                                     <div class="form-row mb-4">
                                         <div class="col-lg-6">
-                                            <p class="custom-label-style">Upload Cover <span class="text-danger">*</span></p>
+                                            <p class="custom-label-style">Upload Cover </p>
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" accept=".jpg, .jpeg, .png" name="cover" id="customFile-upload1" required>
-                                                <label class="custom-file-label" for="customFile-upload1" data-browse="Browse">Choose File</label>
+                                                <input type="file" class="custom-file-input" accept=".jpg, .jpeg, .png" name="cover" id="customFile-upload1" >
+                                                <label th:if="${item.getItemPicture() == null}" class="custom-file-label" for="customFile-upload1" data-browse="Browse">Choose File</label>
+                                                <label th:if="${item.getItemPicture() != null}" style="color:cadetblue" class="custom-file-label" for="customFile-upload1" data-browse="Browse">Has a Picture</label>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <p class="custom-label-style">Upload more pictures</p>
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" accept=".jpg, .jpeg, .png" name="firpic" id="customFile-upload2">
-                                                <label class="custom-file-label" for="customFile-upload2" data-browse="Browse">Choose File</label>
+                                                <label th:if="${bpicture.size() == 0}" class="custom-file-label" for="customFile-upload2" data-browse="Browse">Choose File</label>
+                                                <label th:if="${bpicture.size() > 1}" style="color:cadetblue" class="custom-file-label" for="customFile-upload2" data-browse="Browse">Has a Picture</label>
                                             </div>
                                         </div>
                                     </div>
@@ -262,7 +265,8 @@
                                             <p class="custom-label-style">Upload more pictures</p>
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" accept=".jpg, .jpeg, .png" name="secpic" id="customFile-upload3">
-                                                <label class="custom-file-label" for="customFile-upload3" data-browse="Browse">Choose File</label>
+                                                <label th:if="${bpicture.size() <= 1}" class="custom-file-label" for="customFile-upload3" data-browse="Browse">Choose File</label>
+                                                <label th:if="${bpicture.size() == 2}" style="color:cadetblue" class="custom-file-label" for="customFile-upload3" data-browse="Browse">Has a Picture</label>
                                             </div>
                                         </div>
                                         <!--                                    <div class="col-lg-6">-->
@@ -276,10 +280,10 @@
 
                                     <div class="form-row mb-4">
                                         <div class="col-lg-6">
-                                            <label>Regular Price <span class="text-danger">*</span></label>
+                                            <label>Regular Price </label>
                                             <div class="input-group">
                                                 <span class="input-group-addon display-5 mr-3">$</span>
-                                                <input type="text" name="price" class="form-control bg-input" placeholder="0.00" required>
+                                                <input type="text" name="price" th:value="${item.getItemPrice()}" class="form-control bg-input" placeholder="0.00" >
                                             </div>
                                         </div>
                                         <div class="col-lg-6">

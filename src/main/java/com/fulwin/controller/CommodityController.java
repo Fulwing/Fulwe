@@ -198,11 +198,19 @@ public class CommodityController {
         List<Customer> customers = customerService.getCustomerByEmail((String) session.getAttribute("email"));
         Customer customer = customers.get(0);
 
+        byte[] itemBpicture = commodityService.getCommodityById(id).getItemBpicture();
+        List<String> strings = new ArrayList<>();
+        if(itemBpicture != null){ //has picture
+            strings = splitImagesAndToBase64(itemBpicture);
+        }
+
         //check does user has this commodity
         if(commodityService.getCommodityById(id).getItemCusid().equals(customer.getId())){
             model.addAttribute("name", customer.getUsername());
             model.addAttribute("balance", customer.getBalance());
             model.addAttribute("info", cusinfoService.getCusinfoById(customer.getId()));
+            model.addAttribute("item", commodityService.getCommodityById(id));
+            model.addAttribute("bpicture", strings);
             return "dashboard/user-edit-item";
         }
         else
@@ -210,8 +218,56 @@ public class CommodityController {
 
     }
 
+    @PostMapping("/editcommodity/{id}")
+    public String editItem(@PathVariable("id") Long id,
+                           @RequestParam(value ="group", required = false) String category,
+                          @RequestParam(value ="name", required = false) String productName,
+                          @RequestParam(value ="intro", required = false) String productDescription,
+                          @RequestParam(value = "price", required = false) BigDecimal regularPrice,
+                          @RequestParam(value = "offerPrice", required = false) BigDecimal offerPrice,
+                          @RequestPart(value ="cover", required = false) MultipartFile coverImage,
+                          @RequestPart(value = "firpic", required = false) MultipartFile firstImage,
+                          @RequestPart(value = "secpic", required = false) MultipartFile secondImage,
+//                          @RequestPart(value = "thipic", required = false) MultipartFile thirdImage,
+                          Model model) throws IOException {
 
 
+        // Convert MultipartFile to byte[]
+        byte[] coverImageBytes = (coverImage != null) ? coverImage.getBytes() : new byte[0];
+        byte[] firstImageBytes = (firstImage != null) ? firstImage.getBytes() : new byte[0];
+        byte[] secondImageBytes = (secondImage != null) ? secondImage.getBytes() : new byte[0];
+
+        Subject subject = SecurityUtils.getSubject();
+        Session session = subject.getSession();
+        List<Customer> customers = customerService.getCustomerByEmail((String) session.getAttribute("email"));
+        Customer customer = customers.get(0);
+
+        Commodity commodity = commodityService.getCommodityById(id);
+        if(regularPrice != null)
+            commodity.setItemPrice(regularPrice);
+        if(!productName.isEmpty())
+            commodity.setItemName(productName);
+        if(!category.isEmpty())
+            commodity.setItemGroup(category);
+        if(!productDescription.isEmpty())
+            commodity.setItemIntro(productDescription);
+        if(coverImageBytes.length > 1)
+            commodity.setItemPicture(coverImageBytes);
+
+        List<byte[]> images = new ArrayList<>();
+
+        images.add(firstImageBytes);
+        images.add(secondImageBytes);
+//        images.add(thirdImageBytes);
+
+        if (images.stream().anyMatch(arr -> arr.length > 0)) {
+            commodity.setItemBpicture(Image.concatenateImagesWithDelimiter(images));
+        }
+
+        commodityService.updateCommodity(commodity);
+
+        return "redirect:/shop/editcommodity/" + commodity.getItemId() + "?success=Change applied!";
+    }
 
 }
 
