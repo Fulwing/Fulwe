@@ -34,5 +34,6 @@ public class Customer {
     private String cart;
     private byte[] profilePicture;
     private BigDecimal balance;
+    private String stripeId;
 
 }

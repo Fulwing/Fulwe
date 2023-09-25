@@ -1,30 +1,37 @@
 package com.fulwin.controller;
 
 import com.fulwin.pojo.Commodity;
-import com.fulwin.pojo.Cusinfo;
 import com.fulwin.pojo.Customer;
 import com.fulwin.service.CommodityService;
 import com.fulwin.service.CusinfoService;
 import com.fulwin.service.CustomerService;
 import com.fulwin.util.Image;
 import com.fulwin.util.ListAndString;
+import com.stripe.Stripe;
+import com.stripe.exception.StripeException;
+import com.stripe.model.Price;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.List;
+import java.util.*;
 
 import static com.fulwin.util.Image.splitImagesAndToBase64;
 
@@ -40,6 +47,12 @@ public class CommodityController {
 
     @Autowired
     private CusinfoService cusinfoService;
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @Value("${stripe.apikey}")
+    String stripeKey;
 
     @GetMapping("/item/{id}")
     public String singleItem(@PathVariable Long id, Model model){
@@ -64,6 +77,32 @@ public class CommodityController {
             model.addAttribute("bpictures", null);
         }
 
+        String responseFromController = null;
+        try {
+            String baseUrl = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
+            String requestUrl = "/stripe/checkout";
+            String fullUrl = baseUrl + requestUrl;
+
+            Subject subject = SecurityUtils.getSubject();
+            Session session = subject.getSession();
+            List<Customer> customers = customerService.getCustomerByEmail((String) session.getAttribute("email"));
+            if (!customers.isEmpty()) {
+                Customer customer = customers.get(0);
+                String requestBody = "userid=" + customer.getStripeId() + "&productName=" + commodity.getItemName() + "&productPrice=" + commodity.getItemPrice() + "&productId=" + commodity.getItemId();
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+                HttpEntity<String> requestEntity = new HttpEntity<>(requestBody, headers);
+                ResponseEntity<String> responseEntity = restTemplate.postForEntity(fullUrl, requestEntity, String.class);
+                responseFromController = responseEntity.getBody();
+
+                model.addAttribute("checkoutLink", responseFromController);
+            }else{
+                model.addAttribute("checkoutLink", "/login");
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
         model.addAttribute("info", cusinfoService.getCusinfoById(commodity.getItemCusid()));
 
         return "shop/single-product";
@@ -153,7 +192,7 @@ public class CommodityController {
                           @RequestPart(value = "firpic", required = false) MultipartFile firstImage,
                           @RequestPart(value = "secpic", required = false) MultipartFile secondImage,
 //                          @RequestPart(value = "thipic", required = false) MultipartFile thirdImage,
-                          Model model) throws IOException {
+                          Model model) throws IOException, StripeException {
 
 
         // Convert MultipartFile to byte[]

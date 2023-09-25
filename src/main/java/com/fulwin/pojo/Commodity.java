@@ -35,5 +35,6 @@ public class Commodity {
     @TableLogic
     private Integer deleted;
     private byte[] itemBpicture;
+    private String priceId;
 
 }
