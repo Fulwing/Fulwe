@@ -1,5 +1,7 @@
 package com.fulwin.api;
 
+import com.fulwin.pojo.Customer;
+import com.fulwin.service.CommodityService;
 import com.fulwin.service.CustomerService;
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
@@ -9,14 +11,18 @@ import com.stripe.model.Price;
 import com.stripe.model.checkout.Session;
 import com.stripe.param.AccountLinkCreateParams;
 import com.stripe.param.checkout.SessionCreateParams;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -25,6 +31,7 @@ public class StripeApi {
 
     @Autowired
     CustomerService customerService;
+
 
     @Value("${stripe.apikey}")
     String stripeKey;
@@ -87,7 +94,11 @@ public class StripeApi {
 
     @ResponseBody
     @PostMapping("/checkout")
-    public String checkOut(@RequestParam("userid") String userId, @RequestParam("productName") String productName, @RequestParam("productPrice") BigDecimal productPrice, @RequestParam("productId") Long productId) throws StripeException {
+    public String checkOut(@RequestParam("userid") String userId,
+                           @RequestParam("productName") String productName,
+                           @RequestParam("productPrice") BigDecimal productPrice,
+                           @RequestParam("productId") Long productId,
+                           @RequestParam("buyerId") Long buyerId) throws StripeException {
         Stripe.apiKey = stripeKey;
 
         Long prices = productPrice.multiply(BigDecimal.valueOf(100)).longValue();
@@ -121,6 +132,8 @@ public class StripeApi {
                         )
                         .setSuccessUrl(successUrl)
                         .setCancelUrl(cancelUrl)
+                        .putMetadata("productId", String.valueOf(productId))
+                        .putMetadata("buyerId", String.valueOf(buyerId))
                         .build();
 
         Session session = Session.create(params);

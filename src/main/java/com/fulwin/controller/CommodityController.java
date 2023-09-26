@@ -52,7 +52,7 @@ public class CommodityController {
     private RestTemplate restTemplate;
 
     @Value("${stripe.apikey}")
-    String stripeKey;
+    private String stripeKey;
 
     @GetMapping("/item/{id}")
     public String singleItem(@PathVariable Long id, Model model){
@@ -88,7 +88,7 @@ public class CommodityController {
             List<Customer> customers = customerService.getCustomerByEmail((String) session.getAttribute("email"));
             if (!customers.isEmpty()) {
                 Customer customer = customers.get(0);
-                String requestBody = "userid=" + customer.getStripeId() + "&productName=" + commodity.getItemName() + "&productPrice=" + commodity.getItemPrice() + "&productId=" + commodity.getItemId();
+                String requestBody = "userid=" + customer.getStripeId() + "&productName=" + commodity.getItemName() + "&productPrice=" + commodity.getItemPrice() + "&productId=" + commodity.getItemId() + "&buyerId=" + customer.getId();
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
                 HttpEntity<String> requestEntity = new HttpEntity<>(requestBody, headers);

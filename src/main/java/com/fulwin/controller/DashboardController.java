@@ -3,9 +3,11 @@ package com.fulwin.controller;
 import com.fulwin.pojo.Commodity;
 import com.fulwin.pojo.Cusinfo;
 import com.fulwin.pojo.Customer;
+import com.fulwin.pojo.Lineorder;
 import com.fulwin.service.CommodityService;
 import com.fulwin.service.CusinfoService;
 import com.fulwin.service.CustomerService;
+import com.fulwin.service.LineorderService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
@@ -30,6 +32,9 @@ public class DashboardController {
 
     @Autowired
     private CusinfoService cusinfoService;
+
+    @Autowired
+    private LineorderService lineorderService;
 
     @GetMapping
     public String dashboard(){
@@ -82,10 +87,18 @@ public class DashboardController {
         Customer customer = customers.get(0);
 
         Cusinfo cusinfo = cusinfoService.getCusinfoById(customer.getId());
+        List<Lineorder> allLineOrderByBuyerId = lineorderService.getAllLineOrderByBuyerId(customer.getId());
+        List<String> names = new ArrayList<>();
+        for (Lineorder lineorder : allLineOrderByBuyerId) {
+            Commodity commodityById = commodityService.getCommodityById(lineorder.getCommodityId());
+            names.add(commodityById.getItemName());
+        }
 
         model.addAttribute("name", customer.getUsername());
         model.addAttribute("balance", customer.getBalance());
         model.addAttribute("info", cusinfo);
+        model.addAttribute("allOrder", allLineOrderByBuyerId);
+        model.addAttribute("itemNames" , names);
 
         return "dashboard/purchase-history";
     }

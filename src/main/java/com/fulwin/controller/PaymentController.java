@@ -33,7 +33,7 @@ public class PaymentController {
     private RestTemplate restTemplate;
 
     @Value("${stripe.apikey}")
-    String stripeKey;
+    private String stripeKey;
 
     @GetMapping("/success")
     public String checkoutSuccess() { // go to success page

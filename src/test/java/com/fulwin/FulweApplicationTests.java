@@ -1,10 +1,14 @@
 package com.fulwin;
 
+import com.fulwin.Enums.OrderStatus;
 import com.fulwin.pojo.Commodity;
 import com.fulwin.pojo.Cusinfo;
+import com.fulwin.pojo.Customer;
+import com.fulwin.pojo.Lineorder;
 import com.fulwin.service.CommodityService;
 import com.fulwin.service.CusinfoService;
 import com.fulwin.service.CustomerService;
+import com.fulwin.service.LineorderService;
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.LineItemCollection;
@@ -19,6 +23,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.servlet.ServletContext;
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 
 @SpringBootTest
@@ -34,21 +39,25 @@ class FulweApplicationTests {
 	CusinfoService cusinfoService;
 
 	@Autowired
+	LineorderService lineorderService;
+
+	@Autowired
 	private ServletContext servletContext;
 
 	@Test
-	public void transfer() throws StripeException {
-		Stripe.apiKey = "sk_test_51Nr0cfCNKqGYER1b4C1aANv8KhQSuC7JTPlJm5NTXJapVXLXPsMQggaSk1aUeQjAR3Vc6b1QLFBW1cA3ggzsNm5J00qCCGSAah";
+	public void transfer() {
+		Lineorder lineorder = new Lineorder();
+		lineorder.setOrderId("13");
+		lineorder.setCommodityId(1L);
+		lineorder.setSellerId(1701074383603658753L);
+		lineorder.setBuyerId(1701435301533503489L); // change this to get from customer stripe id
+		lineorder.setTotalPrice(BigDecimal.valueOf(12));
+		lineorder.setPlatformFee(BigDecimal.valueOf(1L));
+		lineorder.setSellerSalary(BigDecimal.valueOf(11));
+		lineorder.setOrderStatus(OrderStatus.PROCESSING);
 
-		TransferCreateParams params =
-				TransferCreateParams.builder()
-						.setAmount(1000L)
-						.setCurrency("usd")
-						.setSourceTransaction("ch_3NudFQCNKqGYER1b1dEwKt07")
-						.setDestination("acct_1Ntv51FhJ8DGic2E")
-						.build();
+		lineorderService.insertLineOrder(lineorder);
 
-		Transfer transfer = Transfer.create(params);
 	}
 
 	@Test

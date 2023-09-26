@@ -33,6 +33,16 @@
          .bg-nothing{
             background-color: #000000;
          }
+
+         #buyNowButton1:hover {
+            background-color: #dc7193;
+            color: white;
+         }
+
+         #buyNowButton2:hover {
+            background-color: #8e8992;
+            color: white;
+         }
       </style>
       <!--[if lt IE 9]>
       <script src="assets/js/html5shiv.min.js"></script>
@@ -174,7 +184,8 @@
                               <h3 class="text-capitalize">Purchase History</h3>
                            </div>
                         </div>
-                     </div>                     
+                     </div>
+                     <div class="container">
                      <div class="card shadow border">
                         <div class="card-header bg-white p-4 d-none d-md-block">
                            <div class="row">
@@ -185,331 +196,68 @@
                                  <h4 class="card-title mb-0 text-capitalize">Price</h4>
                               </div>
                               <div class="col-md-4">
-                                 <h4 class="card-title mb-0 text-capitalize">Reviews</h4>
+                                 <h4 class="card-title mb-0 text-capitalize">Actions</h4>
                               </div>
                            </div>
                         </div>
-                        <div class="card-body p-4 mb-4 mb-md-0">
-                           <div class="pur-pdt-list clearfix">
-                              <div class="row align-items-center">
-                                 <div class="col-lg-5 col-md-5">
-                                    <div class="pur-pdt-add-info mb-3 mb-md-0 xs-text-center">
-                                          <h4>
-                                             <a href="single-product.html" class="text-link"><strong>Wedding</strong></a>
-                                          </h4>
-                                       <ul class="mt-3">
-                                          <li>
-                                             <p><span><strong class="d-none d-lg-inline-block">Date :</strong> </span> 26 Jun 2016</p>
-                                          </li>
-                                       </ul>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-3 col-md-3 col-5">
-                                    <div class="pur-pdt-price-tag">
-                                       <div class="pur-pdt-price-info d-inline-block">
-                                          <span class="border-theme text-theme radius-5 px-3 py-2"><i class="fa fa-dollar"></i>&nbsp;59</span>
+
+<!--                        start showing all the product-->
+                           <div th:each="order, eee: ${allOrder}">
+                              <div class="card-body p-4 mb-4 mb-md-0">
+                                    <div class="row align-items-center">
+                                       <div class="col-lg-5 col-md-5">
+                                          <div class="pur-pdt-add-info mb-3 mb-md-0 xs-text-center">
+                                             <h4>
+                                                <a href="single-product.html" class="text-link" th:text="${itemNames[eee.index]}">
+                                                   <strong></strong>
+                                                </a>
+                                             </h4>
+                                             <ul class="mt-3">
+                                                <li>
+                                                   <p>
+                                                      <span><strong class="d-none d-lg-inline-block">Date :</strong></span> [[${order.getUtcCreate()}]]
+                                                   </p>
+                                                </li>
+                                             </ul>
+                                          </div>
                                        </div>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-4 col-md-4 col-7">
-                                    <div class="pur-pdt-review-tag xs-text-right">
-                                       <div class="pur-pdt-reviews-blk">
-                                          <div class="position-relative border-theme px-3 py-2 radius-5 d-inline-block rating-blk text-white">
-                                             <div class="position-relative position-relative t-0">
-                                                <ul class="list-group list-group-horizontal">
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star"></span>
-                                                   </li>
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star"></span>
-                                                   </li>
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star"></span>
-                                                   </li>
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star"></span>
-                                                   </li>
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star-o text-dark"></span>
-                                                   </li>
-                                                </ul>
+                                       <div class="col-lg-3 col-md-3 col-5">
+                                          <div class="pur-pdt-price-tag">
+                                             <div class="pur-pdt-price-info d-inline-block">
+                                                 <span class="border-theme text-theme radius-5 px-3 py-2">
+                                                    <i class="fa fa-dollar"></i>&nbsp;[[${order.getTotalPrice()}]]
+                                                 </span>
                                              </div>
                                           </div>
                                        </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <hr class="m-0">
-                        <div class="card-body p-4 mb-4 mb-md-0">
-                           <div class="pur-pdt-list clearfix">
-                              <div class="row align-items-center">
-                                 <div class="col-lg-5 col-md-5">
-                                    <div class="pur-pdt-add-info mb-3 mb-md-0 xs-text-center">
-                                          <h4>
-                                             <a href="single-product.html" class="text-link"><strong>Car Repair</strong></a>
-                                          </h4>
-                                       <ul class="mt-3">
-                                          <li>
-                                             <p><span><strong class="d-none d-lg-inline-block">Date :</strong> </span> 14 Apr 2019</p>
-                                          </li>
-                                       </ul>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-3 col-md-3 col-5">
-                                    <div class="pur-pdt-price-tag">
-                                       <div class="pur-pdt-price-info d-inline-block">
-                                          <span class="border-theme text-theme radius-5 px-3 py-2"><i class="fa fa-dollar"></i>&nbsp;14</span>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-4 col-md-4 col-7">
-                                    <div class="pur-pdt-review-tag xs-text-right">
-                                       <div class="pur-pdt-reviews-blk">
-                                          <div class="position-relative border-theme px-3 py-2 radius-5 d-inline-block rating-blk text-white">
-                                             <div class="position-relative position-relative t-0">
-                                                <ul class="list-group list-group-horizontal">
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star"></span>
-                                                   </li>
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star"></span>
-                                                   </li>
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star"></span>
-                                                   </li>
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star"></span>
-                                                   </li>
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star-o text-dark"></span>
-                                                   </li>
-                                                </ul>
-                                             </div>
+                                       <div class="col-lg-3 col-md-3 col-5">
+                                          <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                                             <a id="buyNowButton" th:href="${checkoutLink}" class="d-inline-block btn btn-outline-theme radius-5 btn-sm px-4 py-2 mb-2">Connect With Seller</a>
+                                             <a id="buyNowButton1" th:href="${checkoutLink}" class="d-inline-block btn btn-outline-theme radius-5 btn-sm px-4 py-2 mb-2">Return Item</a>
+                                             <a id="buyNowButton2" th:href="${checkoutLink}" class="d-inline-block btn btn-outline-theme radius-5 btn-sm px-4 py-2 mb-2">Invoice</a>
                                           </div>
                                        </div>
                                     </div>
-                                 </div>
                               </div>
-                           </div>
+                              <hr class="m-0">
                         </div>
-                        <hr class="m-0">
-                        <div class="card-body p-4 mb-4 mb-md-0">
-                           <div class="pur-pdt-list clearfix">
-                              <div class="row align-items-center">
-                                 <div class="col-lg-5 col-md-5">
-                                    <div class="pur-pdt-add-info mb-3 mb-md-0 xs-text-center">
-                                          <h4>
-                                             <a href="single-product.html" class="text-link"><strong>Pet boarding</strong></a>
-                                          </h4>
-                                       <ul class="mt-3">
-                                          <li>
-                                             <p><span><strong class="d-none d-lg-inline-block">Date :</strong> </span> 05 May 2019</p>
-                                          </li>
-                                       </ul>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-3 col-md-3 col-5">
-                                    <div class="pur-pdt-price-tag">
-                                       <div class="pur-pdt-price-info d-inline-block">
-                                          <span class="border-theme text-theme radius-5 px-3 py-2"><i class="fa fa-dollar"></i>&nbsp;32</span>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-4 col-md-4 col-7">
-                                    <div class="pur-pdt-review-tag xs-text-right">
-                                       <div class="pur-pdt-reviews-blk">
-                                          <a href="javascript:;" class="position-relative d-inline-block rating-blk btn btn-theme text-white px-3 py-2 " data-toggle="modal" data-target="#reviewModal">
-                                             <p class="rate-hover-blk position-absolute text-center w-100 text-white">Rate Now</p>
-                                             <div class="position-relative rating-icon-blk position-relative t-0">
-                                                <ul class="list-group list-group-horizontal">
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star-o text-white"></span>
-                                                   </li>
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star-o text-white"></span>
-                                                   </li>
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star-o text-white"></span>
-                                                   </li>
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star-o text-white"></span>
-                                                   </li>
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star-o text-white"></span>
-                                                   </li>
-                                                </ul>
-                                             </div>
-                                          </a>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <hr class="m-0">
-                        <div class="card-body p-4 mb-4 mb-md-0">
-                           <div class="pur-pdt-list clearfix">
-                              <div class="row align-items-center">
-                                 <div class="col-lg-5 col-md-5">
-                                    <div class="pur-pdt-add-info mb-3 mb-md-0 xs-text-center">
-                                          <h4>
-                                             <a href="single-product.html" class="text-link"><strong>Decoration</strong></a>
-                                          </h4>
-                                       <ul class="mt-3">
-                                          <li>
-                                             <p><span><strong class="d-none d-lg-inline-block">Date :</strong> </span> 26 Jun 2019</p>
-                                          </li>
-                                       </ul>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-3 col-md-3 col-5">
-                                    <div class="pur-pdt-price-tag">
-                                       <div class="pur-pdt-price-info d-inline-block">
-                                          <span class="border-theme text-theme radius-5 px-3 py-2"><i class="fa fa-dollar"></i>&nbsp;77</span>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-4 col-md-4 col-7">
-                                    <div class="pur-pdt-review-tag xs-text-right">
-                                       <div class="pur-pdt-reviews-blk">
-                                          <a href="javascript:;" class="position-relative d-inline-block rating-blk btn btn-theme text-white px-3 py-2 " data-toggle="modal" data-target="#reviewModal">
-                                             <p class="rate-hover-blk position-absolute text-center w-100 text-white">Rate Now</p>
-                                             <div class="position-relative rating-icon-blk position-relative t-0">
-                                                <ul class="list-group list-group-horizontal">
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star-o text-white"></span>
-                                                   </li>
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star-o text-white"></span>
-                                                   </li>
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star-o text-white"></span>
-                                                   </li>
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star-o text-white"></span>
-                                                   </li>
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star-o text-white"></span>
-                                                   </li>
-                                                </ul>
-                                             </div>
-                                          </a>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <hr class="m-0">
-                        <div class="card-body p-4 mb-4 mb-md-0">
-                           <div class="pur-pdt-list clearfix">
-                              <div class="row align-items-center">
-                                 <div class="col-lg-5 col-md-5">
-                                    <div class="pur-pdt-add-info mb-3 mb-md-0 xs-text-center">
-                                          <h4>
-                                             <a href="single-product.html" class="text-link"><strong>Skin Care</strong></a>
-                                          </h4>
-                                       <ul class="mt-3">
-                                          <li>
-                                             <p><span><strong class="d-none d-lg-inline-block">Date :</strong> </span> 20 Dec 2019</p>
-                                          </li>
-                                       </ul>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-3 col-md-3 col-5">
-                                    <div class="pur-pdt-price-tag">
-                                       <div class="pur-pdt-price-info d-inline-block">
-                                          <span class="border-theme text-theme radius-5 px-3 py-2"><i class="fa fa-dollar"></i>&nbsp;86</span>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-4 col-md-4 col-7">
-                                    <div class="pur-pdt-review-tag xs-text-right">
-                                       <div class="pur-pdt-reviews-blk">
-                                          <a href="javascript:;" class="position-relative d-inline-block rating-blk btn btn-theme text-white px-3 py-2 " data-toggle="modal" data-target="#reviewModal">
-                                             <p class="rate-hover-blk position-absolute text-center w-100 text-white">Rate Now</p>
-                                             <div class="position-relative rating-icon-blk position-relative t-0">
-                                                <ul class="list-group list-group-horizontal">
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star-o text-white"></span>
-                                                   </li>
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star-o text-white"></span>
-                                                   </li>
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star-o text-white"></span>
-                                                   </li>
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star-o text-white"></span>
-                                                   </li>
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star-o text-white"></span>
-                                                   </li>
-                                                </ul>
-                                             </div>
-                                          </a>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <hr class="m-0">
-                        <div class="card-body p-4">
-                           <div class="pur-pdt-list clearfix">
-                              <div class="row align-items-center">
-                                 <div class="col-lg-5 col-md-5">
-                                    <div class="pur-pdt-add-info mb-3 mb-md-0 xs-text-center">
-                                          <h4>
-                                             <a href="single-product.html" class="text-link"><strong>Repair</strong></a>
-                                          </h4>
-                                       <ul class="mt-3">
-                                          <li>
-                                             <p><span><strong class="d-none d-lg-inline-block">Date :</strong> </span> 25 Jan 2019</p>
-                                          </li>
-                                       </ul>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-3 col-md-3 col-5">
-                                    <div class="pur-pdt-price-tag">
-                                       <div class="pur-pdt-price-info d-inline-block">
-                                          <span class="border-theme text-theme radius-5 px-3 py-2"><i class="fa fa-dollar"></i>&nbsp;32</span>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-4 col-md-4 col-7">
-                                    <div class="pur-pdt-review-tag xs-text-right">
-                                       <div class="pur-pdt-reviews-blk">
-                                          <a href="javascript:;" class="position-relative d-inline-block rating-blk btn btn-theme text-white px-3 py-2 " data-toggle="modal" data-target="#reviewModal">
-                                             <p class="rate-hover-blk position-absolute text-center w-100 text-white">Rate Now</p>
-                                             <div class="position-relative rating-icon-blk position-relative t-0">
-                                                <ul class="list-group list-group-horizontal">
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star-o text-white"></span>
-                                                   </li>
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star-o text-white"></span>
-                                                   </li>
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star-o text-white"></span>
-                                                   </li>
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star-o text-white"></span>
-                                                   </li>
-                                                   <li class="pr-1">
-                                                      <span class="fa fa-star-o text-white"></span>
-                                                   </li>
-                                                </ul>
-                                             </div>
-                                          </a>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
+
+                        <nav aria-label="Page navigation">
+                           <ul class="pagination justify-content-center">
+                              <li class="page-item" th:if="${allOrder.hasPrevious()}">
+                                 <a class="page-link" th:href="@{'/history?page=' + (allOrder.number - 1)}">&laquo; Previous</a>
+                              </li>
+                              <li class="page-item" th:each="pageNumber : ${#numbers.sequence(0, allOrder.totalPages - 1)}">
+                                 <a class="page-link" th:href="@{'/history?page=' + pageNumber}" th:text="${pageNumber + 1}"></a>
+                              </li>
+                              <li class="page-item" th:if="${allOrder.hasNext()}">
+                                 <a class="page-link" th:href="@{'/history?page=' + (allOrder.number + 1)}">Next &raquo;</a>
+                              </li>
+                           </ul>
+                        </nav>
+
+                        <div>
+
                      </div>
                   </div>
                </div>

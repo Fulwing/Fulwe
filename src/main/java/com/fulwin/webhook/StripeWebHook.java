@@ -1,6 +1,11 @@
 package com.fulwin.webhook;
 
+import com.fulwin.Enums.OrderStatus;
+import com.fulwin.mapper.LineorderMapper;
+import com.fulwin.pojo.Lineorder;
+import com.fulwin.service.CommodityService;
 import com.fulwin.service.CustomerService;
+import com.fulwin.service.LineorderService;
 import com.google.gson.JsonSyntaxException;
 import com.stripe.Stripe;
 import com.stripe.exception.SignatureVerificationException;
@@ -16,6 +21,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,10 +35,16 @@ public class StripeWebHook {
     private CustomerService customerService;
 
     @Autowired
+    private LineorderService lineorderService;
+
+    @Autowired
+    private CommodityService commodityService;
+
+    @Autowired
     private RestTemplate restTemplate;
 
     @Value("${stripe.apikey}")
-    String stripeKey;
+    private String stripeKey;
 
     @ResponseBody
     @PostMapping("/payment")
@@ -66,21 +79,36 @@ public class StripeWebHook {
                 System.out.println("API Version Mismatch");
             }
         }
-
-        System.out.println("200");
         return "";
     }
 
-    private static void handleCompletedCheckoutSession(Session sessions) throws StripeException {
+    private void handleCompletedCheckoutSession(Session sessions) throws StripeException {
 
         Session session = Session.retrieve(sessions.getId());
-        Map<String, Object> params = new HashMap<>();
-        params.put("limit", 5);
-        LineItemCollection lineItems = session.listLineItems(params);
-        List<LineItem> data = lineItems.getData();
-        System.out.println(data.toString());
-        PaymentIntent paymentIntent = PaymentIntent.retrieve(sessions.getPaymentIntent());
-        System.out.println(paymentIntent.getLatestCharge());
+//        Map<String, Object> params = new HashMap<>();
+//        params.put("limit", 5);
+//        LineItemCollection lineItems = session.listLineItems(params);
+//        List<LineItem> data = lineItems.getData();
+//        PaymentIntent paymentIntent = PaymentIntent.retrieve(session.getPaymentIntent());
+        Long productId = Long.valueOf(session.getMetadata().get("productId"));
+        Long buyerId = Long.valueOf(session.getMetadata().get("buyerId"));
+        BigDecimal total = BigDecimal.valueOf(session.getAmountTotal()).divide(BigDecimal.valueOf(100), RoundingMode.DOWN);
+        BigDecimal platformFee = BigDecimal.valueOf(1.23);
+
+
+        //put data into database
+        Lineorder lineorder = new Lineorder();
+        lineorder.setOrderId(session.getPaymentIntent());
+        lineorder.setCommodityId(productId);
+        lineorder.setSellerId(commodityService.getCommodityById(productId).getItemCusid()); // change this to connection id
+        lineorder.setBuyerId(buyerId);
+        lineorder.setTotalPrice(total);
+        lineorder.setPlatformFee(platformFee);
+        lineorder.setSellerSalary(total.subtract(platformFee));
+        lineorder.setOrderStatus(OrderStatus.PROCESSING);
+
+        lineorderService.insertLineOrder(lineorder);
+
     }
 
 }
