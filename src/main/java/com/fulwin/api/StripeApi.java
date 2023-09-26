@@ -90,44 +90,40 @@ public class StripeApi {
     public String checkOut(@RequestParam("userid") String userId, @RequestParam("productName") String productName, @RequestParam("productPrice") BigDecimal productPrice, @RequestParam("productId") Long productId) throws StripeException {
         Stripe.apiKey = stripeKey;
 
-        BigDecimal prices = productPrice.multiply(BigDecimal.valueOf(100));
-
-        Map<String, Object> product_data = new HashMap<>();
-        product_data.put("name", productName);
-        Map<String, Object> paramss = new HashMap<>();
-        paramss.put("unit_amount", prices);
-        paramss.put("currency", "usd");
-        paramss.put("product_data", product_data);
-
-        Price price = Price.create(paramss);
+        Long prices = productPrice.multiply(BigDecimal.valueOf(100)).longValue();
 
         String baseUrl = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
         String requestUrl = "/shop/item/" + productId;
+        String secRequestUrl = "/payment/success";
         String cancelUrl = baseUrl + requestUrl;
+        String successUrl = baseUrl + secRequestUrl;
 
+// 303 redirect to session.getUrl()
         SessionCreateParams params =
                 SessionCreateParams.builder()
+                        .setMode(SessionCreateParams.Mode.PAYMENT)
+                        .addPaymentMethodType(SessionCreateParams.PaymentMethodType.CARD)
                         .addLineItem(
                                 SessionCreateParams.LineItem.builder()
-                                        .setPrice(price.getId())
+                                        .setPriceData(
+                                                SessionCreateParams.LineItem.PriceData.builder()
+                                                        .setProductData(
+                                                                SessionCreateParams.LineItem.PriceData.ProductData.builder()
+                                                                        .setName(productName)
+                                                                        .build()
+                                                        )
+                                                        .setUnitAmount(prices)
+                                                        .setCurrency("usd")
+                                                        .build()
+                                        )
                                         .setQuantity(1L)
-                                        .build())
-                        .setPaymentIntentData(
-                                SessionCreateParams.PaymentIntentData.builder()
-                                        .setApplicationFeeAmount(123L)
-                                        .setTransferData(
-                                                SessionCreateParams.PaymentIntentData.TransferData.builder()
-                                                        .setDestination(userId)
-                                                        .build())
-                                        .build())
-                        .setMode(SessionCreateParams.Mode.PAYMENT)
-                        .setSuccessUrl("https://example.com/success")
+                                        .build()
+                        )
+                        .setSuccessUrl(successUrl)
                         .setCancelUrl(cancelUrl)
                         .build();
 
         Session session = Session.create(params);
-
-// 303 redirect to session.getUrl()
         return session.getUrl();
     }
 }

@@ -73,4 +73,20 @@ public class DashboardController {
 
         return "dashboard/user-settings";
     }
+
+    @GetMapping("/history")
+    public String purchaseHistory(Model model){
+        Subject subject = SecurityUtils.getSubject();
+        Session session = subject.getSession();
+        List<Customer> customers = customerService.getCustomerByEmail((String) session.getAttribute("email"));
+        Customer customer = customers.get(0);
+
+        Cusinfo cusinfo = cusinfoService.getCusinfoById(customer.getId());
+
+        model.addAttribute("name", customer.getUsername());
+        model.addAttribute("balance", customer.getBalance());
+        model.addAttribute("info", cusinfo);
+
+        return "dashboard/purchase-history";
+    }
 }

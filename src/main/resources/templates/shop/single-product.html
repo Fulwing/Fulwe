@@ -140,7 +140,7 @@
                               </div>
                               <hr class="my-4">
                               <div class="pricing-cta">
-                                 <a th:href="${checkoutLink}" class="d-inline-block btn btn-outline-theme radius-5 btn-sm px-4 py-2 ">Buy Now</a>
+                                 <a id="buyNowButton" th:href="${checkoutLink}" class="d-inline-block btn btn-outline-theme radius-5 btn-sm px-4 py-2 ">Buy Now</a>
 <!--                                 <a href="cart-page.html" class="d-inline-block btn btn-outline-theme radius-5 btn-sm px-4 py-2 "><span class="d-inline-block"> Add Cart</span></a>-->
                               </div>
                            </div>
@@ -640,6 +640,22 @@
       <!-- Inner Wrapper -->
       <!-- The Login Modal -->
       <!-- Optional JavaScript -->
+      <!-- Add this JavaScript code to your template -->
+      <script th:inline="javascript">
+         document.getElementById('buyNowButton').addEventListener('click', function (event) {
+            // Prevent the default link behavior (following the href)
+            event.preventDefault();
+
+            // Get the target URL from the 'href' attribute of the button
+            var redirectUrl = this.getAttribute('href');
+
+            // Perform a 303 redirect
+            if (redirectUrl) {
+               window.location.href = redirectUrl;
+            }
+         });
+      </script>
+
       <!-- jQuery -->
       <script th:src="@{/js/jquery.min.js}"></script>
       <!-- Bootstrap Core JS -->

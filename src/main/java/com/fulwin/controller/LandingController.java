@@ -19,7 +19,7 @@ import java.util.Base64;
 public class LandingController {
 
     @Autowired
-    CustomerService customerService;
+    private CustomerService customerService;
 
     @GetMapping("/")
     public String landingPage(){

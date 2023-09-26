@@ -5,6 +5,12 @@ import com.fulwin.pojo.Cusinfo;
 import com.fulwin.service.CommodityService;
 import com.fulwin.service.CusinfoService;
 import com.fulwin.service.CustomerService;
+import com.stripe.Stripe;
+import com.stripe.exception.StripeException;
+import com.stripe.model.LineItemCollection;
+import com.stripe.model.Transfer;
+import com.stripe.model.checkout.Session;
+import com.stripe.param.TransferCreateParams;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,10 +37,18 @@ class FulweApplicationTests {
 	private ServletContext servletContext;
 
 	@Test
-	void contextLoads() throws IOException {
-		String baseUrl =
-				ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
-		System.out.println(baseUrl);
+	public void transfer() throws StripeException {
+		Stripe.apiKey = "sk_test_51Nr0cfCNKqGYER1b4C1aANv8KhQSuC7JTPlJm5NTXJapVXLXPsMQggaSk1aUeQjAR3Vc6b1QLFBW1cA3ggzsNm5J00qCCGSAah";
+
+		TransferCreateParams params =
+				TransferCreateParams.builder()
+						.setAmount(1000L)
+						.setCurrency("usd")
+						.setSourceTransaction("ch_3NudFQCNKqGYER1b1dEwKt07")
+						.setDestination("acct_1Ntv51FhJ8DGic2E")
+						.build();
+
+		Transfer transfer = Transfer.create(params);
 	}
 
 	@Test
