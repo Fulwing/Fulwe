@@ -2,6 +2,7 @@ package com.fulwin.webhook;
 
 import com.fulwin.Enums.OrderStatus;
 import com.fulwin.mapper.LineorderMapper;
+import com.fulwin.pojo.Commodity;
 import com.fulwin.pojo.Lineorder;
 import com.fulwin.service.CommodityService;
 import com.fulwin.service.CustomerService;
@@ -107,6 +108,10 @@ public class StripeWebHook {
         lineorder.setSellerSalary(total.subtract(platformFee));
         lineorder.setOrderStatus(OrderStatus.PROCESSING);
 
+        Commodity commodity = commodityService.getCommodityById(productId);
+        commodity.setItemSold(1); // mark as sold
+
+        commodityService.updateCommodity(commodity);
         lineorderService.insertLineOrder(lineorder);
 
     }

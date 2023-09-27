@@ -34,13 +34,23 @@
             background-color: #000000;
          }
 
-         #buyNowButton1:hover {
+         #returnButton:hover {
             background-color: #dc7193;
             color: white;
          }
 
-         #buyNowButton2:hover {
+         #invoiceButton:hover {
             background-color: #8e8992;
+            color: white;
+         }
+
+         #receivedButton:hover{
+            background-color: #afbeff;
+            color: white;
+         }
+
+         #getHelpButton:hover{
+            background-color: #42295f;
             color: white;
          }
       </style>
@@ -185,7 +195,7 @@
                            </div>
                         </div>
                      </div>
-                     <div class="container">
+
                      <div class="card shadow border">
                         <div class="card-header bg-white p-4 d-none d-md-block">
                            <div class="row">
@@ -208,7 +218,7 @@
                                        <div class="col-lg-5 col-md-5">
                                           <div class="pur-pdt-add-info mb-3 mb-md-0 xs-text-center">
                                              <h4>
-                                                <a href="single-product.html" class="text-link" th:text="${itemNames[eee.index]}">
+                                                <a th:href="@{/shop/item/{itemId}(itemId=${order.getCommodityId()})}" class="text-link" th:text="${itemNames[eee.index]}">
                                                    <strong></strong>
                                                 </a>
                                              </h4>
@@ -232,31 +242,17 @@
                                        </div>
                                        <div class="col-lg-3 col-md-3 col-5">
                                           <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                                             <a id="buyNowButton" th:href="${checkoutLink}" class="d-inline-block btn btn-outline-theme radius-5 btn-sm px-4 py-2 mb-2">Connect With Seller</a>
-                                             <a id="buyNowButton1" th:href="${checkoutLink}" class="d-inline-block btn btn-outline-theme radius-5 btn-sm px-4 py-2 mb-2">Return Item</a>
-                                             <a id="buyNowButton2" th:href="${checkoutLink}" class="d-inline-block btn btn-outline-theme radius-5 btn-sm px-4 py-2 mb-2">Invoice</a>
+                                             <a id="connectSeller" th:if="${order.getOrderStatus().equals(order.getOrderStatus().PROCESSING)}" th:href="${checkoutLink}" class="d-inline-block btn btn-outline-theme radius-5 btn-sm px-4 py-2 mb-2">Connect With Seller</a>
+                                             <a id="receivedButton" th:if="${order.getOrderStatus().equals(order.getOrderStatus().PROCESSING)}" th:href="${checkoutLink}" class="d-inline-block btn btn-outline-theme radius-5 btn-sm px-4 py-2 mb-2">Item Received</a>
+                                             <a id="getHelpButton" th:if="${order.getOrderStatus().equals(order.getOrderStatus().PROCESSING)}" th:href="${checkoutLink}" class="d-inline-block btn btn-outline-theme radius-5 btn-sm px-4 py-2 mb-2">Get Help</a>
+                                             <a id="returnButton" th:if="${order.getOrderStatus().equals(order.getOrderStatus().DELIVERED)}" th:href="${checkoutLink}" class="d-inline-block btn btn-outline-theme radius-5 btn-sm px-4 py-2 mb-2">Return Item</a>
+                                             <a id="invoiceButton"  th:href="${checkoutLink}" class="d-inline-block btn btn-outline-theme radius-5 btn-sm px-4 py-2 mb-2">Invoice</a>
                                           </div>
                                        </div>
                                     </div>
                               </div>
                               <hr class="m-0">
                         </div>
-
-                        <nav aria-label="Page navigation">
-                           <ul class="pagination justify-content-center">
-                              <li class="page-item" th:if="${allOrder.hasPrevious()}">
-                                 <a class="page-link" th:href="@{'/history?page=' + (allOrder.number - 1)}">&laquo; Previous</a>
-                              </li>
-                              <li class="page-item" th:each="pageNumber : ${#numbers.sequence(0, allOrder.totalPages - 1)}">
-                                 <a class="page-link" th:href="@{'/history?page=' + pageNumber}" th:text="${pageNumber + 1}"></a>
-                              </li>
-                              <li class="page-item" th:if="${allOrder.hasNext()}">
-                                 <a class="page-link" th:href="@{'/history?page=' + (allOrder.number + 1)}">Next &raquo;</a>
-                              </li>
-                           </ul>
-                        </nav>
-
-                        <div>
 
                      </div>
                   </div>

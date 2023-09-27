@@ -36,5 +36,6 @@ public class Commodity {
     private Integer deleted;
     private byte[] itemBpicture;
     private String priceId;
+    private int itemSold; //0 is not sold 1 is sold
 
 }

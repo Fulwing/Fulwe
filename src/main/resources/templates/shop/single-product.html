@@ -34,6 +34,13 @@
          .bg-nothing{
             background-color: #000000;
          }
+
+         .sold {
+            background-color: #ccc;
+            color: #999;
+            cursor: not-allowed;
+            pointer-events: none;
+         }
       </style>
       <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
       <!--[if lt IE 9]>
@@ -140,8 +147,9 @@
                               </div>
                               <hr class="my-4">
                               <div class="pricing-cta">
-                                 <a id="buyNowButton" th:href="${checkoutLink}" class="d-inline-block btn btn-outline-theme radius-5 btn-sm px-4 py-2 ">Buy Now</a>
-<!--                                 <a href="cart-page.html" class="d-inline-block btn btn-outline-theme radius-5 btn-sm px-4 py-2 "><span class="d-inline-block"> Add Cart</span></a>-->
+                                 <a id="buyNowButton" th:if="${sold == 0}" th:href="${checkoutLink}" class="d-inline-block btn btn-outline-theme radius-5 btn-sm px-4 py-2 ">Buy Now</a>
+                                 <a id="buyNowButton1" th:if="${sold == 1}" class="d-inline-block btn btn-outline-theme radius-5 btn-sm px-4 py-2 sold">Sold</a>
+                                 <!--                                 <a href="cart-page.html" class="d-inline-block btn btn-outline-theme radius-5 btn-sm px-4 py-2 "><span class="d-inline-block"> Add Cart</span></a>-->
                               </div>
                            </div>
                         </div>

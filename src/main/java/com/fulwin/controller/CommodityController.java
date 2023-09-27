@@ -104,6 +104,7 @@ public class CommodityController {
             e.printStackTrace();
         }
         model.addAttribute("info", cusinfoService.getCusinfoById(commodity.getItemCusid()));
+        model.addAttribute("sold", commodity.getItemSold());
 
         return "shop/single-product";
     }
