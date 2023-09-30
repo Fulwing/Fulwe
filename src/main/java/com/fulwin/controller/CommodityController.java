@@ -106,6 +106,20 @@ public class CommodityController {
         model.addAttribute("info", cusinfoService.getCusinfoById(commodity.getItemCusid()));
         model.addAttribute("sold", commodity.getItemSold());
 
+        Customer customerById = customerService.getCustomerById(commodity.getItemCusid());
+        List<Commodity> cusAllItemByUserId = commodityService.getCusAllItemByUserId(customerById.getId());
+        List<Commodity> firstThreeItems = cusAllItemByUserId.subList(0, Math.min(cusAllItemByUserId.size(), 3));
+        firstThreeItems.remove(commodity);
+
+        List<String> moreItemPictures = new ArrayList<>();
+        for (Commodity item :
+                firstThreeItems) {
+            moreItemPictures.add(Base64.getEncoder().encodeToString(item.getItemPicture()));
+        }
+        model.addAttribute("moreItem", firstThreeItems);
+        model.addAttribute("moreItemPic", moreItemPictures);
+
+
         return "shop/single-product";
     }
 

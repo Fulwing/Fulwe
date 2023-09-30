@@ -1,5 +1,9 @@
 package com.fulwin.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.fulwin.Enums.OrderStatus;
 import com.fulwin.pojo.Commodity;
 import com.fulwin.pojo.Cusinfo;
 import com.fulwin.pojo.Customer;
@@ -16,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.Base64;
@@ -37,7 +42,42 @@ public class DashboardController {
     private LineorderService lineorderService;
 
     @GetMapping
-    public String dashboard(){
+    public String dashboard(Model model, @RequestParam(value = "pn", defaultValue = "1") Integer pn){
+        Subject subject = SecurityUtils.getSubject();
+        Session session = subject.getSession();
+        List<Customer> customers = customerService.getCustomerByEmail((String) session.getAttribute("email"));
+        Customer customer = customers.get(0);
+        int process = 0;
+        int delivered = 0;
+
+        List<Lineorder> allLineOrderBySellerId = lineorderService.getAllLineOrderBySellerId(customer.getId());
+        for (Lineorder order :
+                allLineOrderBySellerId) {
+            if(order.getOrderStatus().equals(OrderStatus.PROCESSING))
+                process++;
+            if(order.getOrderStatus().equals(OrderStatus.DELIVERED))
+                delivered++;
+        }
+        IPage<Lineorder> userPage=new Page<>(pn,5);
+        QueryWrapper<Lineorder> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("seller_id", customer.getId());
+        IPage<Lineorder> page= lineorderService.page(userPage,queryWrapper);
+        List<String> names = new ArrayList<>();
+        for (Lineorder lineorder : page.getRecords()) {
+            Commodity commodityById = commodityService.getCommodityById(lineorder.getCommodityId());
+            names.add(commodityById.getItemName());
+        }
+
+
+        model.addAttribute("balance", customer.getBalance());
+        model.addAttribute("services", commodityService.getCusAllItemByUserId(customer.getId()).size());
+        model.addAttribute("process", process);
+        model.addAttribute("delivered", delivered);
+        model.addAttribute("orders", allLineOrderBySellerId);
+        model.addAttribute("itemNames", names);
+        model.addAttribute("page",page);
+
+
         return "dashboard/user-dashboard";
     }
 
@@ -45,7 +85,6 @@ public class DashboardController {
     public String profile(Model model){
         Subject subject = SecurityUtils.getSubject();
         Session session = subject.getSession();
-
         List<Customer> customers = customerService.getCustomerByEmail((String) session.getAttribute("email"));
         Customer customer = customers.get(0);
 
@@ -80,24 +119,31 @@ public class DashboardController {
     }
 
     @GetMapping("/history")
-    public String purchaseHistory(Model model){
+    public String purchaseHistory(Model model, @RequestParam(value = "pn", defaultValue = "1") Integer pn){
         Subject subject = SecurityUtils.getSubject();
         Session session = subject.getSession();
         List<Customer> customers = customerService.getCustomerByEmail((String) session.getAttribute("email"));
         Customer customer = customers.get(0);
-
         Cusinfo cusinfo = cusinfoService.getCusinfoById(customer.getId());
-        List<Lineorder> allLineOrderByBuyerId = lineorderService.getAllLineOrderByBuyerId(customer.getId());
+
+
+        //limit each page 5 data
+        IPage<Lineorder> userPage=new Page<>(pn,5);
+        QueryWrapper<Lineorder> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("buyer_id", customer.getId());
+        IPage<Lineorder> page= lineorderService.page(userPage,queryWrapper);
+
         List<String> names = new ArrayList<>();
-        for (Lineorder lineorder : allLineOrderByBuyerId) {
+        for (Lineorder lineorder : page.getRecords()) {
             Commodity commodityById = commodityService.getCommodityById(lineorder.getCommodityId());
             names.add(commodityById.getItemName());
         }
 
+        model.addAttribute("page", page);
+        model.addAttribute("orders", page.getRecords());
         model.addAttribute("name", customer.getUsername());
         model.addAttribute("balance", customer.getBalance());
         model.addAttribute("info", cusinfo);
-        model.addAttribute("allOrder", allLineOrderByBuyerId);
         model.addAttribute("itemNames" , names);
 
         return "dashboard/purchase-history";

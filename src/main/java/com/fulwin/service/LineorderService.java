@@ -14,7 +14,7 @@ import java.util.List;
 public interface LineorderService extends IService<Lineorder> {
     public List<Lineorder> getAllLineOrder();
 
-    public Lineorder getAllLineOrderBySellerId(Long id);
+    public List<Lineorder> getAllLineOrderBySellerId(Long id);
 
     public List<Lineorder> getAllLineOrderByBuyerId(Long id);
 
@@ -23,5 +23,7 @@ public interface LineorderService extends IService<Lineorder> {
     public void insertLineOrder(Lineorder lineorder);
 
     public void updateLineOrder(Lineorder lineorder);
+
+    public Lineorder findNewestItemByBuyerId(@Param("userId") Long userId);
 
 }

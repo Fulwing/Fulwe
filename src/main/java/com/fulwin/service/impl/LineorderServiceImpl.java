@@ -24,8 +24,11 @@ public class LineorderServiceImpl extends ServiceImpl<LineorderMapper, Lineorder
     }
 
     @Override
-    public Lineorder getAllLineOrderBySellerId(Long id) {
-        return null;
+    public List<Lineorder> getAllLineOrderBySellerId(Long id) {
+        QueryWrapper<Lineorder> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("seller_id", id); //
+
+        return lineorderMapper.selectList(queryWrapper);
     }
 
     @Override
@@ -49,6 +52,17 @@ public class LineorderServiceImpl extends ServiceImpl<LineorderMapper, Lineorder
     @Override
     public void updateLineOrder(Lineorder lineorder) {
         lineorderMapper.updateById(lineorder);
+    }
+
+    @Override
+    public Lineorder findNewestItemByBuyerId(Long userId) {
+        QueryWrapper<Lineorder> queryWrapper = new QueryWrapper<>();
+
+        queryWrapper.eq("buyer_id", userId)
+                .orderByDesc("utc_create")
+                .last("LIMIT 1");
+
+        return getBaseMapper().selectOne(queryWrapper);
     }
 
 

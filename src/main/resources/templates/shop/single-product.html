@@ -355,88 +355,40 @@
             </div>
          </div>
          <!-- / SINGLE PRODUCT PAGE -->
-         <section class="relevant-owner-pdt border-top py-5">
+         <section class="relevant-owner-pdt border-top py-5" th:if="${moreItem.size() != 0}">
             <div class="container">
                <div class="row">
                   <div class="col-12">
                      <div class="mb-4">
                         <div class="row text-center">
                            <div class="col-12">
-                              <h3 class="text-capitalize">More Items by Steve Bell</h3>
+                              <h3 class="text-capitalize">More Items by [[${username}]]</h3>
                            </div>
                         </div>
                      </div>
                   </div>
                </div>
                <div class="row">
-                  <div class="col-lg-4 col-md-6 pdt card-deck mx-0">
-                     <div class="card shadow mx-0 mb-lg-0">
+                  <div th:each="order, eee: ${moreItem}" class="col-lg-4 col-md-6 pdt card-deck mx-0">
+
+                     <div class="card shadow mx-0">
                               <div class="wishlist-blk">
                                  <a href="wishlist-grid-view.html"><i class="fa fa-heart-o text-white"></i></a>
                               </div>
                               <div class="card-image">
-                                 <img class="card-img-top" th:src="@{/img/service-img-4.jpg}" alt="Card image">
+                                 <img class="card-img-top" th:src="'data:image/jpeg;base64,' + ${moreItemPic[eee.index]}" alt="Card image">
                                  <div class="image-overlay">
-                                    <a href="single-product.html" class="btn btn-outline-white radius-5 py-3 px-4  text-capitalize">More Info</a>
+                                    <a th:href="@{/shop/item/{id}(id=${order.itemId})}" class="btn btn-outline-white radius-5 py-3 px-4  text-capitalize">More Info</a>
                                  </div>
                               </div>
                               <div class="card-body p-3">
-                                 <h4 class="card-title mb-0"><a href="single-product.html" class="text-link">Pet Boarding</a></h4>
+                                 <h4 class="card-title mb-0"><a th:href="@{/shop/item/{id}(id=${order.itemId})}" class="text-link">[[${order.getItemName()}]]</a></h4>
                                  <div class="card-text">
-                                    <div class="card-section-1 py-3">
-                                       <div class="row align-items-center">
-                                          <div class="col-6">
-                                             <div class="media align-items-center">
-                                                <a href="user-profile.html" class="text-link d-inline-block">
-                                                   <img th:src="@{/img/owner-avatar-img.jpg}" alt="John Doe" class="mr-3 img-fluid rounded-circle d-inline-block">
-                                                   <div class="media-body d-inline-block">
-                                                      <p><strong>Steve</strong></p>
-                                                   </div>
-                                                </a>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="pdt-cat-tag text-right">
-                                                <span class="bg-theme text-white px-3 py-1 radius-5">Pet Care</span>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="card-section-2">
-                                       <div class="row align-items-center">
-                                          <div class="col-6">
-                                             <div class="rating-blk d-inline-block">
-                                                <i class="fa fa-star text-rating font-sm"></i>
-                                                <i class="fa fa-star text-rating font-sm"></i>
-                                                <i class="fa fa-star text-rating font-sm"></i>
-                                                <i class="fa fa-star text-rating font-sm"></i>
-                                                <i class="fa fa-sta text-rating font-sm"></i>
-                                             </div>
-                                             <div class="pdt-rating-btn ml-1 d-inline-block">
-                                                <span class="text-theme"><strong>(5)</strong></span>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="pdt-contact-btn text-right">
-                                                <span class="p-2 display-5">
-                                                   <a href="tel:1234567890">
-                                                      <span class="lnr lnr-phone-handset"></span>
-                                                   </a>
-                                                </span>
-                                                <span class="p-2 display-5">
-                                                   <a href="mailto:nookx@example.com">
-                                                      <span class="lnr lnr-inbox"></span>
-                                                   </a>
-                                                </span>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
                                     <div class="card-section-3 py-3">
                                        <div class="row">
                                           <div class="col-12">
-                                             <div class="pdt-description">
-                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                             <div class="pdt-description" th:utext="${order.getItemIntro()}">
+                                                <p></p>
                                              </div>
                                           </div>
                                        </div>
@@ -446,9 +398,8 @@
                                        <div class="row">
                                           <div class="col-12">
                                              <div class="pdt-add-to-cart text-center">
-                                                <a class="btn-outline-theme d-block radius-5 px-3 py-2" href="cart-page.html">
-                                                   <span class="lnr lnr-cart"></span>&nbsp;Add to Cart - 
-                                                   <span class=""><i class="fa fa-usd"></i>&nbsp;86</span>
+                                                <a class="btn-outline-theme d-block radius-5 px-3 py-2" th:href="@{/shop/item/{id}(id=${order.itemId})}">
+                                                   <span class=""><i class="fa fa-usd"></i>&nbsp;[[${order.getItemPrice()}]]</span>
                                                 </a>
                                              </div>
                                           </div>
@@ -457,184 +408,7 @@
                                  </div>
                               </div>
                      </div>
-                  </div>
-                  <div class="col-lg-4 col-md-6 pdt card-deck mx-0">
-                     <div class="card shadow mx-0 mb-lg-0">
-                              <div class="wishlist-blk">
-                                 <a href="wishlist-grid-view.html"><i class="fa fa-heart-o text-white"></i></a>
-                              </div>
-                              <div class="card-image">
-                                 <img class="card-img-top" src="assets/img/service-img-6.jpg" alt="Card image">
-                                 <div class="image-overlay">
-                                    <a href="single-product.html" class="btn btn-outline-white radius-5 py-3 px-4  text-capitalize">More Info</a>
-                                 </div>
-                              </div>
-                              <div class="card-body p-3">
-                                 <h4 class="card-title mb-0"><a href="single-product.html" class="text-link">Wedding Shot</a></h4>
-                                 <div class="card-text">
-                                    <div class="card-section-1 py-3">
-                                       <div class="row align-items-center">
-                                          <div class="col-6">
-                                             <div class="media align-items-center">
-                                                <a href="user-profile.html" class="text-link d-inline-block">
-                                                   <img src="assets/img/owner-avatar-img.jpg" alt="John Doe" class="mr-3 rounded-circle d-inline-block">
-                                                   <div class="media-body d-inline-block">
-                                                      <p><strong>Steve</strong></p>
-                                                   </div>
-                                                </a>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="pdt-cat-tag text-right">
-                                                <span class="bg-theme text-white px-3 py-1 radius-5">Studio</span>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="card-section-2">
-                                       <div class="row align-items-center">
-                                          <div class="col-6">
-                                             <div class="rating-blk d-inline-block">
-                                                <i class="fa fa-star text-rating font-sm"></i>
-                                                <i class="fa fa-star text-rating font-sm"></i>
-                                                <i class="fa fa-star text-rating font-sm"></i>
-                                                <i class="fa fa-star text-rating font-sm"></i>
-                                                <i class="fa fa-star-o text-rating font-sm"></i>
-                                             </div>
-                                             <div class="pdt-rating-btn ml-1 d-inline-block">
-                                                <span class="text-theme"><strong>(4)</strong></span>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="pdt-contact-btn text-right">
-                                                <span class="p-2 display-5">
-                                                   <a href="tel:1234567890">
-                                                      <span class="lnr lnr-phone-handset"></span>
-                                                   </a>
-                                                </span>
-                                                <span class="p-2 display-5">
-                                                   <a href="mailto:nookx@example.com">
-                                                      <span class="lnr lnr-inbox"></span>
-                                                   </a>
-                                                </span>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="card-section-3 py-3">
-                                       <div class="row">
-                                          <div class="col-12">
-                                             <div class="pdt-description">
-                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <hr class="mt-0">
-                                    <div class="card-section-4">
-                                       <div class="row">
-                                          <div class="col-12">
-                                             <div class="pdt-add-to-cart text-center">
-                                                <a class="btn-outline-theme d-block radius-5 px-3 py-2" href="cart-page.html">
-                                                   <span class="lnr lnr-cart"></span>&nbsp;Add to Cart - 
-                                                   <span class=""><i class="fa fa-usd"></i>&nbsp;50</span>
-                                                </a>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                     </div>
-                  </div>
-                  <div class="col-lg-4 col-md-6 pdt card-deck mx-0">
-                     <div class="card shadow mx-0 mb-0">
-                              <div class="wishlist-blk">
-                                 <a href="wishlist-grid-view.html"><i class="fa fa-heart-o text-white"></i></a>
-                              </div>
-                              <div class="card-image">
-                                 <img class="card-img-top" th:src="@{/img/service-img-1.jpg}" alt="Card image">
-                                 <div class="image-overlay">
-                                    <a href="single-product.html" class="btn btn-outline-white radius-5 py-3 px-4  text-capitalize">More Info</a>
-                                 </div>
-                              </div>
-                              <div class="card-body p-3">
-                                 <h4 class="card-title mb-0"><a href="single-product.html" class="text-link">Interior Decoration</a></h4>
-                                 <div class="card-text">
-                                    <div class="card-section-1 py-3">
-                                       <div class="row align-items-center">
-                                          <div class="col-6">
-                                             <div class="media align-items-center">
-                                                <a href="user-profile.html" class="text-link d-inline-block">
-                                                   <img th:src="@{/img/owner-avatar-img.jpg}" alt="John Doe" class="mr-3 rounded-circle d-inline-block">
-                                                   <div class="media-body d-inline-block">
-                                                      <p><strong>Steve</strong></p>
-                                                   </div>
-                                                </a>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="pdt-cat-tag text-right">
-                                                <span class="bg-theme text-white px-3 py-1 radius-5">Construct</span>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="card-section-2">
-                                       <div class="row align-items-center">
-                                          <div class="col-6">
-                                             <div class="rating-blk d-inline-block">
-                                                <i class="fa fa-star text-rating font-sm"></i>
-                                                <i class="fa fa-star text-rating font-sm"></i>
-                                                <i class="fa fa-star text-rating font-sm"></i>
-                                                <i class="fa fa-star text-rating font-sm"></i>
-                                                <i class="fa fa-star text-rating font-sm"></i>
-                                             </div>
-                                             <div class="pdt-rating-btn ml-1 d-inline-block">
-                                                <span class="text-theme"><strong>(5)</strong></span>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="pdt-contact-btn text-right">
-                                                <span class="p-2 display-5">
-                                                   <a href="tel:1234567890">
-                                                      <span class="lnr lnr-phone-handset"></span>
-                                                   </a>
-                                                </span>
-                                                <span class="p-2 display-5">
-                                                   <a href="mailto:nookx@example.com">
-                                                      <span class="lnr lnr-inbox"></span>
-                                                   </a>
-                                                </span>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="card-section-3 py-3">
-                                       <div class="row">
-                                          <div class="col-12">
-                                             <div class="pdt-description">
-                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <hr class="mt-0">
-                                    <div class="card-section-4">
-                                       <div class="row">
-                                          <div class="col-12">
-                                             <div class="pdt-add-to-cart text-center">
-                                                <a class="btn-outline-theme d-block radius-5 px-3 py-2" href="cart-page.html">
-                                                   <span class="lnr lnr-cart"></span>&nbsp;Add to Cart - 
-                                                   <span class=""><i class="fa fa-usd"></i>&nbsp;77</span>
-                                                </a>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                     </div>
+
                   </div>
                </div>
             </div>

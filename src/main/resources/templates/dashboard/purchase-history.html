@@ -53,6 +53,17 @@
             background-color: #42295f;
             color: white;
          }
+
+         .btn-custom {
+            border-color: #A79AB2;
+            background-color: transparent;
+         }
+
+         .btn-custom:hover {
+            color: #fcfcfc;
+            border-color: #A79AB2;
+            background-color: #A79AB2; /* Transparent background on hover */
+         }
       </style>
       <!--[if lt IE 9]>
       <script src="assets/js/html5shiv.min.js"></script>
@@ -212,7 +223,7 @@
                         </div>
 
 <!--                        start showing all the product-->
-                           <div th:each="order, eee: ${allOrder}">
+                           <div th:each="order, eee: ${orders}">
                               <div class="card-body p-4 mb-4 mb-md-0">
                                     <div class="row align-items-center">
                                        <div class="col-lg-5 col-md-5">
@@ -226,6 +237,13 @@
                                                 <li>
                                                    <p>
                                                       <span><strong class="d-none d-lg-inline-block">Date :</strong></span> [[${order.getUtcCreate()}]]
+                                                   </p>
+                                                </li>
+                                             </ul>
+                                             <ul class="mt-3">
+                                                <li>
+                                                   <p>
+                                                      <span><strong class="d-none d-lg-inline-block">Status :</strong></span> [[${order.getOrderStatus()}]]
                                                    </p>
                                                 </li>
                                              </ul>
@@ -255,6 +273,63 @@
                         </div>
 
                      </div>
+                     <div class="row">
+                        <!-- Pagination Information -->
+                        <div class="col-md-6">
+                           Now page [[${page.current}]], total [[${page.pages}]] pages, total [[${page.total}]] records
+                        </div>
+                        <!-- Pagination Controls -->
+                        <div class="col-md-6">
+                           <nav aria-label="Page navigation">
+                              <ul class="pagination justify-content-end">
+                                 <li th:if="${page.current > 1 && page.pages <= 5}">
+                                    <a th:href="@{/dashboard/history(pn=1)}" class="btn btn-custom" aria-label="First Page">Start</a>
+                                 </li>
+                                 <li th:if="${page.hasPrevious() && page.pages <= 5}">
+                                    <a th:href="@{/dashboard/history(pn=${page.current-1})}" class="btn btn-custom" aria-label="Previous">
+                                       <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                 </li>
+                                 <!-- Show the first 5 pages with a right arrow -->
+                                 <th:block th:if="${page.pages <= 5}" th:each="i : ${#numbers.sequence(1, page.pages)}">
+                                    <li th:class="${page.current == i} ? 'page-item active' : 'page-item'">
+                                       <a th:href="@{/dashboard/history(pn=${i})}" class="btn btn-custom" th:text="${i}"></a>
+                                    </li>
+                                 </th:block>
+                                 <li th:if="${page.hasNext() && page.pages <= 5}">
+                                    <a th:href="@{/dashboard/history(pn=${page.current+1})}" class="btn btn-custom" aria-label="Next">
+                                       <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                 </li>
+                                 <li th:if="${page.pages > 5}">
+                                    <!-- Show Start button -->
+                                    <a th:href="@{/dashboard/history(pn=1)}" class="btn btn-custom" aria-label="First Page">Start</a>
+                                 </li>
+                                 <li th:if="${page.pages > 5}">
+                                    <!-- Show Page 1 button -->
+                                    <a th:href="@{/dashboard/history(pn=1)}" class="btn btn-custom" aria-label="Page 1">1</a>
+                                 </li>
+                                 <li th:if="${page.pages > 5}">
+                                    <!-- Show Page 2 button -->
+                                    <a th:href="@{/dashboard/history(pn=2)}" class="btn btn-custom" aria-label="Page 2">2</a>
+                                 </li>
+                                 <!-- Show an input field with a right arrow and End button -->
+                                 <li th:if="${page.pages > 5}">
+                                    <form th:action="@{/dashboard/history}" method="get" class="input-group">
+                                       <input type="number" class="form-control form-control-sm" name="pn" placeholder="Page" min="1" max="${page.pages}">
+                                       <div class="input-group-append">
+                                          <button class="btn btn-custom" type="submit">Go</button>
+                                       </div>
+                                    </form>
+                                 </li>
+                                 <li th:if="${page.current < page.pages}">
+                                    <a th:href="@{/dashboard/history(pn=${page.pages})}" class="btn btn-custom" aria-label="Last Page">End</a>
+                                 </li>
+                              </ul>
+                           </nav>
+                        </div>
+                     </div>
+
                   </div>
                </div>
             </div>

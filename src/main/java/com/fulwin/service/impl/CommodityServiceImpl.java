@@ -39,7 +39,6 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
             commodity.setItemPicture(resizedImage);
             if (commodity.getItemBpicture() != null && commodity.getItemBpicture().length > 0) {
                 List<String> images = Image.splitImagesAndToBase64(commodity.getItemBpicture());
-                System.out.println(images.size());
                 for (String image: images) {
                     byte[] byteArray = Base64.getDecoder().decode(image);
                     newImages.add((Image.resizeImage(byteArray, 1080, 1080)));
@@ -61,7 +60,6 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
             commodity.setItemPicture(resizedImage);
             if (commodity.getItemBpicture() != null && commodity.getItemBpicture().length > 0) {
                 List<String> images = Image.splitImagesAndToBase64(commodity.getItemBpicture());
-                System.out.println(images.size());
                 for (String image: images) {
                     byte[] byteArray = Base64.getDecoder().decode(image);
                     newImages.add((Image.resizeImage(byteArray, 1080, 1080)));
