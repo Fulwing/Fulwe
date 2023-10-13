@@ -31,7 +31,7 @@ This platform was developed using Java Spring Boot, Bootstrap, and Thymeleaf, co
 
 ![Buissness logic](Buissness%20logic.jpeg)
 
-Our microservices architecture is organized into various components, each serving a specific purpose in our system.
+My microservices architecture is organized into various components, each serving a specific purpose in our system.
 
 #### DTO (Data Transfer Object) Layer:
 - **Description:** The DTO layer contains classes representing Data Transfer Objects used for communication between the frontend and backend. These objects carry data between different layers of our application.
