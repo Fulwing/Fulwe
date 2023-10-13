@@ -26,22 +26,49 @@ This platform was developed using Java Spring Boot, Bootstrap, and Thymeleaf, co
 ## Folder Structure
 
 - **/src**
-  - Source code directory containing Java Spring Boot application files.
+  - Source code directory.
 
-- **/src/main/resources**
-  - Configuration files, application properties, and static resources.
+    - **/main**
+      - Main application files.
 
-- **/src/main/java/com/example/controller**
-  - Controllers handling HTTP requests.
+        - **/java/com/fulwin/api**
+          - API-related classes and controllers.
 
-- **/src/main/java/com/example/model**
-  - Data models and entities.
+        - **/java/com/fulwin/config**
+          - Configuration files for the application.
 
-- **/src/main/java/com/example/service**
-  - Business logic and service classes.
+        - **/java/com/fulwin/controller**
+          - Controllers handling HTTP requests.
 
-- **/src/main/resources/templates**
-  - Thymeleaf templates for dynamic web pages.
+        - **/java/com/fulwin/Enums**
+          - Enumeration classes.
+
+        - **/java/com/fulwin/handler**
+          - Exception handlers.
+
+        - **/java/com/fulwin/mapper**
+          - Data mapper classes.
+
+        - **/java/com/fulwin/pojo**
+          - Plain Old Java Objects (POJOs) representing data entities.
+
+        - **/java/com/fulwin/service**
+          - Business logic and service classes.
+
+        - **/java/com/fulwin/util**
+          - Utility classes.
+
+        - **/java/com/fulwin/webhook**
+          - Classes related to webhooks.
+
+        - **/resources**
+          - Configuration files, application properties, and static resources.
+
+            - **/static**
+              - JS, CSS, video plugins, and other static assets.
+
+            - **/templates**
+              - Thymeleaf templates for dynamic web pages.
 
 - **/src/test**
   - Unit and integration tests.
@@ -49,11 +76,6 @@ This platform was developed using Java Spring Boot, Bootstrap, and Thymeleaf, co
 - **/docker**
   - Docker-related files for containerization.
 
-- **/docs**
-  - Documentation files.
-
-- **/scripts**
-  - Miscellaneous scripts for database setup, maintenance, etc.
 
 ## Project Lifecycle
 
