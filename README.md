@@ -40,18 +40,3 @@ This platform was developed using Java Spring Boot, Bootstrap, and Thymeleaf, co
 ## Future Plans
 
 As we look ahead, our plans include continuous improvement, adding new features, and enhancing the platform based on user feedback.
-
-## Contact Information
-
-For inquiries or collaborations, feel free to reach out:
-
-[Your Name]
-[Your Email]
-[Your LinkedIn Profile]
-
-## Credits
-
-- Acknowledgements for any significant contributors or resources.
-
----
-**Note:** [Fill in the blanks with your personal information, such as name, email, and LinkedIn profile. Additionally, add any specific credits or acknowledgments relevant to your project.]
