@@ -33,7 +33,25 @@ This platform was developed using Java Spring Boot, Bootstrap, and Thymeleaf, co
 
 ## Database Design
 
+The database design for our application follows a relational model, consisting of several tables that store essential data for our system.
+
+### Entity-Relationship Diagram
+
 ![Database](Database.jpeg)
+
+### Additional Details
+
+- **Logical Deletion (Soft Delete):**
+  - A `deleted` flag is used in relevant tables to indicate soft deletions. When a user is deleted, the `deleted` flag is set to 1, making the record invisible to users but accessible for administrative purposes.
+
+- **Optimistic Locking (Version Control):**
+  - Optimistic locking is implemented in tables such as Products and Orders to manage concurrent updates. Only one user can successfully update a record at the same time.
+
+- **Timestamps (utc_create and utc_update):**
+  - `utc_create` and `utc_update` columns capture the creation and last update timestamps.
+  - Timestamp values are generated in the backend logic code to ensure consistency and accuracy.
+
+Please refer to the entity-relationship diagram above for a visual representation of our database structure.
 
 ## Folder Structure
 
