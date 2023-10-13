@@ -31,41 +31,42 @@ This platform was developed using Java Spring Boot, Bootstrap, and Thymeleaf, co
 
 ![Buissness logic](Buissness%20logic.jpeg)
 
-In our business logic, we follow a layered architecture to organize and manage various components. The following are key components and their roles:
+Our microservices architecture is organized into various components, each serving a specific purpose in our system.
 
-#### View Object (VO):
-- **Description:** View Objects are primarily used in the presentation layer. These objects are transmitted from the web layer to the template rendering engine.
-  
-#### Data Transfer Object (DTO):
-- **Description:** Data Transfer Objects serve as objects for data transfer between the frontend and backend. They are analogous to parameters and are used in communications from the frontend to the backend.
+#### DTO (Data Transfer Object) Layer:
+- **Description:** The DTO layer contains classes representing Data Transfer Objects used for communication between the frontend and backend. These objects carry data between different layers of our application.
 
-#### Business Object (BO):
-- **Description:** Business Objects are internal business objects that are used for communication within the system. They are not exposed externally.
+#### FeignClient Layer:
+- **Description:** The FeignClient layer includes the FeignClient class, serving as an internal interface for communication between microservices. It facilitates seamless communication and interaction within our microservices ecosystem.
 
-#### Model:
-- **Description:** Models correspond one-to-one with database table structures. They are used to transfer data from the Mapper layer to the presentation layer.
-
-#### Controller:
-- **Description:** Controllers handle external access control, route requests, perform basic parameter validation, and handle non-reusable, straightforward business logic. Some transaction-independent code is also written in this layer for simplicity.
-
-#### FeignClient:
-- **Description:** In a microservices architecture, FeignClients serve as internal interfaces for communication between microservices.
+#### FeignController Layer:
+- **Description:** The FeignController layer consists of controllers specifically designed for internal communication. These controllers handle routing, parameter validation, and basic business logic related to internal microservices interactions.
 
 #### Service Layer:
-- **Description:** The Service Layer contains relatively specific business logic services.
+- **Description:** The Service layer, represented by the /service directory, contains BusinessLogicSvc. This service layer implements specific business logic, including calls to FeignClients for inter-microservice communication. It maps DTOs to Model classes and interacts with the Model layer.
 
-#### Manager Layer:
-- **Description:** The Manager Layer is a common business processing layer with the following characteristics:
-  1. It encapsulates third-party platforms, preprocessing return results, and transforming exception information to adapt to upper-layer interfaces.
-  2. It sinks common capabilities of the Service Layer, such as caching strategies and middleware processing.
-  3. It interacts with the DAO Layer, combining multiple DAOs for reusability.
+#### Model Layer:
+- **Description:** The /model directory contains EntityModel classes representing our data model. These classes correspond to the structure of our database tables and are used for transferring data between layers.
 
-#### Mapper (Persistence) Layer:
-- **Description:** The Mapper Layer is responsible for data access, interacting with the underlying MySQL database for data transactions.
+#### Database Layer:
+- **Description:** The /database directory represents the DataRepository, which is responsible for data access. It interacts with the underlying MySQL database, providing the necessary operations for data retrieval, storage, and manipulation.
 
-This layered structure helps us maintain a clean separation of concerns, simplifies code organization, and facilitates modularity and scalability in our business logic.
+#### Utility Layer:
+- **Description:** The /util directory contains utility classes that provide common functionalities across different layers. These classes offer reusable and shared utility methods.
 
+#### Listener Layer:
+- **Description:** The /listener directory hosts the RocketMQListener, responsible for listening to and processing messages from the message broker (RocketMQ). This layer facilitates asynchronous and event-driven communication within our system.
 
+#### Task Layer:
+- **Description:** The /task directory represents tasks or components responsible for specific background processes or scheduled jobs in our system.
+
+#### Mapper Layer:
+- **Description:** The /mapper directory includes the DataMapper class, responsible for data access and interactions with the MySQL database. This layer handles the mapping of data between the application and the database.
+
+#### Config Layer:
+- **Description:** The /config directory consists of classes related to configuration settings. These classes handle configuration details for various components within our microservices architecture.
+
+This structured microservices architecture allows for modularization, scalability, and maintainability across different layers of our system.
 ## Database Design
 
 The database design for our application follows a relational model, consisting of several tables that store essential data for our system.
