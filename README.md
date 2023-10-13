@@ -31,6 +31,10 @@ This platform was developed using Java Spring Boot, Bootstrap, and Thymeleaf, co
 
 ![Buissness logic](Buissness%20logic.jpeg)
 
+## Database Design
+
+![Database](Database.jpeg)
+
 ## Folder Structure
 
 - **/src**
