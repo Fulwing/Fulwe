@@ -27,9 +27,9 @@ This platform was developed using Java Spring Boot, Bootstrap, and Thymeleaf, co
 
 ![Fulwe Architecture](Fulwe%20architecture.jpeg)
 
-
-
 ## Business logic
+
+![Buissness logic](Buissness%20logic.jpeg)
 
 ## Folder Structure
 
