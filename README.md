@@ -167,4 +167,24 @@ Please refer to the entity-relationship diagram above for a visual representatio
 
 ## Future Plans
 
-As we look ahead, our plans include continuous improvement, adding new features, and enhancing the platform based on user feedback.
+As I envision the future of Fulwe, my goal is to create a thriving community-driven platform for second-hand goods trading. Here are some key initiatives on the horizon:
+
+1. **Oauth Integration with Schools:**
+   - Establish partnerships with schools to integrate Oauth, providing a seamless and secure login experience for students.
+
+2. **Strategic Promotion:**
+   - Collaborate with schools to promote Fulwe, encouraging widespread adoption among students and residents in the county.
+
+3. **Enhanced User Experience:**
+   - Implement features to make it even easier for users to sell items they no longer need, especially during transitions such as leaving college or the county.
+
+4. **Scalability and High Availability:**
+   - Add more server instances to accommodate a growing user base and implement load balancing to ensure servers remain responsive and available.
+
+5. **Search Engine Optimization:**
+   - Integrate Elasticsearch to enhance the search engine capabilities, enabling users to find items quickly and efficiently.
+
+6. **Message Control with Kafka:**
+   - Implement Kafka for efficient message control, facilitating real-time communication and notifications on the platform.
+
+These future plans reflect our commitment to creating a user-friendly, scalable, and dynamic platform that serves the evolving needs of our community. We look forward to continued growth and engagement as Fulwe becomes a central hub for second-hand goods trading in our college and county.
