@@ -6,6 +6,22 @@ Welcome to the Fulwe, Second-Hand Goods Trading Platform, a dynamic e-commerce s
 
 This platform was developed using Java Spring Boot, Bootstrap, and Thymeleaf, combining robust technology to provide a seamless user experience. Whether you're a student looking for affordable items or aiming to declutter, our platform offers a user-friendly interface and secure transactions.
 
+# Table of Contents
+
+1. [Fulwe (Second-Hand Goods Trading Platform)](#fulwe-second-hand-goods-trading-platform)
+   1. [Welcome to Fulwe](#welcome-to-fulwe)
+   2. [Project Overview](#project-overview)
+   3. [Key Features](#key-features)
+   4. [Technical Stack](#technical-stack)
+   5. [System Architecture Diagram](#system-architecture-diagram)
+   6. [Business Logic](#business-logic)
+2. [Database Design](#database-design)
+   1. [Entity-Relationship Diagram](#entity-relationship-diagram)
+   2. [Additional Details](#additional-details)
+3. [Folder Structure](#folder-structure)
+4. [Project Lifecycle](#project-lifecycle)
+5. [Future Plans](#future-plans)
+
 ## Key Features
 
 - **Dynamic E-commerce:** Facilitate buying and selling of second-hand items among college students.
