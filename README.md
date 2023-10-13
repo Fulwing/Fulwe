@@ -23,6 +23,13 @@ This platform was developed using Java Spring Boot, Bootstrap, and Thymeleaf, co
 - **Security:** Shiro, Spring Security
 - **Payment Integration:** Stripe
 
+## System architecture diagram
+
+![Alt text](Fulwe-architecture.jgp)
+
+
+## Business logic
+
 ## Folder Structure
 
 - **/src**
