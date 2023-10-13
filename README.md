@@ -187,4 +187,4 @@ As I envision the future of Fulwe, my goal is to create a thriving community-dri
 6. **Message Control with Kafka:**
    - Implement Kafka for efficient message control, facilitating real-time communication and notifications on the platform.
 
-These future plans reflect our commitment to creating a user-friendly, scalable, and dynamic platform that serves the evolving needs of our community. We look forward to continued growth and engagement as Fulwe becomes a central hub for second-hand goods trading in our college and county.
+These future plans reflect my commitment to creating a user-friendly, scalable, and dynamic platform that serves the evolving needs of our community. I look forward to continued growth and engagement as Fulwe becomes a central hub for second-hand goods trading in our college and county.
