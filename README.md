@@ -44,10 +44,10 @@ This platform was developed using Java Spring Boot, Bootstrap, and Thymeleaf, co
           - Enumeration classes.
 
         - **/java/com/fulwin/handler**
-          - Exception handlers.
+          - Classes handling specific tasks.
 
         - **/java/com/fulwin/mapper**
-          - Data mapper classes.
+          - Database mappers for mapping data between Java objects and the database.
 
         - **/java/com/fulwin/pojo**
           - Plain Old Java Objects (POJOs) representing data entities.
