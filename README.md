@@ -31,12 +31,6 @@ This platform was developed using Java Spring Boot, Bootstrap, and Thymeleaf, co
 4. **Testing:** Rigorous testing phases to guarantee functionality, security, and reliability.
 5. **Deployment:** Successfully deployed the platform on AWS using Docker and Jenkins CI/CD.
 
-## Achievements
-
-- **Server Uptime:** Achieved an impressive 99.9% server uptime on a Linux system, ensuring reliability for users.
-- **User Interface Enhancement:** Designed an intuitive user interface with Bootstrap and Thymeleaf, resulting in a 25% improvement in overall user experience.
-- **Data Optimization:** Optimized data access times by 20% using MySQL and MyBatis, maintaining data integrity and security.
-
 ## Future Plans
 
 As we look ahead, our plans include continuous improvement, adding new features, and enhancing the platform based on user feedback.
