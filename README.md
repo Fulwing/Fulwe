@@ -31,6 +31,41 @@ This platform was developed using Java Spring Boot, Bootstrap, and Thymeleaf, co
 
 ![Buissness logic](Buissness%20logic.jpeg)
 
+In our business logic, we follow a layered architecture to organize and manage various components. The following are key components and their roles:
+
+#### View Object (VO):
+- **Description:** View Objects are primarily used in the presentation layer. These objects are transmitted from the web layer to the template rendering engine.
+  
+#### Data Transfer Object (DTO):
+- **Description:** Data Transfer Objects serve as objects for data transfer between the frontend and backend. They are analogous to parameters and are used in communications from the frontend to the backend.
+
+#### Business Object (BO):
+- **Description:** Business Objects are internal business objects that are used for communication within the system. They are not exposed externally.
+
+#### Model:
+- **Description:** Models correspond one-to-one with database table structures. They are used to transfer data from the Mapper layer to the presentation layer.
+
+#### Controller:
+- **Description:** Controllers handle external access control, route requests, perform basic parameter validation, and handle non-reusable, straightforward business logic. Some transaction-independent code is also written in this layer for simplicity.
+
+#### FeignClient:
+- **Description:** In a microservices architecture, FeignClients serve as internal interfaces for communication between microservices.
+
+#### Service Layer:
+- **Description:** The Service Layer contains relatively specific business logic services.
+
+#### Manager Layer:
+- **Description:** The Manager Layer is a common business processing layer with the following characteristics:
+  1. It encapsulates third-party platforms, preprocessing return results, and transforming exception information to adapt to upper-layer interfaces.
+  2. It sinks common capabilities of the Service Layer, such as caching strategies and middleware processing.
+  3. It interacts with the DAO Layer, combining multiple DAOs for reusability.
+
+#### Mapper (Persistence) Layer:
+- **Description:** The Mapper Layer is responsible for data access, interacting with the underlying MySQL database for data transactions.
+
+This layered structure helps us maintain a clean separation of concerns, simplifies code organization, and facilitates modularity and scalability in our business logic.
+
+
 ## Database Design
 
 The database design for our application follows a relational model, consisting of several tables that store essential data for our system.
