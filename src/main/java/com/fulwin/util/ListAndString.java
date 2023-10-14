@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ListAndString {
+public final class ListAndString {
     public static String convertCartStringToLongList(List<Long> cartList) {
         if (cartList != null && !cartList.isEmpty()) {
             return cartList.stream().map(String::valueOf).collect(Collectors.joining(","));

@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
 
-public class Image {
+public final class Image {
 
     static byte[] delimiter = new byte[] { (byte) 0x1A, (byte) 0x2B, (byte) 0x3C, (byte) 0x4D, (byte) 0x5E, (byte) 0x6F };
 
